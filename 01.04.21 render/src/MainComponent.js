@@ -9,7 +9,8 @@ export default class MainComponent {
         let header = new HeaderComponent("Site Page");
             header.createHeader();
         let content = new ContentComponent();
-            content.createContent();
-        
+            content.createContent(); 
+        let footer = new FooterComponent("Footer");
+            footer.createFooter();   
     }
 }
