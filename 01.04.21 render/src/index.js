@@ -1,7 +1,6 @@
- import MainComponent from "./MainComponent";
- import ProductComponent from "./ProductComponent";
- import HeaderComponent from "./HeaderComponent";
- import FooterComponent from "./FooterComponent";
- import ContentComponent from "./ContentComponent";
+import MainComponent from "./MainComponent";
 
 import "./styles/styles.css";
+
+let page = new MainComponent();
+    page.createPage();

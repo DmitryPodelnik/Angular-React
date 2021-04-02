@@ -1,0 +1,11 @@
+#contentMesh {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#contentMesh div {
+    margin: 20px;
+    border: 1px solid black;
+}
+

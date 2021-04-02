@@ -6,11 +6,15 @@ export default class ProductComponent {
         this._image = image;
     }
     createProduct() { 
+        let image = document.createElement("img");
+            image.src = this._image;
         let p = document.createElement("p");
             p.innerText = `${this.name}, ${this.price}, ${this.amount}`;
         let mainDiv = document.createElement("div");
+            mainDiv.append(image);
             mainDiv.append(p);
         
+        return mainDiv;
     }
 
     get name() {

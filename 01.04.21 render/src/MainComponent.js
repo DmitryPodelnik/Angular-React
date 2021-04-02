@@ -1,8 +1,15 @@
 import ProductComponent from "./ProductComponent";
-import ContentComponent from "./ContentComponent";
-import FooterComponent from "./FooterComponent";
 import HeaderComponent from "./HeaderComponent";
+import FooterComponent from "./FooterComponent";
+import ContentComponent from "./ContentComponent";
 
 export default class MainComponent {
     
+    createPage() {
+        let header = new HeaderComponent("Site Page");
+            header.createHeader();
+        let content = new ContentComponent();
+            content.createContent();
+        
+    }
 }
