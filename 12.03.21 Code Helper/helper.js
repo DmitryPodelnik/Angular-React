@@ -64,8 +64,5 @@ class CodeHelper {
     }
 }
 
-let codeHelper = new CodeHelper();
-    codeHelper.run();
-
 module.export = CodeHelper;
 
