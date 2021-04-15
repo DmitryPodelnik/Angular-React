@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import App from "./components/App"
+import SocialNetwork from "./components/SocialNetwork"
 
 ReactDOM.render(
-    <App/>,
+    <SocialNetwork/>,
     document.getElementById("root")
 )
