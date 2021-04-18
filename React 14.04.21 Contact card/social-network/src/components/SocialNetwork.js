@@ -1,8 +1,9 @@
 import React from 'react'
 import ContactCard from './ContactCard'
 
-import Article from "./ContactCard"
+import UserList from "../components/UserList"
 import "./SocialNetwork.css"
+import users from "./Users.json"
 
 function SocialNetwork() {
 
@@ -10,11 +11,10 @@ function SocialNetwork() {
 
     return (
         <div>
-            <header>Header</header> 
-            <ContactCard />
-            <ContactCard />
+            <ContactCard /> 
+            {/* <UserList data={users}/> */}
         </div>
     )
 }
-
+ 
 export default SocialNetwork;
