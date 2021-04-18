@@ -13,3 +13,16 @@
 #saveButton {
     margin: 10px;
 }
+
+#user {
+    background-color:tan;
+    padding: 10px;
+}
+
+#userAbout {
+    margin: 1px;
+}
+
+#textAbout {
+    min-height: 200px;
+}
