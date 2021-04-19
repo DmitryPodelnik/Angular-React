@@ -26,3 +26,14 @@
 #textAbout {
     min-height: 200px;
 }
+
+#firstLine {
+    display: flex;
+    
+}
+
+#follow {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
