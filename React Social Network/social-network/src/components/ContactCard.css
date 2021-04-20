@@ -12,6 +12,7 @@
 
 #saveButton {
     margin: 10px;
+    display: none;
 }
 
 #user {
@@ -29,11 +30,20 @@
 
 #firstLine {
     display: flex;
-    
+    align-items: flex-end;
 }
 
 #follow {
     display: flex;
     align-items: flex-end;
     margin-bottom: 10px;
+}
+
+#switchMode {
+    margin-left: 10px;
+}
+
+#uploadFile {
+   margin-bottom: 10px;
+   display: none;
 }
