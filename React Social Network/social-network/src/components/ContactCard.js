@@ -1,7 +1,7 @@
 import React from "react"
 import "./ContactCard.css"
 import $ from 'jquery';
-import avatar from "../components/avatar.jpg"
+import avatar from "../components/assets/avatar.jpg"
 
 class ContactCard extends React.Component {
 

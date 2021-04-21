@@ -3,6 +3,7 @@
         "firstName": "Mark",
         "lastName": "Otto",
         "username": "markotto",
+        "password": "12341234",
         "city": "New York",
         "about": "Positive person!",
         "avatar": ""
@@ -11,6 +12,7 @@
         "firstName": "Mark2",
         "lastName": "Otto2",
         "username": "markotto2",
+        "password": "12341234",
         "city": "New York2",
         "about": "Positive person!2",
         "avatar": ""
@@ -19,6 +21,7 @@
         "firstName": "Mark3",
         "lastName": "Otto3",
         "username": "markotto3",
+        "password": "12341234",
         "city": "New York3",
         "about": "Positive person!3",
         "avatar": ""
@@ -27,6 +30,7 @@
         "firstName": "Mark4",
         "lastName": "Otto4",
         "username": "markotto4",
+        "password": "12341234",
         "city": "New York4",
         "about": "Positive person!4",
         "avatar": ""
@@ -35,6 +39,7 @@
         "firstName": "Mark5",
         "lastName": "Otto5",
         "username": "markotto5",
+        "password": "12341234",
         "city": "New York5",
         "about": "Positive person!5",
         "avatar": ""
