@@ -10,7 +10,8 @@ class ContactCard extends React.Component {
 
         this.params = (new URL(document.location)).searchParams;
 
-        this.count = 0;
+        this.countFollowers = 0;
+        
         this.user = this.params.get("user");
         this.firstName = this.params.get("firstName");
         this.lastName = this.params.get("lastName");
@@ -19,9 +20,9 @@ class ContactCard extends React.Component {
     }
 
     increaseFolowers = () => {
-        this.count++;
+        this.countFollowers++;
         document.getElementById("followers").innerHTML = "Followers: <span id='countFollowers' class='badge bg-secondary'></span>";
-        document.getElementById("countFollowers").innerText = this.count;
+        document.getElementById("countFollowers").innerText = this.countFollowers;
     }
 
     switchEditMode = () => {
@@ -79,7 +80,7 @@ class ContactCard extends React.Component {
                     </div>
                     <div id="follow">
                         <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
-                            Follow <span id="countFollowers" className="badge bg-secondary">{this.count}</span>
+                            Follow <span id="countFollowers" className="badge bg-secondary">{this.countFollowers}</span>
                         </button>
                     </div>
                 </div>
