@@ -34,6 +34,7 @@ function SocialNetwork() {
                 <Switch>
 
                      <Route exact path="/" children={()=><h2>Home</h2>}/>
+                     <Route exact path="/friends" children={()=><h2>Friends</h2>}/>
 
                     <Route path="/users/list" render={routeProps => (
                         <UserList data={users} form="list"/>

@@ -23,7 +23,10 @@ const Nav = () => (
             <a className="nav-link" href="/reg">Sign Up TEST</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a className="nav-link" href="/friends">Friends</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Test</a>
           </li>
         </ul>
       </div>
