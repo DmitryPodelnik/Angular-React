@@ -35,7 +35,7 @@ class AuthorizationForm extends Component {
 
         return (
             <div id="main">
-                <form>
+                <form id="mainForm">
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
                         <input type="text" className="form-control" id="exampleInputEmail1" />
@@ -44,9 +44,9 @@ class AuthorizationForm extends Component {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" />
                     </div>
-                    {this.state.addContainer && <UserList data={users} username={$("#exampleInputEmail1").val()} password={$("#exampleInputPassword1").val()}/>}
-                    <button type="button" className="btn btn-primary" onClick={() => this.add()}>Sign in</button>
+                    <button type="button" className="btn btn-primary" onClick={() => this.add()}>Sign in </button>
                 </form>
+                {this.state.addContainer && <UserList form={document} data={users} username={$("#exampleInputEmail1").val()} password={$("#exampleInputPassword1").val()}/>}
             </div>
         );
     }
