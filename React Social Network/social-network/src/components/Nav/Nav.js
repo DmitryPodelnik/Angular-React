@@ -2,8 +2,9 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom'
 
+//localStorage.setItem("signInLogOut", "Sign In");
 
-const Nav = () => (
+const Nav = () => ( 
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <a className="navbar-brand" href="/">Activity Feed</a>
@@ -16,10 +17,10 @@ const Nav = () => (
             <a className="nav-link active" aria-current="page" href="profile">Profile</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/auth">Sign In</a>
+            <a className="nav-link" href="/auth">Sign In Test</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/reg">Sign Up</a>
+            <a className="nav-link" href="/reg">Sign Up TEST</a>
           </li>
           <li className="nav-item">
             <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -34,4 +35,4 @@ const Nav = () => (
 
 // Nav.defaultProps = {};
 
-export default Nav;
+export default Nav; 

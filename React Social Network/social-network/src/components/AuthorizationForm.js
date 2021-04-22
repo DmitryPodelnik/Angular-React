@@ -25,7 +25,7 @@ class AuthorizationForm extends Component {
         addContainer: false,
      }
 
-    add = () => {
+    userCheck = () => {
         this.setState({addContainer: !this.state.addContainer});
     }
 
@@ -44,7 +44,7 @@ class AuthorizationForm extends Component {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" />
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={() => this.add()}>Sign in </button>
+                    <button type="button" className="btn btn-primary" onClick={() => this.userCheck()}>Sign in </button>
                 </form>
                 {this.state.addContainer && <UserList form={document} data={users} username={$("#exampleInputEmail1").val()} password={$("#exampleInputPassword1").val()}/>}
             </div>
