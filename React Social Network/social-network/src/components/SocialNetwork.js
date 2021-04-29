@@ -6,13 +6,14 @@ import RegistrationForm from "./RegistrationForm";
 import AuthorizationForm from "./AuthorizationForm";
 import Nav from "./Nav/Nav";
 import NotFound from "./NotFound"
-import UserList from "./UserList";
+import UsersList from "./UsersList";
+import Users from "./Users.js";
 
 import $ from 'jquery';
 
 import "./SocialNetwork.css";
 
-import users from "./Users.json";
+import usersData from "./Users.json";
 
 function SocialNetwork() {
 
@@ -23,24 +24,16 @@ function SocialNetwork() {
             <BrowserRouter>
 
                     <header>   
-                        <Nav/>           
+                        <Nav data = {usersData}/>           
                     </header>
-
-                    {/* <UserList data={users}/> */}
-                    {/* <AuthorizationForm /> */}
-                    {/* <RegistrationForm /> */}
-                    {/* <ContactCard />  */} 
-
                 <Switch>
 
-                     <Route exact path="/" children={()=><h2>Home</h2>}/>
-                     <Route exact path="/friends" children={()=><h2>Friends</h2>}/>
+                    <Route exact path="/" children={()=><h2>Home</h2>}/>
+                    {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
 
-                    <Route path="/users/list" render={routeProps => (
-                        <UserList data={users} form="list"/>
-                    )}/>
+                    <Route path="/users" component={Users}/>
 
-                    <Route path="/profile" component={ContactCard}/>
+                    <Route path="/profile/:id(\d+)" component={ContactCard}/>
                     <Route path="/auth" component={AuthorizationForm}/>
                     <Route path="/reg" component={RegistrationForm}/>
 

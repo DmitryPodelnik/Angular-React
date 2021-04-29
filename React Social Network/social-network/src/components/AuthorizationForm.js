@@ -1,32 +1,32 @@
-import React, { Component } from "react"
-import "./AuthorizationForm.css"
-import $ from 'jquery';
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import $ from "jquery";
 
-import UserList from "./UserList";
+import UsersList from "./UsersList";
+import "./AuthorizationForm.css";
+
 import users from "./Users.json";
 
 class AuthorizationForm extends Component {
 
     constructor(props)   {
         super(props);
-
+        
+        this.user = "default";
         this.state = {
-            title: "Title",
-            text: "Some text",
-            isValid: true,
-            isAgree: false,
-            isValidtitle: true,
-            isValidtext: true,
-            isValidtext: true,
+            addContainer: false,
         }
     }
 
-    state = {
-        addContainer: false,
-     }
 
     userCheck = () => {
         this.setState({addContainer: !this.state.addContainer});
+        for (let item of users) {
+            if (item.username == $("#exampleInputEmail1").val()) {
+                this.user = item;
+                break;
+            }
+        }
     }
 
 
@@ -44,9 +44,14 @@ class AuthorizationForm extends Component {
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" />
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={() => this.userCheck()}>Sign in </button>
+                    <button type="button" className="btn btn-primary" onClick={() => this.userCheck()}>Sign in</button>
                 </form>
-                {this.state.addContainer && <UserList form={document} data={users} username={$("#exampleInputEmail1").val()} password={$("#exampleInputPassword1").val()}/>}
+                {this.state.addContainer && 
+                    <Link to={{
+                        pathname: `/users/${this.user.id}`,
+                        state: { data: this.user }
+                    }}>{this.user.username}</Link>
+                }
             </div>
         );
     }

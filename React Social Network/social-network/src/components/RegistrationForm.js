@@ -7,16 +7,6 @@ class RegistrationForm extends Component {
     constructor(props)   {
         super(props);
 
-        this.state = {
-            title: "Title",
-            text: "Some text",
-            isValid: true,
-            isAgree: false,
-            isValidtitle: true,
-            isValidtext: true,
-            isValidtext: true,
-        }
-
 
     }
 
