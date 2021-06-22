@@ -11,26 +11,33 @@ import AuthorizationForm from '../components/AuthorizationForm/AuthorizationForm
 import UsersList from '../components/UsersList/UsersList'
 import NotFound from '../components/NotFound/NotFound'
 
+import Nav from '../components/Nav/Nav'
+
 export default class Routing extends React.Component { 
  
     render() {
-        return (
-            <main>
-                <Switch>
-                    <Route path="/Article/List" render={routeProps=>(
-                        <ArticleList />
-                    )}/>
-                    <Route path="/Article/Create" component={ArticleForm}/>
-                    <Route path="/Article/:id" render={(routeProps)=>(
-                        <ArticleDetails match={routeProps.match}/>
-                    )}/>
+        return ( 
+            
+            <div>
+                <header>     
+                    <Nav/>           
+                </header>
 
-                    <Route path="/Category" component={ChildRoutes}/>
-                    <Route path="/Search" component={Search}/>
-                    <Route exact path="/" children={()=><h2>Home</h2>}/>
-                    <Route component={NotFound}/>
-                </Switch>
-            </main>
+                <main>
+                    <Switch>
+
+                        <Route exact path="/" children={()=><h2>Home</h2>}/>
+                        {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
+
+                        <Route path="/users" component={Users}/>
+                        <Route path="/profile/:id(\d+)" component={ContactCard}/>
+                        <Route path="/auth" component={AuthorizationForm}/>
+                        <Route path="/reg" component={RegistrationForm}/>
+
+                        <Route component={NotFound}/>
+                    </Switch>
+                </main>    
+            </div>
         )
     }
 };

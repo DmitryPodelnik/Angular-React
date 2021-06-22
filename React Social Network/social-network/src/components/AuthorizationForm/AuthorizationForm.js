@@ -5,7 +5,7 @@ import $ from "jquery";
 import UsersList from "../UsersList/UsersList";
 import "./AuthorizationForm.css";
 
-import users from "../Users.json";
+import users from "../App/Users.json";
 
 class AuthorizationForm extends Component {
 

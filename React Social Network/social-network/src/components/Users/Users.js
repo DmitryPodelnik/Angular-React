@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom'
 import UsersList from "../UsersList/UsersList";
 import ContactCard from "../ContactCard/ContactCard";
 
-import usersData from "../Users.json";
+import usersData from "../App/Users.json";
 
 class Users extends React.Component{
     render() {

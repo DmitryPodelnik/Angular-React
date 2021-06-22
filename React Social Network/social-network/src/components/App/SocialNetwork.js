@@ -1,19 +1,9 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-import ContactCard from "../ContactCard/ContactCard";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import AuthorizationForm from "../AuthorizationForm/AuthorizationForm";
-import Nav from "../Nav/Nav";
-import NotFound from "../NotFound/NotFound"
-import UsersList from "../UsersList/UsersList";
-import Users from "../Users/Users.js";
-
-import $ from 'jquery';
+import Routing from '../../routes/route'
 
 import "./SocialNetwork.css";
-
-import usersData from "./Users.json";
 
 function SocialNetwork() {
  
@@ -22,23 +12,7 @@ function SocialNetwork() {
     return (
         <div>
             <BrowserRouter>
-
-                    <header>   
-                        <Nav data = {usersData}/>           
-                    </header>
-                <Switch>
-
-                    <Route exact path="/" children={()=><h2>Home</h2>}/>
-                    {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
-
-                    <Route path="/users" component={Users}/>
-
-                    <Route path="/profile/:id(\d+)" component={ContactCard}/>
-                    <Route path="/auth" component={AuthorizationForm}/>
-                    <Route path="/reg" component={RegistrationForm}/>
-
-                    <Route component={NotFound}/>
-                </Switch>
+                <Routing/>
             </BrowserRouter>
         </div>
     )

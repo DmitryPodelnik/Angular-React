@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import {Route, Switch} from 'react-router-dom'
 import $ from 'jquery';
 
-import "./ContactCard.css"
+import "../ContactCard/ContactCard.css"
 
-import avatar from "../components/assets/avatar.jpg"
+import avatar from "../assets/avatar.jpg"
 
 class ContactCard extends React.Component {
 
