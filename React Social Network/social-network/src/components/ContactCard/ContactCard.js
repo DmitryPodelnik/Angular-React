@@ -13,50 +13,92 @@ class ContactCard extends React.Component {
         super(props);
 
         if (props.location.state != undefined) {
-            this.data = props.location.state.data
+            this.data = props.location.state.data;
         }
 
-        //this.params = (new URL(document.location)).searchParams; 
+        this.state = {
+            countFollowers: 0,
 
-        this.countFollowers = 0;
-        
-        // this.user = this.params.get("user");
-        // this.firstName = this.params.get("firstName");
-        // this.lastName = this.params.get("lastName");
-        // this.city = this.params.get("city");
-        // this.about = this.params.get("about");
+            firstName: {
+                readOnly: true,
+            },
+
+            lastName: {
+                readOnly: true,
+            },
+
+            userName: {
+                readOnly: true,
+            },
+
+            city: {
+                readOnly: true,
+            },
+
+            about: {
+                readOnly: true,
+            },
+
+            email: {
+                readOnly: true,
+            }
+        };
+
+        this.increaseFolowers = this.increaseFolowers.bind(this);
+        this.initializeData = this.initializeData.bind(this);
+        this.saveChanges = this.saveChanges.bind(this);
+        this.switchEditMode = this.switchEditMode.bind(this);
     }
 
-    increaseFolowers = () => {
-        this.countFollowers++;
-        document.getElementById("followers").innerHTML = "Followers: <span id='countFollowers' class='badge bg-secondary'></span>";
-        document.getElementById("countFollowers").innerText = this.countFollowers;
+    increaseFolowers () {
+
+         this.setState(state => ({
+             countFollowers: ++state.countFollowers,
+         }));
     }
 
-    switchEditMode = () => {
-        let element = document.querySelector("#flexSwitchCheckDefault");    
+    switchEditMode () {  
 
-        if (element.checked) {
-           $("#saveButton").show();
-           $("#uploadFile").show();
-           document.getElementById("firstName").readOnly = false;
-           document.getElementById("lastName").readOnly = false;
-           document.getElementById("city").readOnly = false;
-           document.getElementById("userName").readOnly = false;
-           document.getElementById("textAbout").readOnly = false;
-        }
-        else {
-           $("#saveButton").hide();
-           $("#uploadFile").hide();
-           document.getElementById("firstName").readOnly = true;
-           document.getElementById("lastName").readOnly = true;
-           document.getElementById("city").readOnly = true;
-           document.getElementById("userName").readOnly = true;
-           document.getElementById("textAbout").readOnly = true;
-        }
+        //    $("#saveButton").show();
+        //    $("#uploadFile").show();
+
+        this.setState(state => ({
+            firstName: {
+                readOnly: !state.firstName.readOnly,
+            },
+            
+            lastName: {
+                readOnly: !state.firstName.readOnly,
+            },
+
+            userName: {
+                readOnly: !state.firstName.readOnly,
+            },
+
+            city: {
+                readOnly: !state.firstName.readOnly,
+            },
+
+            about: {
+                readOnly: !state.firstName.readOnly,
+            },
+
+            email: {
+                readOnly: !state.firstName.readOnly,
+            },
+        }));
+
+    
+        //    $("#saveButton").hide();
+        //    $("#uploadFile").hide();
+        //    document.getElementById("firstName").readOnly = true;
+        //    document.getElementById("lastName").readOnly = true;
+        //    document.getElementById("city").readOnly = true;
+        //    document.getElementById("userName").readOnly = true;
+        //    document.getElementById("textAbout").readOnly = true;
     }
 
-    initializeData = () => {
+    initializeData () {
         document.getElementById("firstName").value = this.data.firstName;
         document.getElementById("lastName").value = this.data.lastName;
         document.getElementById("city").value = this.data.city;
@@ -64,14 +106,8 @@ class ContactCard extends React.Component {
         document.getElementById("textAbout").value = this.data.about;
     }
 
-    saveChanges = (event) => {
+    saveChanges (event) {
         event.preventDefault();
-
-        // this.user = document.getElementById("userName").value;
-        // this.firstName = document.getElementById("firstName").value;
-        // this.lastName = document.getElementById("lastName").value;
-        // this.city = document.getElementById("city").value;
-        // this.about = document.getElementById("textAbout").value;
 
     }
 
@@ -91,7 +127,7 @@ class ContactCard extends React.Component {
                         </div>
                         <div id="follow">
                             <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
-                                Follow <span id="countFollowers" className="badge bg-secondary">{this.countFollowers}</span>
+                                Follow <span id="countFollowers" className="badge bg-secondary">{this.state.countFollowers}</span>
                             </button>
                         </div>
                     </div>
@@ -102,26 +138,30 @@ class ContactCard extends React.Component {
                     <form className="row g-3 needs-validation" noValidate name="userInfo">
                         <div className="col-md-4">
                             <label className="form-label">First name</label>
-                            <input type="text" className="form-control" id="firstName" readOnly/> 
+                            <input type="text" className="form-control" id="firstName" readOnly={this.state.firstName.readOnly} /> 
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Last name</label>
-                            <input type="text" className="form-control" id="lastName" readOnly/>
+                            <input type="text" className="form-control" id="lastName" readOnly={this.state.lastName.readOnly} />
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Username</label>
                             <div className="input-group">
                                 <span className="input-group-text">@</span>
-                                <input id="userName" type="text" aria-describedby="inputGroupPrepend"nreadOnly/>
+                                <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly={this.state.userName.readOnly} />
                             </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.email.readOnly}/>
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">City</label>
-                            <input type="text" className="form-control" id="city" readOnly/>
+                            <input type="text" className="form-control" id="city" readOnly={this.state.city.readOnly} />
                         </div>
                         <div className="col-md-6" id="userAbout">
                             <label className="form-label">About</label>
-                            <textarea className="form-control" id="textAbout" readOnly></textarea>
+                            <textarea className="form-control" id="textAbout" readOnly={this.state.about.readOnly}></textarea>
                         </div>
                         <div className="col-12" id="saveButton">
                             <button className="btn btn-primary" onClick={this.saveChanges}>Save</button>

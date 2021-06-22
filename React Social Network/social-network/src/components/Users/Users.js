@@ -15,7 +15,7 @@ class Users extends React.Component{
                         {/* <Route path="/users/:id/friends" component={ContactCard} /> */}
                     </Switch>
                 </div>;
-    }
+    } 
 }
 
 export default Users;

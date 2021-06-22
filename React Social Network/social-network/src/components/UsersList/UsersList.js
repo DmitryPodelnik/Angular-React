@@ -50,7 +50,7 @@ class UsersList extends React.Component{
         this.data = props.data;
     }
 
-    render() {
+    render() { 
         return <div>
             <ul className="navbar-nav">
                 {
