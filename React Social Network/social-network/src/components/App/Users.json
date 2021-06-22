@@ -7,7 +7,8 @@
         "password": "12341234",
         "city": "New York",
         "about": "Positive person!",
-        "avatar": ""
+        "avatar": "",
+        "email": "1123@gmail.com"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "password": "12341234",
         "city": "New York2",
         "about": "Positive person!2",
-        "avatar": ""
+        "avatar": "",
+        "email": "1123@gmail.com"
     },
     {
         "id": 3,
@@ -27,7 +29,8 @@
         "password": "12341234",
         "city": "New York3",
         "about": "Positive person!3",
-        "avatar": ""
+        "avatar": "",
+        "email": "1123@gmail.com"
     },
     {
         "id": 4,
@@ -37,7 +40,8 @@
         "password": "12341234",
         "city": "New York4",
         "about": "Positive person!4",
-        "avatar": ""
+        "avatar": "",
+        "email": "1123@gmail.com"
     },
     {
         "id": 5,
@@ -47,6 +51,7 @@
         "password": "12341234",
         "city": "New York5",
         "about": "Positive person!5",
-        "avatar": ""
+        "avatar": "",
+        "email": "1123@gmail.com"
     }
 ]

@@ -18,12 +18,12 @@ class ContactCard extends React.Component {
 
         this.state = {
 
+            info: this.data,
             countFollowers: 0,
             isReading: true,
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
-        this.initializeData = this.initializeData.bind(this);
         this.saveChanges = this.saveChanges.bind(this);
         this.switchEditMode = this.switchEditMode.bind(this);
     }
@@ -43,14 +43,6 @@ class ContactCard extends React.Component {
         }));
     }
 
-    initializeData () {
-        //document.getElementById("firstName").value = this.data.firstName;
-        document.getElementById("lastName").value = this.data.lastName;
-        document.getElementById("city").value = this.data.city;
-        document.getElementById("userName").value = this.data.username;
-        document.getElementById("textAbout").value = this.data.about;
-    }
-
     saveChanges (event) {
         event.preventDefault();
 
@@ -63,7 +55,7 @@ class ContactCard extends React.Component {
         }
         else {
             return (
-                <div id="user" onLoad={this.initializeData}>
+                <div id="user">
                     <div id="firstLine">
                         <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
                         {!this.state.isReading
@@ -86,30 +78,48 @@ class ContactCard extends React.Component {
                     <form className="row g-3 needs-validation" noValidate name="userInfo">
                         <div className="col-md-4">
                             <label className="form-label">First name</label>
-                            <input type="text" className="form-control" id="firstName" readOnly={this.state.isReading} /> 
+                            {this.state.isReading  
+                               ? <input type="text" className="form-control" id="firstName" value={this.state.info.firstName} readOnly={this.state.isReading} />
+                               : <input type="text" className="form-control" id="firstName" readOnly={this.state.isReading} />
+                            }
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Last name</label>
-                            <input type="text" className="form-control" id="lastName" readOnly={this.state.isReading} />
+                            {this.state.isReading
+                               ? <input type="text" className="form-control" id="lastName" value={this.state.info.lastName} readOnly={this.state.isReading} />
+                               : <input type="text" className="form-control" id="lastName" readOnly={this.state.isReading} />
+                            }   
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Username</label>
                             <div className="input-group">
                                 <span className="input-group-text">@</span>
-                                <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly={this.state.isReading} />
+                                {this.state.isReading
+                                   ? <input id="userName" type="text" aria-describedby="inputGroupPrepend" value={this.state.info.username} readOnly={this.state.isReading} />
+                                   : <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly={this.state.isReading} />
+                                }
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="inputEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
+                            {this.state.isReading
+                               ? <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" value={this.state.info.email} readOnly={this.state.isReading}/>
+                               : <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
+                            }
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">City</label>
-                            <input type="text" className="form-control" id="city" readOnly={this.state.isReading} />
+                            {this.state.isReading
+                               ? <input type="text" className="form-control" id="city" value={this.state.info.city} readOnly={this.state.isReading} />
+                               : <input type="text" className="form-control" id="city" readOnly={this.state.isReading} />
+                            }
                         </div>
                         <div className="col-md-6" id="userAbout">
                             <label className="form-label">About</label>
-                            <textarea className="form-control" id="textAbout" readOnly={this.state.isReading}></textarea>
+                            {this.state.isReading
+                               ? <textarea className="form-control" id="textAbout"  value={this.state.info.about} readOnly={this.state.isReading}></textarea>
+                               : <textarea className="form-control" id="textAbout" readOnly={this.state.isReading}></textarea>
+                            }   
                         </div>
                         {!this.state.isReading 
                             ? <div className="col-12" id="saveButton">
