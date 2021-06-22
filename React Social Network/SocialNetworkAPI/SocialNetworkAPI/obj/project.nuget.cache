@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "hcHiFpAy+TVwpOfj7Fvx0oqgTyXu9XaP9sXlTK5UtkzY3NjwWsrmpdM0Vn/wGEnH2Rphmkm0mc9SA2iv1fTBNw==",
+  "success": true,
+  "projectFilePath": "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\AngularReact\\Solved Homework\\React Social Network\\SocialNetworkAPI\\SocialNetworkAPI\\SocialNetworkAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\inko1\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\inko1\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\inko1\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\inko1\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\inko1\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\inko1\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

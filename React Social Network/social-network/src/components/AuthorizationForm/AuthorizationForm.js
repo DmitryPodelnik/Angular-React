@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import $ from "jquery";
 
-import UsersList from "./UsersList";
+import UsersList from "../UsersList/UsersList";
 import "./AuthorizationForm.css";
 
-import users from "./Users.json";
+import users from "../Users.json";
 
 class AuthorizationForm extends Component {
 

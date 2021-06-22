@@ -38,6 +38,10 @@ class RegistrationForm extends Component {
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" required/>
+                    </div>
                     <div className="col-md-6">
                         <label htmlFor="validationCustom03" className="form-label">City</label>
                         <input type="text" className="form-control" id="validationCustom03" required/>

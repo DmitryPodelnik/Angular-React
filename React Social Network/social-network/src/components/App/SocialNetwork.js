@@ -1,13 +1,13 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-import ContactCard from "./ContactCard";
-import RegistrationForm from "./RegistrationForm";
-import AuthorizationForm from "./AuthorizationForm";
-import Nav from "./Nav/Nav";
-import NotFound from "./NotFound"
-import UsersList from "./UsersList";
-import Users from "./Users.js";
+import ContactCard from "../ContactCard/ContactCard";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import AuthorizationForm from "../AuthorizationForm/AuthorizationForm";
+import Nav from "../Nav/Nav";
+import NotFound from "../NotFound/NotFound"
+import UsersList from "../UsersList/UsersList";
+import Users from "../Users/Users.js";
 
 import $ from 'jquery';
 
@@ -16,8 +16,8 @@ import "./SocialNetwork.css";
 import usersData from "./Users.json";
 
 function SocialNetwork() {
-
-    
+ 
+     
 
     return (
         <div>
