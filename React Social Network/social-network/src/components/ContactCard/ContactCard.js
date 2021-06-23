@@ -21,6 +21,7 @@ class ContactCard extends React.Component {
             info: this.data,
             countFollowers: 0,
             isReading: true,
+            isLogged: true,
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
@@ -66,15 +67,23 @@ class ContactCard extends React.Component {
                             : null
                         }
                         <div id="follow">
-                            <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
+                        {this.state.isReading
+                           ? <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
                                 Follow <span id="countFollowers" className="badge bg-secondary">{this.state.countFollowers}</span>
                             </button>
+                           : <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers} disabled>
+                                Followers <span id="countFollowers" className="badge bg-secondary">{this.state.countFollowers}</span>
+                             </button>
+                        }
                         </div>
                     </div>
-                    <div className="form-check form-switch" id="switchMode">
+                    {this.state.isLogged
+                       ? <div className="form-check form-switch" id="switchMode">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.switchEditMode}/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Edit mode</label>
                         </div>
+                       : null 
+                    }
                     <form className="row g-3 needs-validation" noValidate name="userInfo">
                         <div className="col-md-4">
                             <label className="form-label">First name</label>
