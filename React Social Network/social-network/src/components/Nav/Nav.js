@@ -1,7 +1,6 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom'
-import {isLogged} from '../App/SocialNetwork'
 import {LoginContext} from "../../LoginContext/LoginContext"
 
 class Nav extends React.Component{
@@ -11,7 +10,7 @@ class Nav extends React.Component{
 
       this.state = {
 
-          isLogged: isLogged, 
+          
       };
   }
 
@@ -31,7 +30,7 @@ class Nav extends React.Component{
                       <li className="nav-item">
                         <NavLink to="/users" className="nav-link" activeClassName="active">All Users</NavLink>
                       </li>
-                      {this.state.isLogged
+                      {this.context
                         ? <li className="nav-item"> 
                            <NavLink to={`/profile/:id(\d+)`} className="nav-link" activeClassName="active">Profile</NavLink>
                          </li>
@@ -39,7 +38,7 @@ class Nav extends React.Component{
                       }
                       <li className="nav-item">
                         <NavLink to="/auth" className="nav-link" activeClassName="active">
-                          {!this.state.isLogged
+                          {!this.context
                            ? <span>Log In</span>
                            : <span>Log out</span>
                           }

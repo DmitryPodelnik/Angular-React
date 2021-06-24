@@ -12,7 +12,7 @@ class LoginControl extends React.Component{
 
         this.state = {
 
-            isLogged: false,
+            
         };
     }
 
@@ -21,7 +21,7 @@ class LoginControl extends React.Component{
     render() {
         return (
             <div id="main">
-                {this.state.isLoggedIn 
+                {this.context 
                 ? (<Redirect to="/"/>) 
                 : (<Redirect to="/auth"/>)
                 }
@@ -29,5 +29,7 @@ class LoginControl extends React.Component{
         )
     } 
 }
+
+LoginControl.contextType = LoginContext;
 
 export default LoginControl;
