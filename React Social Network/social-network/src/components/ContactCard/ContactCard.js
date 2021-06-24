@@ -13,7 +13,7 @@ class ContactCard extends React.Component {
         super(props);
 
         if (props.location.state != undefined) {
-            this.data = props.location.state.data;
+            this.data = props.location.state.data; 
         }
 
         this.state = {

@@ -24,7 +24,7 @@ class AuthorizationForm extends Component {
         for (let item of users) {
             if (item.username == $("#exampleInputEmail1").val()) {
                 this.user = item;
-                break;
+                break; 
             }
         }
     }
