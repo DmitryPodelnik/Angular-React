@@ -31,10 +31,13 @@ class Nav extends React.Component{
                       {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Test</a> */}
                         <NavLink to="/users" className="nav-link" activeClassName="active">All Users</NavLink>
                       </li>
-                      <li className="nav-item"> 
-                        {/* <a className="nav-link active" aria-current="page" href="profile">Profile</a> */}
-                        <NavLink to="/profile/:id(\d+)" className="nav-link" activeClassName="active">Profile</NavLink>
-                      </li>
+                      {this.state.isLogged
+                        ? <li className="nav-item"> 
+                           {/* <a className="nav-link active" aria-current="page" href="profile">Profile</a> */}
+                           <NavLink to={`/profile/:id(\d+)`} className="nav-link" activeClassName="active">Profile</NavLink>
+                         </li>
+                        : null 
+                      }
                       <li className="nav-item">
                         {/* <a className="nav-link" href="/auth">Sign In Test</a> */}
                         <NavLink to="/auth" className="nav-link" activeClassName="active">

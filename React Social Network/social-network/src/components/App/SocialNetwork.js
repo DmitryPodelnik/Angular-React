@@ -5,7 +5,7 @@ import Routing from '../../routes/route'
 
 import "./SocialNetwork.css";
 
-let isLogged = true;
+let isLogged = false;
 
 function SocialNetwork() {
  
