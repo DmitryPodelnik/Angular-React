@@ -38,6 +38,7 @@ export default class Routing extends React.Component {
 
                         <Route component={NotFound}/>
                     </Switch>
+                    
                 </main>    
             </div>
         )

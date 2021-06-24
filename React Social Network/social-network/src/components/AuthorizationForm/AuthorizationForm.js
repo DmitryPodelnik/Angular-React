@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {Link, Redirect, NavLink} from "react-router-dom";
 import $ from "jquery";
-
+import {isLogged} from "../App/SocialNetwork"
+import {LoginContext} from "../../LoginContext/LoginContext"
 
 import UsersList from "../UsersList/UsersList";
 import "./AuthorizationForm.css";
@@ -16,6 +17,7 @@ class AuthorizationForm extends Component {
         this.user = "default";
         this.state = {
             addContainer: false,
+            isLogged: isLogged,
         }
     }
 
@@ -28,6 +30,7 @@ class AuthorizationForm extends Component {
                 break; 
             }
         }
+        isLogged = true;
     }
 
 
@@ -59,5 +62,7 @@ class AuthorizationForm extends Component {
         );
     }
 }
+
+AuthorizationForm.contextType = LoginContext;
 
 export default AuthorizationForm;
