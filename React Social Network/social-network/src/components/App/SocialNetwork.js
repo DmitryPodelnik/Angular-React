@@ -5,6 +5,8 @@ import Routing from '../../routes/route'
 
 import "./SocialNetwork.css";
 
+let isLogged = true;
+
 function SocialNetwork() {
  
      
@@ -18,4 +20,4 @@ function SocialNetwork() {
     )
 }
  
-export default SocialNetwork;
+export {SocialNetwork, isLogged};

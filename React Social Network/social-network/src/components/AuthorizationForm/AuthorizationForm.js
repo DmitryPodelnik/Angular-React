@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect, NavLink} from "react-router-dom";
 import $ from "jquery";
+
 
 import UsersList from "../UsersList/UsersList";
 import "./AuthorizationForm.css";
@@ -45,6 +46,8 @@ class AuthorizationForm extends Component {
                         <input type="password" className="form-control" id="exampleInputPassword1" />
                     </div>
                     <button type="button" className="btn btn-primary" onClick={() => this.userCheck()}>Sign in</button>
+                    <span> or </span>
+                    <NavLink to={`/reg`} ><div className="btn btn-dark">Sign up</div></NavLink>
                 </form>
                 {this.state.addContainer && 
                     <Link to={{

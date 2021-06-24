@@ -10,6 +10,7 @@ import ContactCard from '../components/ContactCard/ContactCard'
 import AuthorizationForm from '../components/AuthorizationForm/AuthorizationForm'
 import UsersList from '../components/UsersList/UsersList'
 import NotFound from '../components/NotFound/NotFound'
+import LoginControl from '../components/LoginControl/LoginControl'
 
 import Nav from '../components/Nav/Nav'
 
@@ -26,7 +27,8 @@ export default class Routing extends React.Component {
                 <main>
                     <Switch>
 
-                        <Route exact path="/" children={()=><h2>Home</h2>}/>
+                        <Route exact path="/" component={LoginControl}/>
+                        {/* <Route exact path="/" children={()=><h2>Home</h2>}/> */}
                         {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
 
                         <Route path="/users" component={Users}/>

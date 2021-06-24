@@ -9,7 +9,7 @@ class RegistrationForm extends Component {
 
 
         this.checkForm = this.checkForm.bind(this);
-
+ 
         this.state = {
 
             firstName: "",
