@@ -6,6 +6,7 @@ import $ from 'jquery';
 import "../ContactCard/ContactCard.css"
 
 import avatar from "../assets/avatar.jpg"
+import { LoginContext } from "../../LoginContext/LoginContext";
 
 class ContactCard extends React.Component {
 
@@ -21,7 +22,6 @@ class ContactCard extends React.Component {
             info: this.data,
             countFollowers: 0,
             isReading: true,
-            isLogged: true,
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
@@ -77,7 +77,7 @@ class ContactCard extends React.Component {
                         }
                         </div>
                     </div>
-                    {this.state.isLogged
+                    {this.context.isLogged
                        ? <div className="form-check form-switch" id="switchMode">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.switchEditMode}/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Edit mode</label>
@@ -142,5 +142,7 @@ class ContactCard extends React.Component {
         }
     }
 }
+
+ContactCard.contextType = LoginContext;
 
 export default ContactCard;

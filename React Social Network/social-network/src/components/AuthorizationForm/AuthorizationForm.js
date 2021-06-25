@@ -21,18 +21,13 @@ class AuthorizationForm extends Component {
 
 
     userCheck = () => {
-        // this.setState({addContainer: !this.state.addContainer});
-        // for (let item of users) {
-        //     if (item.username == $("#exampleInputEmail1").val()) {
-        //         this.user = item;
-        //         break; 
-        //     }
-        // }
-        // <LoginContext.Consumer>
-        //     {({toggleLogging}) => (
-        //         toggleLogging()
-        //     )}
-        // </LoginContext.Consumer>
+        this.setState({addContainer: !this.state.addContainer});
+        for (let item of users) {
+            if (item.username == $("#exampleInputEmail1").val()) {
+                this.user = item;
+                break; 
+            }
+        }
         this.context.toggleLogging();
     }
 
@@ -48,8 +43,8 @@ class AuthorizationForm extends Component {
                         <input type="text" className="form-control" id="exampleInputEmail1" />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" />
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" />
                     </div>
                     <button type="button" className="btn btn-primary" onClick={() => this.userCheck()}>Sign in</button>
                     <span> or </span>

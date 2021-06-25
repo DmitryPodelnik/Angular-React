@@ -29,7 +29,7 @@ class Nav extends React.Component{
                       <li className="nav-item">
                         <NavLink to="/users" className="nav-link" activeClassName="active">All Users</NavLink>
                       </li>
-                      {this.context
+                      {this.context.isLogged
                         ? <li className="nav-item"> 
                            <NavLink to={`/profile/:id(\d+)`} className="nav-link" activeClassName="active">Profile</NavLink>
                          </li>
@@ -37,9 +37,9 @@ class Nav extends React.Component{
                       }
                       <li className="nav-item">
                         <NavLink to="/auth" className="nav-link" activeClassName="active">
-                          {this.context
-                           ? <span>Log In</span>
-                           : <span>Log out</span>
+                          {this.context.isLogged
+                           ? <span>Log Out</span>
+                           : <span>Log In</span>
                           }
                           
                           </NavLink>

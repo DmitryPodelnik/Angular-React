@@ -6,23 +6,6 @@ import {LoginContext} from '../../LoginContext/LoginContext'
 
 import "./SocialNetwork.css";
 
-
-// function SocialNetwork() {
- 
-     
-
-//     return (
-//         <div>
-//             <BrowserRouter>
-//                 <Routing/>
-//             </BrowserRouter>
-//         </div>
-//     )
-// }
- 
-// export {SocialNetwork};
-
-
 export default class SocialNetwork extends React.Component { 
 
     constructor(props) {

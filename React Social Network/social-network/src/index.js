@@ -7,8 +7,6 @@ import {LoginContext} from './LoginContext/LoginContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-
-
     <SocialNetwork/>,
     document.getElementById("root")
 )
