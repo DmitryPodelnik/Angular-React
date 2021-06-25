@@ -22,7 +22,7 @@ class Article extends React.Component{
         return (
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{this.article.Name}</h5>
+                    <h5 class="card-title">{this.article.Title}</h5>
                     <p class="card-text">{this.article.Content}</p>
                     <p class="card-text"><small class="text-muted">Posted {this.article.Date} by {this.article.Username}</small></p>
                 </div>
