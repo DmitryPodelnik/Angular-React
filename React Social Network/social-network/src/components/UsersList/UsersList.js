@@ -14,8 +14,8 @@ class UsersList extends React.Component{
 
     render() { 
         return <div>
-            <ul className="navbar-nav">
-                {
+                    <ul className="navbar-nav">
+                    {
                     this.data.map(function(item) {
                         // return  <li key={item.id}>
                         //             {/* <NavLink to={`/users/${item.id}`} data={item}>{item.username}</NavLink> */}
@@ -45,10 +45,10 @@ class UsersList extends React.Component{
                                     </div>
                                 </li>
                         })
-                }
-            </ul>
-        </div>;
-    }
+                    }
+                    </ul>
+                </div>
+            }
 }
 
 export default UsersList;
