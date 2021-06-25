@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 
-export const LoginContext = React.createContext(false);
+export const LoginContext = React.createContext({
+    isLogged: true, 
+    toggleLogging: () => {}, 
+});
 

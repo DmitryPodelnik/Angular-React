@@ -28,7 +28,6 @@ class AuthorizationForm extends Component {
                 break; 
             }
         }
-
     }
 
 

@@ -2,8 +2,8 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom'
 import ActivityFeed from '../ActivityFeed/ActivityFeed';
 
-import usersData from "../App/Users.json";
 import AuthorizationForm from '../AuthorizationForm/AuthorizationForm';
+import {LoginContext} from '../../LoginContext/LoginContext'
 
 class LoginControl extends React.Component{
 
@@ -22,8 +22,8 @@ class LoginControl extends React.Component{
         return (
             <div id="main">
                 {this.context 
-                ? (<Redirect to="/"/>) 
-                : (<Redirect to="/auth"/>)
+                ? (<Redirect to="/" />) 
+                : (<Redirect to="/auth" />)
                 }
             </div>
         )
