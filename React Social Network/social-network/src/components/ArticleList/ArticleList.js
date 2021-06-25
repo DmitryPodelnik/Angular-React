@@ -11,8 +11,9 @@ class ArticleList extends React.Component{
         this.articles = props.articles;
 
         this.state = {
-
-            
+            articles: [],
+            isLoaded: false,
+            error: null,     
         };
     }
 
@@ -21,7 +22,7 @@ class ArticleList extends React.Component{
         .then(res => res.json())
         .then(
             data => {
-             this.setState({data: data, isLoaded: true})   
+             this.setState({articles: data, isLoaded: true})   
             },
             error => {
                 this.setState({isLoaded:true, error})
@@ -32,16 +33,30 @@ class ArticleList extends React.Component{
 
     render() {
 
+        const {articles, isLoaded, error} = this.state;
+
+        let articleComponents = null;
+
+        if (error) {
+            articleComponents = <p>Error: {error.message}</p>
+        }
+        else if (!isLoaded) {
+            articleComponents = <p>Loading...</p>
+        }
+        else if (articles.length) {
+            articleComponents = articles.map(function(item) {
+                return  <li key={item.id}>
+                            <Article article={item}/>
+                        </li>
+                });
+        } else {
+            articleComponents = <p>No articles</p>
+        }
+
         return (
             <div id="main">
                 <ul className="navbar-nav">
-                    {
-                    this.articles.map(function(item) {
-                        return  <li key={item.id}>
-                                    <Article article={item}/>
-                                </li>
-                        })
-                    }
+                    {articleComponents}
                 </ul>
             </div>
         )
