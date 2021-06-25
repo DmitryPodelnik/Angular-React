@@ -45,5 +45,7 @@ namespace SocialNetworkAPI.Model
 
         [NotMapped]
         public string Role { get; set; }
+
+        public List<Article> Articles { get; set; } = new();
     }
 }
