@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import Routing from '../../routes/route'
+import {LoginContext} from '../../LoginContext/LoginContext'
 
 import "./SocialNetwork.css";
 
@@ -44,9 +45,11 @@ export default class SocialNetwork extends React.Component {
     render() {
         return (
             <div>
-                <BrowserRouter>
-                    <Routing/>
-                </BrowserRouter>
+                <LoginContext.Provider value={this.state}>
+                    <BrowserRouter>
+                        <Routing/>
+                    </BrowserRouter>
+                </LoginContext.Provider>
             </div>
         )
     }

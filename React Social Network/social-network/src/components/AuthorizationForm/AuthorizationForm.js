@@ -21,13 +21,19 @@ class AuthorizationForm extends Component {
 
 
     userCheck = () => {
-        this.setState({addContainer: !this.state.addContainer});
-        for (let item of users) {
-            if (item.username == $("#exampleInputEmail1").val()) {
-                this.user = item;
-                break; 
-            }
-        }
+        // this.setState({addContainer: !this.state.addContainer});
+        // for (let item of users) {
+        //     if (item.username == $("#exampleInputEmail1").val()) {
+        //         this.user = item;
+        //         break; 
+        //     }
+        // }
+        // <LoginContext.Consumer>
+        //     {({toggleLogging}) => (
+        //         toggleLogging()
+        //     )}
+        // </LoginContext.Consumer>
+        this.context.toggleLogging();
     }
 
 

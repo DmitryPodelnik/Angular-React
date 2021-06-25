@@ -37,14 +37,14 @@ class Nav extends React.Component{
                       }
                       <li className="nav-item">
                         <NavLink to="/auth" className="nav-link" activeClassName="active">
-                          {!this.context
+                          {this.context
                            ? <span>Log In</span>
                            : <span>Log out</span>
                           }
                           
                           </NavLink>
                       </li>
-                      {!this.context
+                      {!this.context.isLogged
                         ? <li className="nav-item">
                            <NavLink to="/reg" className="nav-link" activeClassName="active">Sign Up</NavLink>
                           </li>

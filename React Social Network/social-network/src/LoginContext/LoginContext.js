@@ -1,7 +1,7 @@
 import React from "react";
 
 export const LoginContext = React.createContext({
-    isLogged: true, 
+    isLogged: false, 
     toggleLogging: () => {}, 
 });
 

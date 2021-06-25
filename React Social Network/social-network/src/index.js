@@ -8,8 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
 
-    <LoginContext.Provider value={false}>
-        <SocialNetwork/>
-    </LoginContext.Provider>,
+
+    <SocialNetwork/>,
     document.getElementById("root")
 )
