@@ -14,6 +14,7 @@ import LoginControl from '../components/LoginControl/LoginControl'
 
 import Nav from '../components/Nav/Nav'
 import ArticleList from '../components/ArticleList/ArticleList';
+import Article from '../components/Article/Article'
 
 export default class Routing extends React.Component { 
  
@@ -36,7 +37,8 @@ export default class Routing extends React.Component {
                         <Route path="/profile/:id(\d+)" component={ContactCard}/>
                         <Route path="/auth" component={AuthorizationForm}/>
                         <Route path="/reg" component={RegistrationForm}/>
-                        <Route path="/articles" component={ArticleList}/>
+                        <Route path="/articles/:id(\d+)" component={Article} />
+                        <Route exact path="/articles" component={ArticleList}/>
 
                         <Route component={NotFound}/>
                     </Switch>

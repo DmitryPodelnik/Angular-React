@@ -36,6 +36,8 @@ class ArticleList extends React.Component{
 
         const {articles, isLoaded, error} = this.state;
 
+        let {id} = this.state.articles;
+
         let articleComponents = null;
 
         if (error) {
@@ -46,9 +48,9 @@ class ArticleList extends React.Component{
         }
         else if (articles.length) {
             articleComponents = articles.map(function(item) {
-                return  <li key={item.id}>
+                return  <li key={item}>
                             <Link to={{ pathname: `/articles/${item.id}`,
-                                        state: { articles: item }
+                                        state: { article: item }
                                      }}>
                                 <h5 className="card-title">{item.username}</h5>
                             </Link>
