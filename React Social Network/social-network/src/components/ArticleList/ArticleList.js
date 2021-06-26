@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 
 import Article from '../Article/Article'
 
@@ -46,7 +47,11 @@ class ArticleList extends React.Component{
         else if (articles.length) {
             articleComponents = articles.map(function(item) {
                 return  <li key={item.id}>
-                            <Article article={item}/>
+                            <Link to={{ pathname: `/articles/${item.id}`,
+                                        state: { articles: item }
+                                     }}>
+                                <h5 className="card-title">{item.username}</h5>
+                            </Link>
                         </li>
                 });
         } else {

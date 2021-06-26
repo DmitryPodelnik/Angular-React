@@ -9,6 +9,8 @@ using SocialNetworkAPI.Model;
 
 namespace SocialNetworkAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ArticlesController : Controller
     {
         private readonly SocialNetworkDbContext _context;
@@ -16,6 +18,43 @@ namespace SocialNetworkAPI.Controllers
         public ArticlesController(SocialNetworkDbContext context)
         {
             _context = context;
+
+            if (_context.Articles.Count() == 0)
+            {
+                _context.Articles.Add(new Article
+                {
+                    Title = "ADO.NET",
+                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
+                    Username = "User1",
+                    Date = DateTime.Now,
+                });
+
+                _context.Articles.Add(new Article
+                {
+                    Title = "ASP.NET",
+                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
+                    Username = "User2",
+                    Date = DateTime.Now,
+                });
+
+                _context.Articles.Add(new Article
+                {
+                    Title = "ASP.NET",
+                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
+                    Username = "User3",
+                    Date = DateTime.Now,
+                });
+
+                _context.Articles.Add(new Article
+                {
+                    Title = "ASP.NET",
+                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
+                    Username = "User4",
+                    Date = DateTime.Now,
+                });
+
+                _context.SaveChanges();
+            }
         }
 
         [HttpGet]
@@ -73,7 +112,6 @@ namespace SocialNetworkAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult<Article>> Edit(int id, [Bind("Id,Title,Content,Date,Username")] Article article)
         {
             if (id != article.Id)
@@ -120,7 +158,6 @@ namespace SocialNetworkAPI.Controllers
 
         // POST: Articles/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var article = await _context.Articles.FindAsync(id);

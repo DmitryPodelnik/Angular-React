@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom'
-
+import {NavLink} from 'react-router-dom'
 
 
 class Article extends React.Component{
@@ -22,7 +22,9 @@ class Article extends React.Component{
         return (
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{this.article.Title}</h5>
+                    <h5 class="card-title">{this.article.Title}
+                        <NavLink to={`/articles/${this.article.Id}`} >{this.article.Title}1</NavLink>
+                    </h5>
                     <p class="card-text">{this.article.Content}</p>
                     <p class="card-text"><small class="text-muted">Posted {this.article.Date} by {this.article.Username}</small></p>
                 </div>

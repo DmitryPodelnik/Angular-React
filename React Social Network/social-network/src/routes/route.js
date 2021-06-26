@@ -13,6 +13,7 @@ import NotFound from '../components/NotFound/NotFound'
 import LoginControl from '../components/LoginControl/LoginControl'
 
 import Nav from '../components/Nav/Nav'
+import ArticleList from '../components/ArticleList/ArticleList';
 
 export default class Routing extends React.Component { 
  
@@ -35,6 +36,7 @@ export default class Routing extends React.Component {
                         <Route path="/profile/:id(\d+)" component={ContactCard}/>
                         <Route path="/auth" component={AuthorizationForm}/>
                         <Route path="/reg" component={RegistrationForm}/>
+                        <Route path="/articles" component={ArticleList}/>
 
                         <Route component={NotFound}/>
                     </Switch>
