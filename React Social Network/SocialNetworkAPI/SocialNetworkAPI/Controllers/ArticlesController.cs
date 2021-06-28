@@ -23,6 +23,7 @@ namespace SocialNetworkAPI.Controllers
             {
                 _context.Articles.Add(new Article
                 {
+                    //Id = 1,
                     Title = "ADO.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User1",
@@ -31,6 +32,7 @@ namespace SocialNetworkAPI.Controllers
 
                 _context.Articles.Add(new Article
                 {
+                    //Id = 2,
                     Title = "ASP.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User2",
@@ -39,6 +41,7 @@ namespace SocialNetworkAPI.Controllers
 
                 _context.Articles.Add(new Article
                 {
+                    //Id = 3,
                     Title = "ASP.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User3",
@@ -47,6 +50,7 @@ namespace SocialNetworkAPI.Controllers
 
                 _context.Articles.Add(new Article
                 {
+                    //Id = 4,
                     Title = "ASP.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User4",

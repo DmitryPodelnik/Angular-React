@@ -19,14 +19,14 @@ class ArticleList extends React.Component{
     }
 
     componentDidMount(){
-        fetch("https://localhost:44342/api/article")
+        fetch("https://localhost:44318/api/articles")
         .then(res => res.json())
         .then(
             data => {
              this.setState({articles: data, isLoaded: true})   
             },
             error => {
-                this.setState({isLoaded:true, error})
+                this.setState({isLoaded: true, error})
             }
         )
     }
