@@ -22,7 +22,7 @@ namespace SocialNetworkAPI.Model
         public string Content { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         [StringLength(30)]
         [Required]

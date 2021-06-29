@@ -140,7 +140,7 @@ class ContactCard extends React.Component {
                 </div>
             )
         }
-    }
+    } 
 }
 
 ContactCard.contextType = LoginContext;
