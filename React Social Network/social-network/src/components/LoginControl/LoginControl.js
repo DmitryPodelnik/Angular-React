@@ -22,7 +22,7 @@ class LoginControl extends React.Component{
         return (
             <div id="main">
                 {this.context.isLogged 
-                ? (<Redirect to="/" />) 
+                ? (<Redirect to="/articles" />) 
                 : (<Redirect to="/auth" />)
                 }
             </div>
