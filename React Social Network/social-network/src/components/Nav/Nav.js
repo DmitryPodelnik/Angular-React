@@ -42,9 +42,9 @@ class Nav extends React.Component{
                         : null 
                       }
                       <li className="nav-item">
-                        <NavLink to="/auth" className="nav-link" activeClassName="active">
+                        <NavLink to="/auth" className="nav-link" activeClassName="active" >
                           {this.context.isLogged
-                           ? <span>Log Out</span>
+                           ? <span onClick={this.context.toggleLogging}>Log Out</span>
                            : <span>Log In</span>
                           }
                           

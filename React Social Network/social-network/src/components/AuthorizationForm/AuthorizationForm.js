@@ -23,7 +23,7 @@ class AuthorizationForm extends Component {
     userCheck = () => {
         this.setState({addContainer: !this.state.addContainer});
         for (let item of users) {
-            if (item.username == $("#exampleInputEmail1").val()) {
+            if (item.username === $("#exampleInputEmail1").val()) {
                 this.user = item;
                 break; 
             }
