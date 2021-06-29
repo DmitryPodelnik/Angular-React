@@ -52,7 +52,7 @@ class ArticleList extends React.Component{
                             <Link to={{ pathname: `/articles/${item.id}`,
                                         state: { article: item }
                                      }}>
-                                <h5 className="card-title">{item.username}</h5>
+                                <h5 className="card-title">{item.title}</h5>
                             </Link>
                         </li>
                 });

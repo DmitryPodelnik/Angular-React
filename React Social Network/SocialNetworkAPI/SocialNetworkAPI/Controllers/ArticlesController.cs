@@ -27,7 +27,7 @@ namespace SocialNetworkAPI.Controllers
                     Title = "ADO.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User1",
-                    Date = DateTime.Now,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
                 });
 
                 _context.Articles.Add(new Article
@@ -36,25 +36,25 @@ namespace SocialNetworkAPI.Controllers
                     Title = "ASP.NET",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User2",
-                    Date = DateTime.Now,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
                 });
 
                 _context.Articles.Add(new Article
                 {
                     //Id = 3,
-                    Title = "ASP.NET",
+                    Title = "C#",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User3",
-                    Date = DateTime.Now,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
                 });
 
                 _context.Articles.Add(new Article
                 {
                     //Id = 4,
-                    Title = "ASP.NET",
+                    Title = "C++",
                     Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт",
                     Username = "User4",
-                    Date = DateTime.Now,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString()),
                 });
 
                 _context.SaveChanges();
