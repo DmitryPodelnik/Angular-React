@@ -27,7 +27,9 @@ class Article extends React.Component{
                         <NavLink to={`/articles/${this.article.id}`} >{this.article.title}</NavLink>
                     </h5>
                     <p class="card-text">{this.article.content}</p>
-                    <p class="card-text"><small class="text-muted">Posted {this.article.date} by {this.article.username}</small></p>
+                    <p class="card-text"><small class="text-muted">Posted {this.article.date} by 
+                        
+                    </small></p>
                 </div>
             </div>
         )

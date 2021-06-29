@@ -52,7 +52,13 @@ class ArticleList extends React.Component{
                             <Link to={{ pathname: `/articles/${item.id}`,
                                         state: { article: item }
                                      }}>
-                                <h5 className="card-title">{item.title}</h5>
+                                <div class="card w-75">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{item.title}</h5>
+                                        <p class="card-text">{item.content.substring(0, item.content.indexOf(".", 30) + 1)}</p>
+                                        <div class="btn btn-primary">More details</div>
+                                    </div>
+                                </div>
                             </Link>
                         </li>
                 });
