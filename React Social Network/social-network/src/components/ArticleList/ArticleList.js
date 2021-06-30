@@ -53,8 +53,13 @@ class ArticleList extends React.Component{
                                     <div class="card-body">
                                         <h5 class="card-title">{item.title}</h5>
                                         <p class="card-text">{item.content.substring(0, item.content.indexOf(".", 30) + 1)}</p>
+                                        
+                                        <div class="blockquote-footer">
+                                            Written by <Link><cite title="Username">{item.username}</cite></Link>
+                                        </div>
                                         <Link to={{ pathname: `/articles/${item.id}`,
-                                                state: { article: item }
+                                                state: { article: item 
+                                                       }
                                                  }}>
                                         <div class="btn btn-primary">More details</div>
                                         </Link>
