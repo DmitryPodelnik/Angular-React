@@ -18,43 +18,6 @@ namespace SocialNetworkAPI.Controllers
         public ArticlesController(SocialNetworkDbContext context)
         {
             _context = context;
-
-            if (_context.Articles.Count() == 0)
-            {
-                _context.Articles.Add(new Article
-                {
-                    Title = "ADO.NET",
-                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт.",
-                    Username = "User1",
-                    Date = DateTime.Now.ToShortDateString(),
-                });
-
-                _context.Articles.Add(new Article
-                {
-                    Title = "ASP.NET",
-                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт.",
-                    Username = "User2",
-                    Date = DateTime.Now.ToShortDateString(),
-                });
-
-                _context.Articles.Add(new Article
-                {
-                    Title = "C#",
-                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт.",
-                    Username = "User3",
-                    Date = DateTime.Now.ToShortDateString(),
-                });
-
-                _context.Articles.Add(new Article
-                {
-                    Title = "C++",
-                    Content = "ASP.NET — платформа разработки веб - приложений, в состав которой входит: веб - сервисы, программная инфраструктура, модель программирования, от компании Майкрософт.",
-                    Username = "User4",
-                    Date = DateTime.Now.ToShortDateString(),
-                });
-
-                _context.SaveChanges();
-            }
         }
 
         [HttpGet]

@@ -25,6 +25,7 @@ namespace SocialNetworkAPI.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsersConfiguration());
+            modelBuilder.ApplyConfiguration(new ArticlesConfiguration());
         }
     }
 }
