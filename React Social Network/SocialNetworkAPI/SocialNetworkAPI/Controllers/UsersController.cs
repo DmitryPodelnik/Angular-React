@@ -16,33 +16,13 @@ namespace SocialNetworkAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : Controller
+    public class UsersController : Controller
     {
 		private readonly SocialNetworkDbContext _context;
 
-		public UserController(SocialNetworkDbContext context)
+		public UsersController(SocialNetworkDbContext context)
 		{
 			_context = context;
-
-			if (_context.Users.Count() == 0)
-			{
-
-				var sha256 = new SHA256Managed();
-				var passwordHash = Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes("qqq")));
-
-				_context.Users.Add(new Model.User
-				{
-					FirstName = "",
-					LastName = "",
-					Email = "",
-					Username = "",
-					Age = 20,
-					Gender = "",
-					Password = passwordHash,
-				});
-				_context.SaveChanges();
-			}
-
 		}
 
 		[Route("token")]
