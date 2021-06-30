@@ -1,14 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 import Users from '../components/Users/Users'
-import SocialNetwork from '../components/App/SocialNetwork'
 import RegistrationForm from '../components/RegistrationForm/RegistrationForm'
 import ContactCard from '../components/ContactCard/ContactCard'
 import AuthorizationForm from '../components/AuthorizationForm/AuthorizationForm'
-import UsersList from '../components/UsersList/UsersList'
 import NotFound from '../components/NotFound/NotFound'
 import LoginControl from '../components/LoginControl/LoginControl'
 

@@ -1,8 +1,6 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom'
-import {NavLink, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import Article from '../Article/Article'
 
 class ArticleList extends React.Component{
 

@@ -31,13 +31,13 @@ class Nav extends React.Component{
                       </li>
                       {this.context.isLogged
                         ? <li className="nav-item"> 
-                           <NavLink to={`/profile/:id(\d+)`} className="nav-link" activeClassName="active">Profile</NavLink>
+                           <NavLink to={`/profile/${this.context.currentUserId}`} className="nav-link" activeClassName="active">Profile</NavLink>
                          </li>
                         : null 
                       }
                       {this.context.isLogged
                         ? <li className="nav-item"> 
-                           <NavLink to={`/profile/:id(\d+)/friends`} className="nav-link" activeClassName="active">Friends</NavLink>
+                           <NavLink to={`/profile/${this.context.currentUserId}/friends`} className="nav-link" activeClassName="active">Friends</NavLink>
                          </li>
                         : null 
                       }
