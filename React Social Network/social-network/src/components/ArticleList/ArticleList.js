@@ -49,17 +49,17 @@ class ArticleList extends React.Component{
         else if (articles.length) {
             articleComponents = articles.map(function(item) {
                 return  <li key={item}>
-                            <Link to={{ pathname: `/articles/${item.id}`,
-                                        state: { article: item }
-                                     }}>
                                 <div class="card w-75">
                                     <div class="card-body">
                                         <h5 class="card-title">{item.title}</h5>
                                         <p class="card-text">{item.content.substring(0, item.content.indexOf(".", 30) + 1)}</p>
+                                        <Link to={{ pathname: `/articles/${item.id}`,
+                                                state: { article: item }
+                                                 }}>
                                         <div class="btn btn-primary">More details</div>
-                                    </div>
+                                        </Link>
+                                    </div> 
                                 </div>
-                            </Link>
                         </li>
                 });
         } else {
