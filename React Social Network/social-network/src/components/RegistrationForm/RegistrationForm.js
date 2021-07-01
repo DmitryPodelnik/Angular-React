@@ -27,10 +27,10 @@ class RegistrationForm extends Component {
         this.setState(state => ({
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
-            userName: $("userName").val(),
-            email: $("email").val(),
-            city: $("city").val(),
-            age: $("age").val(),
+            userName: $("#userName").val(),
+            email: $("#email").val(),
+            city: $("#city").val(),
+            age: $("#age").val(),
         }));
          
     }

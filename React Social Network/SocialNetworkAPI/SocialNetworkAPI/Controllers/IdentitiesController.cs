@@ -14,15 +14,13 @@ using System.Threading.Tasks;
 
 namespace SocialNetworkAPI.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class IdentitiesController : Controller
+	public class IdentitiesController : Controller
     {
 		private readonly SocialNetworkDbContext _context;
 
 		public IdentitiesController(SocialNetworkDbContext context)
 		{
-			//_context = context;
+			_context = context;
 		}
 
 		[Route("token")]

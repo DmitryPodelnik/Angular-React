@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Link, NavLink} from "react-router-dom";
 import $ from "jquery";
 import {LoginContext} from "../../LoginContext/LoginContext"
-
+import AuthHelper from "../../utils/authHelper"
 import "./AuthorizationForm.css";
 
 class AuthorizationForm extends Component {
@@ -13,13 +13,54 @@ class AuthorizationForm extends Component {
         this.user = "default";
         this.state = {
             addContainer: false,
+            userName: null,
+            password: null
+        }
+
+        this.userCheck = this.userCheck.bind(this);
+        this.userConfirmation = this.userConfirmation.bind(this);
+    }
+
+    userConfirmation() {
+
+        if (this.state.userName && this.state.password) {
+            
+            let user = {
+                username: this.state.userName,
+                password: this.state.password
+            };            
+    
+            fetch('https://localhost:44318/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(user)
+            }).then((response) => {
+                if (response.ok) {                              
+                    return response.json();
+                } else {
+                    alert("Error authorization");
+                    throw 'Ошибка авторизации';
+                }
+            }).then((data) => {    
+                console.log(data);          
+                AuthHelper.saveAuth(user.username, data.access_token);
+                this.context.toggleLogging();          
+            }).catch((ex) => {
+                alert(ex);
+            });
+        } else {
+                alert('Необходимо ввести имя пользователя и пароль');
         }
     }
 
+    userCheck () {
 
-    userCheck = () => {
-
-        this.context.toggleLogging();
+        this.setState(state => ({
+            userName: $("#userName").val(),
+            password: $("#password").val(),
+        }), this.userConfirmation);
     }
 
 
@@ -31,7 +72,7 @@ class AuthorizationForm extends Component {
                 <form id="mainForm">
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
-                        <input type="text" className="form-control" id="exampleInputEmail1" />
+                        <input type="text" className="form-control" id="userName" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>
