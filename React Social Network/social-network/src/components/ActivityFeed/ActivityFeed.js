@@ -1,7 +1,4 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom'
-
-import usersData from "../App/Users.json";
 import { LoginContext } from '../../LoginContext/LoginContext';
 
 class ActivityFeed extends React.Component{

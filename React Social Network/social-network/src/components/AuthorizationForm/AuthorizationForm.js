@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import {Link, Redirect, NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import $ from "jquery";
 import {LoginContext} from "../../LoginContext/LoginContext"
 
-import UsersList from "../UsersList/UsersList";
 import "./AuthorizationForm.css";
-
-import users from "../App/Users.json";
 
 class AuthorizationForm extends Component {
 
@@ -21,13 +18,7 @@ class AuthorizationForm extends Component {
 
 
     userCheck = () => {
-        this.setState({addContainer: !this.state.addContainer});
-        for (let item of users) {
-            if (item.username === $("#exampleInputEmail1").val()) {
-                this.user = item;
-                break; 
-            }
-        }
+
         this.context.toggleLogging();
     }
 

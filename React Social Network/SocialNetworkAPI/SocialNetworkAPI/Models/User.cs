@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialNetworkAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,6 +43,17 @@ namespace SocialNetworkAPI.Model
 
         [Required]
         public byte Age { get; set; }
+
+        [StringLength(30)]
+        [Required]
+        public string City { get; set; }
+
+        [StringLength(1000)]
+        [Required]
+        public string About { get; set; }
+
+        [NotMapped]
+        public Image Avatar { get; set; }
 
         [NotMapped]
         public string Role { get; set; }
