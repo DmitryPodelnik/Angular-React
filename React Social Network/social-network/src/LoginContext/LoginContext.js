@@ -4,5 +4,6 @@ export const LoginContext = React.createContext({
     isLogged: false, 
     currentUserId: -1,
     toggleLogging: () => {}, 
+    setCurrentUserId: (id) => {},
 });
 

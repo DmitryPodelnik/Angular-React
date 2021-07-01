@@ -16,12 +16,20 @@ export default class SocialNetwork extends React.Component {
             isLogged: !state.isLogged,
           }));
         };
+
+        this.setCurrentUserId = () => {
+            this.setState((state, id) => ({
+                currentUserId: id,
+            }));
+          };
     
         // Состояние хранит функцию для обновления контекста,
         // которая будет также передана в Provider-компонент.
         this.state = {
             isLogged: false,
+            currentUserId: -1,
             toggleLogging: this.toggleLogging,
+            setCurrentUserId: this.setCurrentUserId,
         };
       }
  

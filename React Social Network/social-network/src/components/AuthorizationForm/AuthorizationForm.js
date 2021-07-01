@@ -18,7 +18,7 @@ class AuthorizationForm extends Component {
         }
 
         this.logout = this.logout.bind(this);
-        this.getUserId = this.getUserId.bind(this);
+        this.setUserId = this.setUserId.bind(this);
         this.userCheck = this.userCheck.bind(this);
         this.userConfirmation = this.userConfirmation.bind(this);
     }
@@ -28,7 +28,7 @@ class AuthorizationForm extends Component {
         AuthHelper.clearAuth();
     }
 
-    getUserId() {
+    setUserId() {
 
         let user = {
             username: this.state.userName,
@@ -39,6 +39,7 @@ class AuthorizationForm extends Component {
         .then(res => res.json())
         .then(
             data => {
+                //this.context.setCurrentUserId(data.id);
                 this.context.currentUserId = data.id;
             },
             error => {
@@ -73,7 +74,7 @@ class AuthorizationForm extends Component {
                 console.log(data);          
                 AuthHelper.saveAuth(user.username, data.access_token);
                 this.context.toggleLogging();      
-                this.getUserId();    
+                this.setUserId();    
             }).catch((ex) => {
                 alert(ex);
             });
