@@ -22,7 +22,7 @@ namespace SocialNetworkAPI.Controllers
 
 		public UsersController(SocialNetworkDbContext context)
 		{
-			_context = context;
+			//_context = context;
 		}
 
 		[Route("token")]

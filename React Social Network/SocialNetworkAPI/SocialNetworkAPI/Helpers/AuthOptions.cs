@@ -10,7 +10,7 @@ namespace SocialNetworkAPI
     public class AuthOptions
     {
 		public const string ISSUER = "PodelnikSocialNetwork";
-		public const string AUDIENCE = "PodelnikSocialNetWorkUser";
+		public const string AUDIENCE = "PodelnikSocialNetworkUser";
 		const string KEY = "authentification_security_key!qwe123";
 		public const int LIFETIME = 5;
 		public static SymmetricSecurityKey GetSymmetricSecurityKey()
