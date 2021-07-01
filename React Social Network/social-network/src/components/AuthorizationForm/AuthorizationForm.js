@@ -18,6 +18,7 @@ class AuthorizationForm extends Component {
         }
 
         this.logout = this.logout.bind(this);
+        this.getUserId = this.getUserId.bind(this);
         this.userCheck = this.userCheck.bind(this);
         this.userConfirmation = this.userConfirmation.bind(this);
     }
@@ -25,6 +26,19 @@ class AuthorizationForm extends Component {
     
     logout() {
         AuthHelper.clearAuth();
+    }
+
+    getUserId() {
+        fetch('https://localhost:44318/api/users/getuserid')
+        .then(res => res.json())
+        .then(
+            data => {
+                this.context.currentUserId = data;
+            },
+            error => {
+                alert("User id error");
+            }
+        )
     }
 
     userConfirmation() {
@@ -52,7 +66,8 @@ class AuthorizationForm extends Component {
             }).then((data) => {    
                 console.log(data);          
                 AuthHelper.saveAuth(user.username, data.access_token);
-                this.context.toggleLogging();          
+                this.context.toggleLogging();      
+                this.getUserId();    
             }).catch((ex) => {
                 alert(ex);
             });

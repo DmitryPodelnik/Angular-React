@@ -31,7 +31,7 @@ class UsersList extends React.Component{
 
         const {users, isLoaded, error} = this.state;
 
-        let {id} = this.state.users;
+        //let {id} = this.state.users;
 
         let userComponents = null;
 
