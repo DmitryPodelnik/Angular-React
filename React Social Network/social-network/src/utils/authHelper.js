@@ -5,7 +5,7 @@ export default {
     },
 
     clearAuth: () => {
-        sessionStorage.removeItem('tokenKey');
+        sessionStorage.removeItem('tokenKey');  
     },
 
     getLogin: () => {

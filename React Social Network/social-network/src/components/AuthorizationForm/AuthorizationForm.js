@@ -17,8 +17,14 @@ class AuthorizationForm extends Component {
             password: null
         }
 
+        this.logout = this.logout.bind(this);
         this.userCheck = this.userCheck.bind(this);
         this.userConfirmation = this.userConfirmation.bind(this);
+    }
+
+    
+    logout() {
+        AuthHelper.clearAuth();
     }
 
     userConfirmation() {
@@ -41,7 +47,7 @@ class AuthorizationForm extends Component {
                     return response.json();
                 } else {
                     alert("Error authorization");
-                    throw 'Ошибка авторизации';
+                    return;
                 }
             }).then((data) => {    
                 console.log(data);          

@@ -55,7 +55,6 @@ namespace SocialNetworkAPI.Model
         [NotMapped]
         public Image Avatar { get; set; }
 
-        [NotMapped]
         public string Role { get; set; }
 
         public List<Article> Articles { get; set; } = new();
