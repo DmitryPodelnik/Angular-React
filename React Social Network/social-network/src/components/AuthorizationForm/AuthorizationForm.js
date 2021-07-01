@@ -29,14 +29,20 @@ class AuthorizationForm extends Component {
     }
 
     getUserId() {
-        fetch('https://localhost:44318/api/users/getuserid')
+
+        let user = {
+            username: this.state.userName,
+            password: this.state.password
+        }; 
+        
+        fetch(`https://localhost:44318/api/users/getuserid?username=${user.username}`)
         .then(res => res.json())
         .then(
             data => {
-                this.context.currentUserId = data;
+                this.context.currentUserId = data.id;
             },
             error => {
-                alert("User id error");
+                alert(error);
             }
         )
     }

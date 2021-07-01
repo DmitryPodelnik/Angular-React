@@ -26,6 +26,13 @@ namespace SocialNetworkAPI.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        [Route("getuserid")]
+        [HttpGet]
+        public async Task<ActionResult<User>> GetUserId(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        }
+
         [HttpGet("{id}")]
         // GET: Users/Details/5
         public async Task<ActionResult<User>> GetUser(int? id)
