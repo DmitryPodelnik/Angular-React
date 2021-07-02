@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import $ from "jquery";
 import {LoginContext} from "../../LoginContext/LoginContext"
 import AuthHelper from "../../utils/authHelper"
@@ -110,12 +110,6 @@ class AuthorizationForm extends Component {
                     <span> or </span>
                     <NavLink to={`/reg`} ><div className="btn btn-dark">Sign up</div></NavLink>
                 </form>
-                {this.state.addContainer && 
-                    <Link to={{
-                        pathname: `/users/${this.user.id}`,
-                        state: { data: this.user }
-                    }}>{this.user.username}</Link>
-                }
             </div>
         );
     }
