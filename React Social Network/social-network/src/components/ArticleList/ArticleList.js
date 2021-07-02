@@ -34,7 +34,7 @@ class ArticleList extends React.Component{
 
         const {articles, isLoaded, error} = this.state;
 
-        let {id} = this.state.articles;
+        //let {id} = this.state.articles;
 
         let articleComponents = null;
 
@@ -47,19 +47,19 @@ class ArticleList extends React.Component{
         else if (articles.length) {
             articleComponents = articles.map(function(item) {
                 return  <li key={item}>
-                                <div class="card w-75">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{item.title}</h5>
-                                        <p class="card-text">{item.content.substring(0, item.content.indexOf(".", 30) + 1)}</p>
+                                <div className="card w-75">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{item.title}</h5>
+                                        <p className="card-text">{item.content.substring(0, item.content.indexOf(".", 30) + 1)}</p>
                                         
-                                        <div class="blockquote-footer">
+                                        <div className="blockquote-footer">
                                             Written by <Link><cite title="Username">{item.username}</cite></Link>
                                         </div>
                                         <Link to={{ pathname: `/articles/${item.id}`,
                                                 state: { article: item 
                                                        }
                                                  }}>
-                                        <div class="btn btn-primary">More details</div>
+                                        <div className="btn btn-primary">More details</div>
                                         </Link>
                                     </div> 
                                 </div>

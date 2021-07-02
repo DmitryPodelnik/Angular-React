@@ -39,8 +39,8 @@ class AuthorizationForm extends Component {
         .then(res => res.json())
         .then(
             data => {
-                //this.context.setCurrentUserId(data.id);
-                this.context.currentUserId = data.id;
+                this.context.setCurrentUserId(data.id);
+                //this.context.currentUserId = data.id;
             },
             error => {
                 alert(error);

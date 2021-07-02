@@ -1,7 +1,6 @@
 import React from "react"
-import {Link} from 'react-router-dom'
-import {Route, Switch} from 'react-router-dom'
-import $ from 'jquery';
+
+//import $ from 'jquery';
 
 import "../ContactCard/ContactCard.css"
 
@@ -109,11 +108,11 @@ class ContactCard extends React.Component {
                                 }
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="inputEmail" class="form-label">Email address</label>
+                        <div className="col-md-4">
+                            <label for="inputEmail" className="form-label">Email address</label>
                             {this.state.isReading
-                               ? <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" value={this.state.info.email} readOnly={this.state.isReading}/>
-                               : <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
+                               ? <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" value={this.state.info.email} readOnly={this.state.isReading}/>
+                               : <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
                             }
                         </div>
                         <div className="col-md-6">

@@ -1,8 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom'
-import ActivityFeed from '../ActivityFeed/ActivityFeed';
-
-import AuthorizationForm from '../AuthorizationForm/AuthorizationForm';
+import {Redirect} from 'react-router-dom'
 import {LoginContext} from '../../LoginContext/LoginContext'
 
 class LoginControl extends React.Component{

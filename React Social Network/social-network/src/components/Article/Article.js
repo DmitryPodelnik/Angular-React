@@ -22,20 +22,20 @@ class Article extends React.Component{
 
         return (
             <div id="articleCard">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
                             <NavLink to={`/articles/${this.article.id}`} >{this.article.title}</NavLink>
                         </h5>
-                        <p class="card-text">{this.article.content}</p>
-                        <div class="blockquote-footer">
+                        <p className="card-text">{this.article.content}</p>
+                        <div className="blockquote-footer">
                             Posted {this.article.date} by
                                 <Link><cite title="Username"> {this.article.username}</cite></Link>
                         </div>
                     </div>
                 </div>
                 <div id="backLink">
-                    <NavLink to={`/articles`} class="btn btn-primary">Back</NavLink>
+                    <NavLink to={`/articles`} className="btn btn-primary">Back</NavLink>
                 </div>
             </div>
         )
