@@ -32,7 +32,7 @@ export default class Routing extends React.Component {
 
                         <Route path="/users" component={Users}/>
                         <Route path="/profile/:id(\d+)" component={ContactCard}/>
-                        <Route path="/auth" component={AuthorizationForm}/>
+                        <Route path="/auth" component ={AuthorizationForm}/>
                         <Route path="/reg" component={RegistrationForm}/>
                         <Route path="/articles/:id(\d+)" component={Article} />
                         <Route exact path="/articles" component={ArticleList}/>

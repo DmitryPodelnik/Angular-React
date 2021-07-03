@@ -1,6 +1,7 @@
 import React from "react"
 
 //import $ from 'jquery';
+import { Redirect } from 'react-router'
 
 import "../ContactCard/ContactCard.css"
 
@@ -67,6 +68,10 @@ class ContactCard extends React.Component {
 
         if (this.state.userInfo === undefined) {
             return <h2>Пользователь не найден</h2>;
+        }
+        else if (window.location.href.indexOf("/profile/") !== -1 && this.context.isLogged === false)
+        {
+            return <Redirect to="/auth" />
         }
         else {
             return (
