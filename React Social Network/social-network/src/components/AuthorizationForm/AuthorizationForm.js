@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
+import { Redirect } from "react-router";
 import $ from "jquery";
 import {LoginContext} from "../../LoginContext/LoginContext"
 import AuthHelper from "../../utils/authHelper"
@@ -12,9 +13,8 @@ class AuthorizationForm extends Component {
         
         this.user = "default";
         this.state = {
-            addContainer: false,
             userName: null,
-            password: null
+            password: null,
         }
 
         this.logout = this.logout.bind(this);
@@ -89,10 +89,12 @@ class AuthorizationForm extends Component {
         }), this.userConfirmation);
     }
 
-
-
     render() {
 
+        if (this.context.currentUserId !== -1)
+        {
+            return <Redirect to={`/profile/${this.context.currentUserId}`} />
+        } else {
         return (
             <div id="main">
                 <form id="mainForm">
@@ -110,6 +112,7 @@ class AuthorizationForm extends Component {
                 </form>
             </div>
         );
+        }
     }
 }
 
