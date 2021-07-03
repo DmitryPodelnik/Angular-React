@@ -18,11 +18,9 @@ export default class SocialNetwork extends React.Component {
         };
 
         this.setCurrentUserId = (id) => {
-            console.log(id);
             this.setState((state) => ({
                 currentUserId: id,
             }));
-            console.log(id);
           };
     
         // Состояние хранит функцию для обновления контекста,

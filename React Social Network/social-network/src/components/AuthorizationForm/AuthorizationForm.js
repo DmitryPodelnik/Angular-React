@@ -40,7 +40,6 @@ class AuthorizationForm extends Component {
         .then(
             data => {
                 this.context.setCurrentUserId(data.id);
-                //this.context.currentUserId = data.id;
             },
             error => {
                 alert(error);
@@ -70,8 +69,7 @@ class AuthorizationForm extends Component {
                     alert("Error authorization");
                     return;
                 }
-            }).then((data) => {    
-                console.log(data);          
+            }).then((data) => {         
                 AuthHelper.saveAuth(user.username, data.access_token);
                 this.context.toggleLogging();      
                 this.setUserId();    
