@@ -1,5 +1,7 @@
 import React from "react"
 import {Link} from 'react-router-dom'
+import { LoginContext } from "../../LoginContext/LoginContext"
+import { Redirect } from "react-router";
 
 
 class UsersList extends React.Component{
@@ -35,6 +37,10 @@ class UsersList extends React.Component{
 
         let userComponents = null;
 
+        if (!this.context.isLogged)
+        {
+            return <Redirect to="/auth" />
+        }
         if (error) {
             userComponents = <p>Error: {error.message}</p>
         }
@@ -80,5 +86,7 @@ class UsersList extends React.Component{
         )
     }
 }
+
+UsersList.contextType = LoginContext;
 
 export default UsersList;

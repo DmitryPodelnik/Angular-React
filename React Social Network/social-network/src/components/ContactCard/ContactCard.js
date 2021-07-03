@@ -96,7 +96,7 @@ class ContactCard extends React.Component {
                         }
                         </div>
                     </div>
-                    {this.context.isLogged
+                    {this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) !== -1
                        ? <div className="form-check form-switch" id="switchMode">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.switchEditMode}/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Edit mode</label>
