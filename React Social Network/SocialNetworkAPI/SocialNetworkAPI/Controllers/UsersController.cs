@@ -34,7 +34,7 @@ namespace SocialNetworkAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        // GET: Users/Details/5
+        // GET: Users/5
         public async Task<ActionResult<User>> GetUser(int? id)
         {
             if (id == null)

@@ -12,15 +12,16 @@ class ContactCard extends React.Component {
     constructor(props) {
         super(props);
 
-        //if (props.location.state !== undefined) {
-            //this.data = props.location.state.data; 
-        //}
-
         this.state = {
 
-            info: this.data,
             countFollowers: 0,
             isReading: true,
+
+            userId: window.location.href.substring(window.location.href.lastIndexOf("/") + 1),
+
+            userInfo: "123",
+            isLoaded: false,
+            error: null, 
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
@@ -43,6 +44,20 @@ class ContactCard extends React.Component {
         }));
     }
 
+    componentDidMount () {
+
+        fetch(`https://localhost:44318/api/users/${this.state.userId}`)
+        .then(res => res.json())
+        .then(
+            data => {
+             this.setState({userInfo: data, isLoaded: true})   
+            },
+            error => {
+                this.setState({isLoaded: true, error})
+            }
+        )
+    }
+
     saveChanges (event) {
         event.preventDefault();
 
@@ -50,7 +65,7 @@ class ContactCard extends React.Component {
 
     render() {
 
-        if (this.data === undefined) {
+        if (this.state.userInfo === undefined) {
             return <h2>Пользователь не найден</h2>;
         }
         else {
@@ -87,14 +102,14 @@ class ContactCard extends React.Component {
                         <div className="col-md-4">
                             <label className="form-label">First name</label>
                             {this.state.isReading  
-                               ? <input type="text" className="form-control" id="firstName" value={this.state.info.firstName} readOnly={this.state.isReading} />
+                               ? <input type="text" className="form-control" id="firstName" value={this.state.userInfo.firstName} readOnly={this.state.isReading} />
                                : <input type="text" className="form-control" id="firstName" readOnly={this.state.isReading} />
                             }
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Last name</label>
                             {this.state.isReading
-                               ? <input type="text" className="form-control" id="lastName" value={this.state.info.lastName} readOnly={this.state.isReading} />
+                               ? <input type="text" className="form-control" id="lastName" value={this.state.userInfo.lastName} readOnly={this.state.isReading} />
                                : <input type="text" className="form-control" id="lastName" readOnly={this.state.isReading} />
                             }   
                         </div>
@@ -103,7 +118,7 @@ class ContactCard extends React.Component {
                             <div className="input-group">
                                 <span className="input-group-text">@</span>
                                 {this.state.isReading
-                                   ? <input id="userName" type="text" aria-describedby="inputGroupPrepend" value={this.state.info.username} readOnly={this.state.isReading} />
+                                   ? <input id="userName" type="text" aria-describedby="inputGroupPrepend" value={this.state.userInfo.username} readOnly={this.state.isReading} />
                                    : <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly={this.state.isReading} />
                                 }
                             </div>
@@ -111,21 +126,21 @@ class ContactCard extends React.Component {
                         <div className="col-md-4">
                             <label for="inputEmail" className="form-label">Email address</label>
                             {this.state.isReading
-                               ? <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" value={this.state.info.email} readOnly={this.state.isReading}/>
+                               ? <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" value={this.state.userInfo.email} readOnly={this.state.isReading}/>
                                : <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
                             }
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">City</label>
                             {this.state.isReading
-                               ? <input type="text" className="form-control" id="city" value={this.state.info.city} readOnly={this.state.isReading} />
+                               ? <input type="text" className="form-control" id="city" value={this.state.userInfo.city} readOnly={this.state.isReading} />
                                : <input type="text" className="form-control" id="city" readOnly={this.state.isReading} />
                             }
                         </div>
                         <div className="col-md-6" id="userAbout">
                             <label className="form-label">About</label>
                             {this.state.isReading
-                               ? <textarea className="form-control" id="textAbout"  value={this.state.info.about} readOnly={this.state.isReading}></textarea>
+                               ? <textarea className="form-control" id="textAbout"  value={this.state.userInfo.about} readOnly={this.state.isReading}></textarea>
                                : <textarea className="form-control" id="textAbout" readOnly={this.state.isReading}></textarea>
                             }   
                         </div>

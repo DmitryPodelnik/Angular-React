@@ -69,7 +69,7 @@ class AuthorizationForm extends Component {
                     alert("Error authorization");
                     return;
                 }
-            }).then((data) => {         
+            }).then((data) => {            
                 AuthHelper.saveAuth(user.username, data.access_token);
                 this.context.toggleLogging();      
                 this.setUserId();    
