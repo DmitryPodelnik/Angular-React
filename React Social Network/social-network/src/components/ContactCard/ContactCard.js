@@ -60,7 +60,10 @@ class ContactCard extends React.Component {
     }
 
     saveChanges (event) {
-        event.preventDefault();
+
+        //event.preventDefault();
+
+        
 
     }
 
@@ -123,8 +126,8 @@ class ContactCard extends React.Component {
                             <div className="input-group">
                                 <span className="input-group-text">@</span>
                                 {this.state.isReading
-                                   ? <input id="userName" type="text" aria-describedby="inputGroupPrepend" value={this.state.userInfo.username} readOnly={this.state.isReading} />
-                                   : <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly={this.state.isReading} />
+                                   ? <input id="userName" type="text" aria-describedby="inputGroupPrepend" value={this.state.userInfo.username} readOnly />
+                                   : <input id="userName" type="text" aria-describedby="inputGroupPrepend" readOnly />
                                 }
                             </div>
                         </div>

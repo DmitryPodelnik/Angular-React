@@ -73,6 +73,7 @@ class AuthorizationForm extends Component {
                 AuthHelper.saveAuth(user.username, data.access_token);
                 this.context.toggleLogging();      
                 this.setUserId();    
+                alert("You have successfully authenticated!");
             }).catch((ex) => {
                 alert(ex);
             });
