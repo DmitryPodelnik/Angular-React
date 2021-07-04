@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 namespace SocialNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
 
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         private readonly SocialNetworkDbContext _context;
 
@@ -90,19 +89,19 @@ namespace SocialNetworkAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Route("edituser")]
         [HttpPost]
-        public async Task<ActionResult<User>> Edit(string firstname, string username)   //([FromBody] User user)
+        public async Task<ActionResult<User>> Edit([Bind("FirstName", "Username")] User user)   //string firstname, string username
         {
-            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             try
             {
-                tempUser.FirstName = firstname;
+                tempUser.FirstName = user.FirstName;
 
                 _context.Update(tempUser);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(tempUser.Id))
+                if (!UserExists(user.Id))
                 {
                     return NotFound();
                 }

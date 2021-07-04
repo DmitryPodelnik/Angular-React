@@ -72,7 +72,7 @@ class ContactCard extends React.Component {
             About: $("#textAbout").val(),
         };
 
-        fetch(`https://localhost:44318/api/users/edituser?firstname=${user.FirstName}&username=${user.Username}`, {
+        fetch(`https://localhost:44318/api/users/edituser?FirstName=${user.FirstName}&Username=${user.Username}`, {
         method: "POST",})
         .then(res => res.json())
         .then(
