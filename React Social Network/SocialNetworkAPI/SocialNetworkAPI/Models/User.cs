@@ -51,6 +51,8 @@ namespace SocialNetworkAPI.Model
         [Required]
         public string About { get; set; }
 
+        public short Followers { get; set; }
+
         [NotMapped]
         public Image Avatar { get; set; }
 

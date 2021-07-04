@@ -32,9 +32,27 @@ class ContactCard extends React.Component {
 
     increaseFolowers () {
 
+        let user = {
+            Username: $("#userName").val(),
+        };
+
          this.setState(state => ({
              countFollowers: ++state.countFollowers,
-         }));
+         }), () => {
+            fetch(`https://localhost:44318/api/users/edituserfollowers?Username=${user.Username}&Followers=${this.state.countFollowers}`, {
+                method: "POST",})
+                .then(res => res.json())
+                .then(
+                    data => {
+                        alert(data.Followers);   
+                    },
+                    error => {
+                        alert("error");
+                    }
+                )
+         });
+
+         
     }
 
     switchEditMode () {  

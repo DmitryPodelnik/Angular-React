@@ -69,18 +69,20 @@ namespace SocialNetworkAPI.Controllers
         }
 
         // GET: Users/Edit/5
-        public async Task<ActionResult<User>> Edit(int? id)
+        [Route("edituserfollowers")]
+        public async Task<ActionResult<User>> EditFollowers([Bind("Username", "Followers")] User user)
         {
-            if (id == null)
+            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            tempUser.Followers = user.Followers;
+  
+            if (tempUser == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+            _context.Update(tempUser);
+            await _context.SaveChangesAsync();
+
             return user;
         }
 
