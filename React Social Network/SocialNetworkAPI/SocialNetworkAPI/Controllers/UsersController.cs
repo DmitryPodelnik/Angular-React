@@ -54,7 +54,7 @@ namespace SocialNetworkAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> PostArticle([Bind("FirstName,LastName,Username,Email,City,About")] User user)
+        public async Task<ActionResult<User>> PostArticle(User user)
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             tempUser.FirstName = user.FirstName;
@@ -90,23 +90,19 @@ namespace SocialNetworkAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Route("edituser")]
         [HttpPost]
-        public async Task<ActionResult<User>> Edit(User user)
+        public async Task<ActionResult<User>> Edit(string firstname, string username)   //([FromBody] User user)
         {
-            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
             try
             {
-                tempUser.FirstName = user.FirstName;
-                tempUser.LastName = user.LastName;
-                tempUser.Email = user.Email;
-                tempUser.City = user.City;
-                tempUser.About = user.About;
+                tempUser.FirstName = firstname;
 
                 _context.Update(tempUser);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(user.Id))
+                if (!UserExists(tempUser.Id))
                 {
                     return NotFound();
                 }

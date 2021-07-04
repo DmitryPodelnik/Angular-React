@@ -72,34 +72,15 @@ class ContactCard extends React.Component {
             About: $("#textAbout").val(),
         };
 
-        // fetch('https://localhost:44318/api/users/edituser', {
-        //         method: 'POST',
-        //         body: JSON.stringify(user)
-        //     }).then((response) => {
-        //         if (response.ok) {                              
-        //             return response.json();
-        //         } else {
-        //             alert("Error!");
-        //             return;
-        //         }
-        //     }).then((data) => {            
-                    
-        //         alert("You have successfully changed your user info!");
-        //     }).catch((ex) => {
-        //         alert(ex);
-        //     });
-
-        fetch(`https://localhost:44318/api/users/edituser?firstname=${user.FirstName}&lastname=${user.LastName}&username=${user.Username}&email=${user.Email}&city=${user.City}&about=${user.About}`
-        , {
-            method: 'POST',
-        })
+        fetch(`https://localhost:44318/api/users/edituser?firstname=${user.FirstName}&username=${user.Username}`, {
+        method: "POST",})
         .then(res => res.json())
         .then(
             data => {
-                alert(data);
+                alert(data.firstName);   
             },
             error => {
-                alert(error);
+                alert("error");
             }
         )
 
