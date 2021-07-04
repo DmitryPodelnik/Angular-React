@@ -10,6 +10,7 @@ namespace SocialNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class UsersController : Controller
     {
         private readonly SocialNetworkDbContext _context;
@@ -87,17 +88,20 @@ namespace SocialNetworkAPI.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("edituser")]
         [HttpPost]
-        public async Task<ActionResult<User>> Edit(int id, [Bind("Id,Title,Content,Date,Username")] User user)
+        public async Task<ActionResult<User>> Edit(User user)
         {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
-
+            var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             try
             {
-                _context.Update(user);
+                tempUser.FirstName = user.FirstName;
+                tempUser.LastName = user.LastName;
+                tempUser.Email = user.Email;
+                tempUser.City = user.City;
+                tempUser.About = user.About;
+
+                _context.Update(tempUser);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -111,7 +115,7 @@ namespace SocialNetworkAPI.Controllers
                     throw;
                 }
             }
-            return RedirectToAction(nameof(GetUsers));
+            return tempUser;
         }
 
         // GET: Users/Delete/5
