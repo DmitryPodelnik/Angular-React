@@ -22,6 +22,12 @@ export default class SocialNetwork extends React.Component {
                 currentUserId: id,
             }));
           };
+
+        this.setDefaultUserId = () => {
+            this.setState(state => ({
+                currentUserId: -1,
+            }))
+        }
     
         // Состояние хранит функцию для обновления контекста,
         // которая будет также передана в Provider-компонент.
@@ -30,6 +36,7 @@ export default class SocialNetwork extends React.Component {
             currentUserId: -1,
             toggleLogging: this.toggleLogging,
             setCurrentUserId: this.setCurrentUserId,
+            setDefaultUserId: this.setDefaultUserId,
         };
       }
  
