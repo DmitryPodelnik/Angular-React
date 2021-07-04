@@ -48,7 +48,6 @@ namespace SocialNetworkAPI.Model
         [Required]
         public string City { get; set; }
 
-        [StringLength(1000)]
         [Required]
         public string About { get; set; }
 

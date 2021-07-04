@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace SocialNetworkAPI.Controllers
 {
-	public class IdentitiesController : ControllerBase
+	public class IdentitiesController : Controller
     {
 		private readonly SocialNetworkDbContext _context;
 

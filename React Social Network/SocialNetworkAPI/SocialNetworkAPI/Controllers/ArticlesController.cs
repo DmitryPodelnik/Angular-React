@@ -11,7 +11,7 @@ namespace SocialNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArticlesController : ControllerBase
+    public class ArticlesController : Controller
     {
         private readonly SocialNetworkDbContext _context;
 
