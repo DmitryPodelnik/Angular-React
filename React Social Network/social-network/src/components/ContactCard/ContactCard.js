@@ -86,7 +86,7 @@ class ContactCard extends React.Component {
                             : null
                         }
                         <div id="follow">
-                        {this.state.isReading && this.context.isLogged
+                        {this.state.isReading && this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) === -1
                            ? <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
                                 Follow <span id="countFollowers" className="badge bg-secondary">{this.state.countFollowers}</span>
                             </button>
