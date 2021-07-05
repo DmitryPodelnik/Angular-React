@@ -5,6 +5,7 @@ import $ from 'jquery';
 class RegistrationForm extends Component {
 
     constructor(props)   {
+
         super(props);
 
 
@@ -17,12 +18,12 @@ class RegistrationForm extends Component {
             userName: "",
             email: "",
             city: "",
+            file: null,
+            fileSize: 0,
         };
     }
 
-    checkForm(e) {
-        e.preventDefault();
-
+    getValues = () => {
 
         this.setState(state => ({
             firstName: $("#firstName").val(),
@@ -31,11 +32,48 @@ class RegistrationForm extends Component {
             email: $("#email").val(),
             city: $("#city").val(),
             age: $("#age").val(),
+            file: $("#avatar")
         }));
+    }
+
+    getFile = () => {
+        let file = document.getElementById("avatar").files[0];
+
+        this.setState(state => ({
+            fileSize: file.size,
+        }));
+      }
+
+    checkForm(e) {
+
+        e.preventDefault();
+
+        this.getValues();
+        this.getFile();
+
+        if (this.state.fileSize < 40000 || this.state.fileSize > 625000) {
+            alert("File size must be between 40kb and 5mb");
+            return;
+        }
+        else if (this.state.age < 1 && this.state.age > 99) {
+            alert("Enter a correct age!");
+            return;
+        }
+        else if (this.state.firstName.length < 1 && this.state.firstName.length > 32) {
+            alert("Enter a correct length of first name!");
+            return;
+        }
+        else if (this.state.lastName.length < 1 && this.state.lastName.length > 32) {
+            alert("Enter a correct length of last name!");
+            return;
+        }
+
+        
          
     }
 
     render() {
+
         return (            
             <div id="main">
                 <form className="row g-3 needs-validation" noValidate>
@@ -82,8 +120,8 @@ class RegistrationForm extends Component {
                         </div>
                     </div>
                     <div id="uploadFile" >
-                        <label className="form-label" htmlFor="customFile"></label>
-                        <input type="file" className="form-control-sm" id="customFile" />
+                        <label className="form-label" htmlFor="avatar"></label>
+                        <input type="file" className="form-control-sm" id="avatar" name="avatar" />
                     </div>
                     <div className="col-12">
                         <div className="form-check">

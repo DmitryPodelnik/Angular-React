@@ -23,11 +23,11 @@ namespace SocialNetworkAPI.Model
         [Required]
         public string LastName { get; set; }
 
-        [StringLength(50)]
+        [StringLength(60)]
         [Required]
         public string Username { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -37,14 +37,14 @@ namespace SocialNetworkAPI.Model
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         [Required]
         public string Gender { get; set; }
 
         [Required]
         public byte Age { get; set; }
 
-        [StringLength(30)]
+        [StringLength(50)]
         [Required]
         public string City { get; set; }
 
