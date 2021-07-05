@@ -21,7 +21,7 @@ class RegistrationForm extends Component {
             email: "",
             city: "",
             file: null,
-            fileSize: 0,
+            fileSize: null,
         };
     }
 
@@ -37,25 +37,20 @@ class RegistrationForm extends Component {
             city: $("#city").val(),
             age: $("#age").val(),
             file: $("#avatar"),
-        }));
+        }), () => {
+
+                let file = document.getElementById("avatar").files[0];
+                if (file != null) {
+                    this.setState(state => ({
+                        fileSize: file.size,
+                }), this.checkForm);
+            }
+        });
     }
 
-    getFile = () => {
-        let file = document.getElementById("avatar").files[0];
+    checkForm = () => {
 
-        this.setState(state => ({
-            fileSize: file.size,
-        }));
-      }
-
-    checkForm(e) {
-
-        e.preventDefault();
-
-        this.getValues();
-        this.getFile();
-
-        if (this.state.fileSize < 40000 || this.state.fileSize > 625000) {
+        if ((this.state.fileSize < 40000 || this.state.fileSize > 625000) && this.state.fileSize !== null) {
             alert("File size must be between 40kb and 5mb");
             return;
         }
@@ -88,8 +83,12 @@ class RegistrationForm extends Component {
                 }
             )
         }
+    }
 
-         
+    addUser(e) {
+
+        e.preventDefault();
+        this.getValues();
     }
 
     render() {
@@ -163,7 +162,7 @@ class RegistrationForm extends Component {
                         </div>
                     </div>
                     <div className="col-12">
-                        <button className="btn btn-primary" type="submit" onClick={this.checkForm}>Sign Up</button>
+                        <button className="btn btn-primary" type="submit" onClick={this.addUser}>Sign Up</button>
                     </div>
                 </form>
             </div>

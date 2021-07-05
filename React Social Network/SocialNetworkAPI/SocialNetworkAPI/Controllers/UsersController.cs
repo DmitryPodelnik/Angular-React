@@ -4,6 +4,8 @@ using SocialNetworkAPI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SocialNetworkAPI.Controllers
@@ -13,6 +15,7 @@ namespace SocialNetworkAPI.Controllers
     public class UsersController : Controller
     {
         private readonly SocialNetworkDbContext _context;
+        private SHA256Managed sha256 = new();
 
         public UsersController(SocialNetworkDbContext context)
         {
@@ -54,7 +57,7 @@ namespace SocialNetworkAPI.Controllers
 
         [Route("register")]
         [HttpPost]
-        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Email", "City", "Age")]  User user)
+        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Password", "Email", "City", "Age")]  User user)
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
 
@@ -67,9 +70,11 @@ namespace SocialNetworkAPI.Controllers
             newUser.FirstName = user.FirstName;
             newUser.LastName = user.LastName;
             newUser.Username = user.Username;
+            newUser.Password = Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password)));
             newUser.Email = user.Email;
             newUser.City = user.City;
             newUser.Age = user.Age;
+            newUser.Role = "user";
             //newUser.Avatar = user.Avatar;
 
             _context.Users.Add(newUser);
