@@ -66,6 +66,13 @@ namespace SocialNetworkAPI.Controllers
                 return NotFound();
             }
 
+            var isExist = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            
+            if (isExist != null)
+            {
+                return NotFound();
+            }
+
             User newUser = new();
             newUser.FirstName = user.FirstName;
             newUser.LastName = user.LastName;

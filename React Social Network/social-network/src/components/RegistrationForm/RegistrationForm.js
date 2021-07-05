@@ -10,68 +10,45 @@ class RegistrationForm extends Component {
 
 
         this.addUser = this.addUser.bind(this);
- 
-        this.state = {
-
-            firstName: "",
-            lastName: "",
-            userName: "",
-            password: "",
-            passwordConfirm: "",
-            email: "",
-            city: "",
-            file: null,
-            fileSize: null,
-        };
+        this.checkForm = this.checkForm.bind(this);
     }
 
-    getValues = () => {
+    getValues() {
 
-        this.setState(state => ({
-            firstName: $("#firstName").val(),
-            lastName: $("#lastName").val(),
-            userName: $("#userName").val(),
-            password: $("#password").val(),
-            passwordConfirm: $("#confirmPassword").val(),
-            email: $("#email").val(),
-            city: $("#city").val(),
-            age: $("#age").val(),
-            file: $("#avatar"),
-        }), () => {
-
-                let file = document.getElementById("avatar").files[0];
-                if (file != null) {
-                    this.setState(state => ({
-                        fileSize: file.size,
-                }), this.checkForm);
-            }
-        });
+        let file = document.getElementById("avatar").files[0];
+        if (file != null) {
+            this.setState(state => ({
+                fileSize: file.size,
+            }));
+        }
     }
 
-    checkForm = () => {
+    checkForm() {
 
-        if ((this.state.fileSize < 40000 || this.state.fileSize > 625000) && this.state.fileSize !== null) {
+        let file = document.getElementById("avatar").files[0];
+
+        if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
             alert("File size must be between 40kb and 5mb");
             return;
         }
-        else if (this.state.password !== this.state.passwordConfirm) {
+        else if ($("#password").val() !== $("#confirmPassword").val()) {
             alert("Passwords are not equal!");
             return;
         }
-        else if (this.state.age < 1 && this.state.age > 99) {
+        else if ($("#age").val() < 1 && $("#age").val() > 99) {
             alert("Enter a correct age!");
             return;
         }
-        else if (this.state.firstName.length < 1 && this.state.firstName.length > 32) {
+        else if ($("#firstName").val().length < 1 && $("#firstName").val().length > 32) {
             alert("Enter a correct length of first name!");
             return;
         }
-        else if (this.state.lastName.length < 1 && this.state.lastName.length > 32) {
+        else if ($("#lastName").val().length < 1 && $("#lastName").val().length > 32) {
             alert("Enter a correct length of last name!");
             return;
         } else {
 
-            fetch(`https://localhost:44318/api/users/register?FirstName=${this.state.firstName}&LastName=${this.state.lastName}&Username=${this.state.userName}&Password=${this.state.password}&Email=${this.state.email}&City=${this.state.city}&Age=${this.state.age}`, {
+            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}`, {
                 method: "POST",})
             .then(res => res.json())
             .then(
@@ -89,6 +66,7 @@ class RegistrationForm extends Component {
 
         e.preventDefault();
         this.getValues();
+        this.checkForm();
     }
 
     render() {
@@ -120,7 +98,7 @@ class RegistrationForm extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <label htmlFor="email" className="form-label">Email address</label>
                         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" required/>
                     </div>
@@ -138,11 +116,11 @@ class RegistrationForm extends Component {
                             Please provide a valid age.
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div className="col-md-3">
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" className="form-control" id="password" />
                     </div>
-                    <div class="col-md-3">
+                    <div className="col-md-3">
                         <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                         <input type="password" className="form-control" id="confirmPassword" />
                     </div>

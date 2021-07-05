@@ -37,12 +37,12 @@ namespace SocialNetworkAPI.Model
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Confirm Password is required")]
-        [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
-        [DataType(DataType.Password)]
+        //[Required(ErrorMessage = "Confirm Password is required")]
+        //[StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
+        //[DataType(DataType.Password)]
         // [Compare("Password", ErrorMessage = "Password confirmation is incorrect")]
         // [NotMapped]
-        public string PasswordConfirmation { get; set; }
+        //public string PasswordConfirmation { get; set; }
 
         [StringLength(50)]
         public string Gender { get; set; }
