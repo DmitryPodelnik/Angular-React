@@ -13,11 +13,11 @@ namespace SocialNetworkAPI.Model
         public SocialNetworkDbContext(DbContextOptions<SocialNetworkDbContext> options)
           : base(options)
         {
-            if (Database.CanConnect())
-                Database.EnsureDeleted();
+            //if (Database.CanConnect())
+                //Database.EnsureDeleted();
 
             // Создаем БД
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }

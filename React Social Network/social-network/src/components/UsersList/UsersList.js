@@ -62,7 +62,11 @@ class UsersList extends React.Component{
                                                 }}>
                                                 <h5 className="card-title">{item.username}</h5>
                                             </Link>
-                                            <p className="card-text">{item.about.substring(0, item.about.indexOf(".", 30) + 1)}</p>
+                                            <p className="card-text">{
+                                                item.about !== null
+                                                ? item.about.substring(0, item.about.indexOf(".", 30) + 1)
+                                                : null
+                                            }</p>
                                             <div className="blockquote-footer">
                                                 {/* <p className="card-text"><small className="text-muted">{item.city}</small></p> */}
                                                 From <cite title="Username">{item.city}</cite>

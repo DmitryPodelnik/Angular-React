@@ -11,9 +11,15 @@ class RegistrationForm extends Component {
         super(props);
 
         this.checkForm = this.checkForm.bind(this);
+        this.setUserId = this.setUserId.bind(this);
     }
 
-    checkForm(e) {
+    setUserId (id) { 
+        
+        this.context.setCurrentUserId(id);
+    }
+
+    checkForm (e) {
 
         e.preventDefault();
 
@@ -48,7 +54,7 @@ class RegistrationForm extends Component {
             .then(
                 data => {
                     this.context.toggleLogging();      
-                    this.setUserId();    
+                    this.setUserId(data.id);    
                     alert("You have been successfully registered!");   
                 },
                 error => {
@@ -58,21 +64,7 @@ class RegistrationForm extends Component {
         }
     }
 
-    setUserId() { 
-        
-        fetch(`https://localhost:44318/api/users/getuserid?username=${$("#userName").val()}`)
-        .then(res => res.json())
-        .then(
-            data => {
-                this.context.setCurrentUserId(data.id);
-            },
-            error => {
-                alert(error);
-            }
-        )
-    }
-
-    render() {
+    render () {
 
         if (this.context.currentUserId !== -1)
         {

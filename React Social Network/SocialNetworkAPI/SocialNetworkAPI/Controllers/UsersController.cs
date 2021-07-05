@@ -141,34 +141,6 @@ namespace SocialNetworkAPI.Controllers
             return tempUser;
         }
 
-        // GET: Users/Delete/5
-        public async Task<ActionResult<User>> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(GetUsers));
-        }
-
         private bool UserExists(int id)
         {
             return _context.Users.Any(u => u.Id == id);
