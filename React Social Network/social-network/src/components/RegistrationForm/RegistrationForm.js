@@ -8,30 +8,22 @@ class RegistrationForm extends Component {
 
         super(props);
 
-
-        this.addUser = this.addUser.bind(this);
         this.checkForm = this.checkForm.bind(this);
     }
 
-    getValues() {
+    checkForm(e) {
 
-        let file = document.getElementById("avatar").files[0];
-        if (file != null) {
-            this.setState(state => ({
-                fileSize: file.size,
-            }));
-        }
-    }
-
-    checkForm() {
+        e.preventDefault();
 
         let file = document.getElementById("avatar").files[0];
 
-        if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
-            alert("File size must be between 40kb and 5mb");
-            return;
+        if (file) {
+            if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
+                alert("File size must be between 40kb and 5mb");
+                return;
+            }
         }
-        else if ($("#password").val() !== $("#confirmPassword").val()) {
+        if ($("#password").val() !== $("#confirmPassword").val()) {
             alert("Passwords are not equal!");
             return;
         }
@@ -60,13 +52,6 @@ class RegistrationForm extends Component {
                 }
             )
         }
-    }
-
-    addUser(e) {
-
-        e.preventDefault();
-        this.getValues();
-        this.checkForm();
     }
 
     render() {
@@ -140,7 +125,7 @@ class RegistrationForm extends Component {
                         </div>
                     </div>
                     <div className="col-12">
-                        <button className="btn btn-primary" type="submit" onClick={this.addUser}>Sign Up</button>
+                        <button className="btn btn-primary" type="submit" onClick={this.checkForm}>Sign Up</button>
                     </div>
                 </form>
             </div>
