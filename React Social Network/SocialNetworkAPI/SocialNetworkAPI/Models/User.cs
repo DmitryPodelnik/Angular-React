@@ -37,8 +37,14 @@ namespace SocialNetworkAPI.Model
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Confirm Password is required")]
+        [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
+        [DataType(DataType.Password)]
+        // [Compare("Password", ErrorMessage = "Password confirmation is incorrect")]
+        // [NotMapped]
+        public string PasswordConfirmation { get; set; }
+
         [StringLength(50)]
-        [Required]
         public string Gender { get; set; }
 
         [Required]
@@ -48,7 +54,6 @@ namespace SocialNetworkAPI.Model
         [Required]
         public string City { get; set; }
 
-        [Required]
         public string About { get; set; }
 
         public short Followers { get; set; }
@@ -56,6 +61,7 @@ namespace SocialNetworkAPI.Model
         [NotMapped]
         public Image Avatar { get; set; }
 
+        [Required]
         public string Role { get; set; }
 
         public List<Article> Articles { get; set; } = new();

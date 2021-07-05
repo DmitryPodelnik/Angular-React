@@ -52,20 +52,30 @@ namespace SocialNetworkAPI.Controllers
             return user;
         }
 
+        [Route("register")]
         [HttpPost]
-        public async Task<ActionResult<User>> PostArticle(User user)
+        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Email", "City", "Age")]  User user)
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
-            tempUser.FirstName = user.FirstName;
-            tempUser.LastName = user.LastName;
-            tempUser.Email = user.Email;
-            tempUser.City = user.City;
-            tempUser.About = user.About;
 
-            _context.Users.Add(user);
+            if (tempUser != null)
+            {
+                return NotFound();
+            }
+
+            User newUser = new();
+            newUser.FirstName = user.FirstName;
+            newUser.LastName = user.LastName;
+            newUser.Username = user.Username;
+            newUser.Email = user.Email;
+            newUser.City = user.City;
+            newUser.Age = user.Age;
+            //newUser.Avatar = user.Avatar;
+
+            _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = tempUser.Id }, tempUser);
+            return CreatedAtAction("GetUser", new { id = newUser.Id }, newUser);
         }
 
         // GET: Users/Edit/5

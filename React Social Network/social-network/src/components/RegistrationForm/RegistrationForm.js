@@ -16,6 +16,8 @@ class RegistrationForm extends Component {
             firstName: "",
             lastName: "",
             userName: "",
+            password: "",
+            passwordConfirm: "",
             email: "",
             city: "",
             file: null,
@@ -29,10 +31,12 @@ class RegistrationForm extends Component {
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
             userName: $("#userName").val(),
+            password: $("#password").val(),
+            passwordConfirm: $("#confirmPassword").val(),
             email: $("#email").val(),
             city: $("#city").val(),
             age: $("#age").val(),
-            file: $("#avatar")
+            file: $("#avatar"),
         }));
     }
 
@@ -55,6 +59,10 @@ class RegistrationForm extends Component {
             alert("File size must be between 40kb and 5mb");
             return;
         }
+        else if (this.state.password !== this.state.passwordConfirm) {
+            alert("Passwords are not equal!");
+            return;
+        }
         else if (this.state.age < 1 && this.state.age > 99) {
             alert("Enter a correct age!");
             return;
@@ -66,9 +74,21 @@ class RegistrationForm extends Component {
         else if (this.state.lastName.length < 1 && this.state.lastName.length > 32) {
             alert("Enter a correct length of last name!");
             return;
+        } else {
+
+            fetch(`https://localhost:44318/api/users/register?FirstName=${this.state.firstName}&LastName=${this.state.lastName}&Username=${this.state.userName}&Password=${this.state.password}&Email=${this.state.email}&City=${this.state.city}&Age=${this.state.age}`, {
+                method: "POST",})
+            .then(res => res.json())
+            .then(
+                data => {
+                    alert(data.userName);   
+                },
+                error => {
+                    alert("error");
+                }
+            )
         }
 
-        
          
     }
 
@@ -118,6 +138,14 @@ class RegistrationForm extends Component {
                         <div className="invalid-feedback">
                             Please provide a valid age.
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" />
+                    </div>
+                    <div class="col-md-3">
+                        <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                        <input type="password" className="form-control" id="confirmPassword" />
                     </div>
                     <div id="uploadFile" >
                         <label className="form-label" htmlFor="avatar"></label>
