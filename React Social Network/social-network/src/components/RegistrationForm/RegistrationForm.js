@@ -9,7 +9,7 @@ class RegistrationForm extends Component {
         super(props);
 
 
-        this.checkForm = this.checkForm.bind(this);
+        this.addUser = this.addUser.bind(this);
  
         this.state = {
 
