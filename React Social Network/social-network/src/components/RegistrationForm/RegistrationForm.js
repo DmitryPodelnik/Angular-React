@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import "./RegistrationForm.css"
 import $ from 'jquery';
+import { Redirect } from "react-router";
+import { LoginContext } from "../../LoginContext/LoginContext"
 
 class RegistrationForm extends Component {
 
@@ -45,7 +47,9 @@ class RegistrationForm extends Component {
             .then(res => res.json())
             .then(
                 data => {
-                    alert(data.userName);   
+                    this.context.toggleLogging();      
+                    this.setUserId();    
+                    alert("You have been successfully registered!");   
                 },
                 error => {
                     alert("error");
@@ -54,8 +58,26 @@ class RegistrationForm extends Component {
         }
     }
 
+    setUserId() { 
+        
+        fetch(`https://localhost:44318/api/users/getuserid?username=${$("#userName").val()}`)
+        .then(res => res.json())
+        .then(
+            data => {
+                this.context.setCurrentUserId(data.id);
+            },
+            error => {
+                alert(error);
+            }
+        )
+    }
+
     render() {
 
+        if (this.context.currentUserId !== -1)
+        {
+            return <Redirect to={`/profile/${this.context.currentUserId}`} />
+        } else {
         return (            
             <div id="main">
                 <form className="row g-3 needs-validation" noValidate>
@@ -130,7 +152,10 @@ class RegistrationForm extends Component {
                 </form>
             </div>
         );
+        }
     }
 }
+
+RegistrationForm.contextType = LoginContext;
 
 export default RegistrationForm;

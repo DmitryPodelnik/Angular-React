@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Redirect } from "react-router";
 import $ from "jquery";
-import {LoginContext} from "../../LoginContext/LoginContext"
+import { LoginContext } from "../../LoginContext/LoginContext"
 import AuthHelper from "../../utils/authHelper"
 import "./AuthorizationForm.css";
 
@@ -32,7 +32,6 @@ class AuthorizationForm extends Component {
 
         let user = {
             username: this.state.userName,
-            password: this.state.password
         }; 
         
         fetch(`https://localhost:44318/api/users/getuserid?username=${user.username}`)
