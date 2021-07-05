@@ -169,7 +169,7 @@ class ContactCard extends React.Component {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <label for="inputEmail" className="form-label">Email address</label>
+                            <label htmlFor="inputEmail" className="form-label">Email address</label>
                             {this.state.isReading
                                ? <input type="email" className="form-control" id="inputEmail" name="Email" aria-describedby="emailHelp" value={this.state.userInfo.email} readOnly={this.state.isReading}/>
                                : <input type="email" className="form-control" id="inputEmail" name="Email" aria-describedby="emailHelp" readOnly={this.state.isReading}/>

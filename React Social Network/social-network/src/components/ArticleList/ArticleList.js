@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { LoginContext } from "../../LoginContext/LoginContext"
 import { Redirect } from "react-router";
-import Article from '../Article/Article';
 
 
 class ArticleList extends React.Component{

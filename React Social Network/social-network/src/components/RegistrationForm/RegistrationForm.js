@@ -64,7 +64,7 @@ class RegistrationForm extends Component {
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="email" className="form-label">Email address</label>
+                        <label htmlFor="email" className="form-label">Email address</label>
                         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" required/>
                     </div>
                     <div className="col-md-3">
