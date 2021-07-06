@@ -28,12 +28,9 @@ export default class Routing extends React.Component {
                     <Switch>
 
                         <Route exact path="/" component={LoginControl}/>
-                        {/* <Route exact path="/" children={()=><h2>Home</h2>}/> */}
-                        {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
-
                         <Route path="/users" component={Users}/>
-                        <Route path="/profile/friends" component={FriendList} />
                         <Route path="/profile/:id(\d+)" component={ContactCard}/>
+                        <Route exact path="/profile/friends" component={FriendList} />
                         <Route path="/auth" component ={AuthorizationForm}/>
                         <Route path="/reg" component={RegistrationForm}/>
                         <Route path="/articles/:id(\d+)" component={Article} />

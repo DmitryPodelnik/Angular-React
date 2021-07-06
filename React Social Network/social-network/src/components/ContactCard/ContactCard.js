@@ -82,7 +82,7 @@ class ContactCard extends React.Component {
         let temp = document.getElementById("avatar");
 
         if (temp.files !== undefined) {
-            
+
             document.getElementById("avatar").addEventListener("change", () => {
                 uploadFile(document.getElementById("avatar").files[0]);
             });
@@ -174,7 +174,7 @@ class ContactCard extends React.Component {
                             : null
                         }
                         <div id="follow">
-                        {this.state.isReading && this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) === -1
+                        {this.state.isReading && this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) === -1 && window.location.href.indexOf(`/users/${this.context.currentUserId}`) === -1
                            ? <button id="followers" type="button" className="btn btn-danger" onClick={this.increaseFolowers}>
                                 Follow <span id="countFollowers" className="badge bg-secondary">{this.state.countFollowers}</span>
                             </button>
@@ -184,7 +184,8 @@ class ContactCard extends React.Component {
                         }
                         </div>
                     </div>
-                    {this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) !== -1
+                    {(this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) !== -1) || 
+                                               window.location.href.indexOf(`/users/${this.context.currentUserId}`) !== -1
                        ? <div className="form-check form-switch" id="switchMode">
                             <input className="form-check-input" type="checkbox" id="editMode" onChange={this.switchEditMode}/>
                             <label className="form-check-label" htmlFor="editMode">Edit mode</label>

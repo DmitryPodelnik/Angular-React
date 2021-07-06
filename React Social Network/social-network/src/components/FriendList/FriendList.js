@@ -17,11 +17,11 @@ class FriendList extends React.Component{
     }
 
     componentDidMount(){
-        fetch(`https://localhost:44318/api/profile/friends/${this.context.currentUserId}`)
+        fetch(`https://localhost:44318/api/users/getfriends?userId=${this.context.currentUserId}`)
         .then(res => res.json())
         .then(
             data => {
-             this.setState({users: data, isLoaded: true})   
+             this.setState({friends: data, isLoaded: true})   
             },
             error => {
                 this.setState({isLoaded: true, error})
