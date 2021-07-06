@@ -3,14 +3,13 @@ import "./RegistrationForm.css"
 import $ from 'jquery';
 import { Redirect } from "react-router";
 import { LoginContext } from "../../LoginContext/LoginContext"
+import { uploadFile } from "../UploadingFile/UploadingFile"
 
 class RegistrationForm extends Component {
 
     constructor(props)   {
 
         super(props);
-
-        this.file = document.getElementById("avatar");
 
         this.checkForm = this.checkForm.bind(this);
         this.setUserId = this.setUserId.bind(this);
@@ -20,35 +19,6 @@ class RegistrationForm extends Component {
         
         this.context.setCurrentUserId(id); 
     }
-
-    uploadFile = (file) => {
-        
-        console.log(file.name);
-
-        // checking file type  
-        if (!['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'].includes(file.type)) {
-            alert('Only images are allowed.');
-            return;
-        }
-
-        // checking file size
-        if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
-            alert("File size must be between 40kb and 5mb");
-            return;
-        }
-
-    };
-
-    postData = async (url, fData) => { // имеет асинхронные операции 
-        // ждём ответ, только тогда наш код пойдёт дальше 
-        let fetchResponse = await fetch(url, {
-            method: 'POST',
-            body: fData
-        });
-
-        // ждём окончания операции 
-        return await fetchResponse.text();
-    };
 
     checkForm (e) {
 
@@ -72,18 +42,11 @@ class RegistrationForm extends Component {
         } else {
 
             let fData = new FormData();
-                fData.append("avatar", this.file.files[0]); // добавляем файл в объект FormData() 
+                fData.append("avatar", document.getElementById("avatar").files[0]); // добавляем файл в объект FormData() 
 
-                // Отправка на сервер 
-                // this.postData("/send_pultipart.php", fData)
-                //     .then(fetchResponse => {
-                //         alert("Image is loaded successful!");
-                //     })
-                //     .catch(() => alert("Image isn't loaded!"));
-
-
-            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}&Avatar=${fData}`, {
+            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}`, {
                 method: "POST",
+                body: fData
             })
             .then(res => res.json())
             .then(
@@ -101,8 +64,8 @@ class RegistrationForm extends Component {
 
     componentDidMount() {
 
-        this.file.addEventListener("change", () => {
-            this.uploadFile(this.file.files[0]);
+        document.getElementById("avatar").addEventListener("change", () => {
+            uploadFile(document.getElementById("avatar").files[0]);
         });
     }
 
@@ -114,7 +77,7 @@ class RegistrationForm extends Component {
         } else {
         return (            
             <div id="main">
-                <form className="row g-3 needs-validation" noValidate>
+                <form className="row g-3 needs-validation" noValidate enctype="multipart/form-data">
                     <div className="col-md-4">
                         <label htmlFor="firstName" className="form-label">First name</label>
                         <input type="text" className="form-control" id="firstName" required/>

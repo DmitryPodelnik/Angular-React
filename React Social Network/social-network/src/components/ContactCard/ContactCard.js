@@ -7,11 +7,14 @@ import "../ContactCard/ContactCard.css"
 
 import avatar from "../assets/avatar.jpg"
 import { LoginContext } from "../../LoginContext/LoginContext";
+import { uploadFile } from "../UploadingFile/UploadingFile"
 
 class ContactCard extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.file = document.getElementById("avatar");
 
         this.state = {
 
@@ -65,6 +68,10 @@ class ContactCard extends React.Component {
 
     componentDidMount () { 
 
+        document.getElementById("avatar").addEventListener("change", () => {
+            uploadFile(document.getElementById("avatar").files[0]);
+        });
+
         fetch(`https://localhost:44318/api/users/${this.state.userId}`)
         .then(res => res.json())
         .then(
@@ -100,7 +107,7 @@ class ContactCard extends React.Component {
         else if ($("#lastName").val().length < 1 && $("#lastName").val().length > 32) {
             alert("Enter a correct length of last name!");
             return;
-        }
+        } else {
 
         let user = {
             FirstName: $("#firstName").val(),
@@ -112,8 +119,13 @@ class ContactCard extends React.Component {
             file: $("#avatar").val(),
         };
 
+        let fData = new FormData();
+        fData.append("avatar", document.getElementById("avatar").files[0]); // добавляем файл в объект FormData()
+
         fetch(`https://localhost:44318/api/users/edituser?FirstName=${user.FirstName}&LastName=${user.LastName}&Username=${user.Username}&Email=${user.Email}&City=${user.City}&About=${user.About}`, {
-        method: "POST",})
+            method: "POST",
+            body: fData
+        })
         .then(res => res.json())
         .then(
             data => {
@@ -123,6 +135,7 @@ class ContactCard extends React.Component {
                 alert("error");
             }
         )
+        }
 
     }
 
@@ -138,6 +151,7 @@ class ContactCard extends React.Component {
         else {
             return (
                 <div id="user">
+                    <form enctype="multipart/form-data">
                     <div id="firstLine">
                         <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
                         {!this.state.isReading
@@ -165,7 +179,7 @@ class ContactCard extends React.Component {
                         </div>
                        : null 
                     }
-                    <form className="row g-3 needs-validation" noValidate name="userInfo">
+                    <div className="row g-3 needs-validation" noValidate name="userInfo">
                         <div className="col-md-4">
                             <label className="form-label">First name</label>
                             {this.state.isReading  
@@ -217,6 +231,7 @@ class ContactCard extends React.Component {
                             </div>
                             : null
                         }
+                    </div>
                     </form>
                 </div>
             )

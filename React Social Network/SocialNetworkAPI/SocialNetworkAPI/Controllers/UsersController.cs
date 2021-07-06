@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialNetworkAPI.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -57,7 +59,7 @@ namespace SocialNetworkAPI.Controllers
 
         [Route("register")]
         [HttpPost]
-        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Password", "Email", "City", "Age", "Avatar")]  User user)
+        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Password", "Email", "City", "Age")]  User user, IFormFile avatar)
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
 
@@ -82,7 +84,18 @@ namespace SocialNetworkAPI.Controllers
             newUser.City = user.City;
             newUser.Age = user.Age;
             newUser.Role = "user";
-            newUser.Avatar = user.Avatar;
+
+            if (avatar != null)
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(avatar.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)avatar.Length);
+                }
+                // установка массива байтов
+                newUser.Avatar = imageData;
+            }
 
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
@@ -113,7 +126,7 @@ namespace SocialNetworkAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Route("edituser")]
         [HttpPost]
-        public async Task<ActionResult<User>> Edit([Bind("FirstName", "LastName", "Username", "Email", "City", "About", "Avatar")] User user)   //string firstname, string username
+        public async Task<ActionResult<User>> Edit([Bind("FirstName", "LastName", "Username", "Email", "City", "About")] User user, IFormFile avatar)   //string firstname, string username
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             try
@@ -123,7 +136,18 @@ namespace SocialNetworkAPI.Controllers
                 tempUser.Email = user.Email;
                 tempUser.City = user.City;
                 tempUser.About = user.About;
-                tempUser.Avatar = user.Avatar;
+
+                if (avatar != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)avatar.Length);
+                    }
+                    // установка массива байтов
+                    tempUser.Avatar = imageData;
+                }
 
                 _context.Update(tempUser);
                 await _context.SaveChangesAsync();
