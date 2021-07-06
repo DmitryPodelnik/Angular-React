@@ -75,6 +75,8 @@ namespace SocialNetworkAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

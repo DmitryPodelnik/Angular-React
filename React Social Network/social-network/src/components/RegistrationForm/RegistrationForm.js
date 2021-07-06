@@ -10,27 +10,50 @@ class RegistrationForm extends Component {
 
         super(props);
 
+        this.file = document.getElementById("avatar");
+
         this.checkForm = this.checkForm.bind(this);
         this.setUserId = this.setUserId.bind(this);
     }
 
     setUserId (id) { 
         
-        this.context.setCurrentUserId(id);
+        this.context.setCurrentUserId(id); 
     }
+
+    uploadFile = (file) => {
+        
+        console.log(file.name);
+
+        // checking file type  
+        if (!['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'].includes(file.type)) {
+            alert('Only images are allowed.');
+            return;
+        }
+
+        // checking file size
+        if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
+            alert("File size must be between 40kb and 5mb");
+            return;
+        }
+
+    };
+
+    postData = async (url, fData) => { // имеет асинхронные операции 
+        // ждём ответ, только тогда наш код пойдёт дальше 
+        let fetchResponse = await fetch(url, {
+            method: 'POST',
+            body: fData
+        });
+
+        // ждём окончания операции 
+        return await fetchResponse.text();
+    };
 
     checkForm (e) {
 
         e.preventDefault();
 
-        let file = document.getElementById("avatar").files[0];
-
-        if (file) {
-            if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
-                alert("File size must be between 40kb and 5mb");
-                return;
-            }
-        }
         if ($("#password").val() !== $("#confirmPassword").val()) {
             alert("Passwords are not equal!");
             return;
@@ -48,8 +71,20 @@ class RegistrationForm extends Component {
             return;
         } else {
 
-            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}`, {
-                method: "POST",})
+            let fData = new FormData();
+                fData.append("avatar", this.file.files[0]); // добавляем файл в объект FormData() 
+
+                // Отправка на сервер 
+                this.postData("/send_pultipart.php", fData)
+                    .then(fetchResponse => {
+                        alert("Image is loaded successful!");
+                    })
+                    .catch(() => alert("Image isn't loaded!"));
+
+
+            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}&Avatar`, {
+                method: "POST",
+            })
             .then(res => res.json())
             .then(
                 data => {
@@ -62,6 +97,13 @@ class RegistrationForm extends Component {
                 }
             )
         }
+    }
+
+    componentDidMount() {
+
+        this.file.addEventListener("change", () => {
+            this.uploadFile(this.file.files[0]);
+        });
     }
 
     render () {

@@ -63,7 +63,7 @@ class ContactCard extends React.Component {
         }));
     }
 
-    componentDidMount () {
+    componentDidMount () { 
 
         fetch(`https://localhost:44318/api/users/${this.state.userId}`)
         .then(res => res.json())
@@ -81,6 +81,27 @@ class ContactCard extends React.Component {
 
         event.preventDefault();
 
+        let file = document.getElementById("avatar").files[0];
+
+        if (file) {
+            if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
+                alert("File size must be between 40kb and 5mb");
+                return;
+            }
+        }
+        else if ($("#firstName").val().length < 1 && $("#firstName").val().length > 32) {
+            alert("Enter a correct length of first name!");
+            return;
+        }
+        else if ($("#city").val().length < 1 && $("#city").val().length > 50) {
+            alert("Enter a correct length of city name!");
+            return;
+        }
+        else if ($("#lastName").val().length < 1 && $("#lastName").val().length > 32) {
+            alert("Enter a correct length of last name!");
+            return;
+        }
+
         let user = {
             FirstName: $("#firstName").val(),
             LastName: $("#lastName").val(),
@@ -88,6 +109,7 @@ class ContactCard extends React.Component {
             Email: $("#inputEmail").val(),
             City: $("#city").val(),
             About: $("#textAbout").val(),
+            file: $("#avatar").val(),
         };
 
         fetch(`https://localhost:44318/api/users/edituser?FirstName=${user.FirstName}&LastName=${user.LastName}&Username=${user.Username}&Email=${user.Email}&City=${user.City}&About=${user.About}`, {
@@ -120,8 +142,8 @@ class ContactCard extends React.Component {
                         <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
                         {!this.state.isReading
                             ? <div id="uploadFile" >
-                                <label className="form-label" htmlFor="customFile"></label>
-                                <input type="file" className="form-control-sm" id="customFile" />
+                                <label className="form-label" htmlFor="avatar"></label>
+                                <input type="file" className="form-control-sm" id="avatar" />
                             </div>
                             : null
                         }
@@ -138,8 +160,8 @@ class ContactCard extends React.Component {
                     </div>
                     {this.context.isLogged && window.location.href.indexOf(`/profile/${this.context.currentUserId}`) !== -1
                        ? <div className="form-check form-switch" id="switchMode">
-                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={this.switchEditMode}/>
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Edit mode</label>
+                            <input className="form-check-input" type="checkbox" id="editMode" onChange={this.switchEditMode}/>
+                            <label className="form-check-label" htmlFor="editMode">Edit mode</label>
                         </div>
                        : null 
                     }
@@ -171,8 +193,8 @@ class ContactCard extends React.Component {
                         <div className="col-md-4">
                             <label htmlFor="inputEmail" className="form-label">Email address</label>
                             {this.state.isReading
-                               ? <input type="email" className="form-control" id="inputEmail" name="Email" aria-describedby="emailHelp" value={this.state.userInfo.email} readOnly={this.state.isReading}/>
-                               : <input type="email" className="form-control" id="inputEmail" name="Email" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
+                               ? <input type="email" className="form-control" id="email" name="Email" aria-describedby="emailHelp" value={this.state.userInfo.email} readOnly={this.state.isReading}/>
+                               : <input type="email" className="form-control" id="email" name="Email" aria-describedby="emailHelp" readOnly={this.state.isReading}/>
                             }
                         </div>
                         <div className="col-md-6">

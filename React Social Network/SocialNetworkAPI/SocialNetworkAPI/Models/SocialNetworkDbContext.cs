@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SocialNetworkAPI.Model;
 using SocialNetworkAPI.Configurations;
+using SocialNetworkAPI.Models;
 
 namespace SocialNetworkAPI.Model
 {
@@ -21,6 +22,7 @@ namespace SocialNetworkAPI.Model
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
