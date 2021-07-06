@@ -88,15 +88,7 @@ class ContactCard extends React.Component {
 
         event.preventDefault();
 
-        let file = document.getElementById("avatar").files[0];
-
-        if (file) {
-            if ((file.size < 40000 || file.size > 625000) && file.size !== null) {
-                alert("File size must be between 40kb and 5mb");
-                return;
-            }
-        }
-        else if ($("#firstName").val().length < 1 && $("#firstName").val().length > 32) {
+        if ($("#firstName").val().length < 1 && $("#firstName").val().length > 32) {
             alert("Enter a correct length of first name!");
             return;
         }
@@ -119,8 +111,12 @@ class ContactCard extends React.Component {
             file: $("#avatar").val(),
         };
 
+        let temp = document.getElementById("avatar");
+
         let fData = new FormData();
-        fData.append("avatar", document.getElementById("avatar").files[0]); // добавляем файл в объект FormData()
+        if (temp.files !== undefined) {
+            fData.append("avatar", temp.files[0]); // добавляем файл в объект FormData()
+        }
 
         fetch(`https://localhost:44318/api/users/edituser?FirstName=${user.FirstName}&LastName=${user.LastName}&Username=${user.Username}&Email=${user.Email}&City=${user.City}&About=${user.About}`, {
             method: "POST",
@@ -129,7 +125,7 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
-                alert(data.firstName);   
+                alert("User has been successfully edited!");   
             },
             error => {
                 alert("error");
@@ -151,9 +147,9 @@ class ContactCard extends React.Component {
         else {
             return (
                 <div id="user">
-                    <form enctype="multipart/form-data">
+                    <form encType="multipart/form-data">
                     <div id="firstLine">
-                        <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
+                        <img id="avatar" src={ avatar } className="rounded float-start" alt="avatar" width="150px"></img>
                         {!this.state.isReading
                             ? <div id="uploadFile" >
                                 <label className="form-label" htmlFor="avatar"></label>

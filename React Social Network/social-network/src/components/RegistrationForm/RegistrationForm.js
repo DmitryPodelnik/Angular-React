@@ -77,7 +77,7 @@ class RegistrationForm extends Component {
         } else {
         return (            
             <div id="main">
-                <form className="row g-3 needs-validation" noValidate enctype="multipart/form-data">
+                <form className="row g-3 needs-validation" noValidate encType="multipart/form-data">
                     <div className="col-md-4">
                         <label htmlFor="firstName" className="form-label">First name</label>
                         <input type="text" className="form-control" id="firstName" required/>
