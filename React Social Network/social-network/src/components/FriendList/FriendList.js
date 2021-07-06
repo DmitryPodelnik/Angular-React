@@ -17,7 +17,7 @@ class FriendList extends React.Component{
     }
 
     componentDidMount(){
-        fetch("https://localhost:44318/api/profile/friends")
+        fetch(`https://localhost:44318/api/profile/friends/${this.context.currentUserId}`)
         .then(res => res.json())
         .then(
             data => {
@@ -47,7 +47,7 @@ class FriendList extends React.Component{
         else if (!isLoaded) {
             userComponents = <p>Loading...</p>
         }
-        else if (users.length) {
+        else if (friends.length) {
             userComponents = friends.map(function(item) {
                 return  <li key={item.id}>
                             <div className="card mb-3" id="card">
@@ -68,7 +68,6 @@ class FriendList extends React.Component{
                                                 : null
                                             }</p>
                                             <div className="blockquote-footer">
-                                                {/* <p className="card-text"><small className="text-muted">{item.city}</small></p> */}
                                                 From <cite title="Username">{item.city}</cite>
                                             </div>
                                         </div>
