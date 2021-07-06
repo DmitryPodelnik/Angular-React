@@ -79,9 +79,14 @@ class ContactCard extends React.Component {
 
     componentDidMount () { 
 
-        document.getElementById("avatar").addEventListener("change", () => {
-            uploadFile(document.getElementById("avatar").files[0]);
-        });
+        let temp = document.getElementById("avatar");
+
+        if (temp.files !== undefined) {
+            
+            document.getElementById("avatar").addEventListener("change", () => {
+                uploadFile(document.getElementById("avatar").files[0]);
+            });
+        }
 
         fetch(`https://localhost:44318/api/users/${this.state.userId}`)
         .then(res => res.json())
