@@ -57,7 +57,7 @@ namespace SocialNetworkAPI.Controllers
 
         [Route("register")]
         [HttpPost]
-        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Password", "Email", "City", "Age")]  User user)
+        public async Task<ActionResult<User>> AddUser([Bind("FirstName", "LastName", "Username", "Password", "Email", "City", "Age", "Avatar")]  User user)
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
 
@@ -82,7 +82,7 @@ namespace SocialNetworkAPI.Controllers
             newUser.City = user.City;
             newUser.Age = user.Age;
             newUser.Role = "user";
-            //newUser.Avatar = user.Avatar;
+            newUser.Avatar = user.Avatar;
 
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
@@ -113,7 +113,7 @@ namespace SocialNetworkAPI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Route("edituser")]
         [HttpPost]
-        public async Task<ActionResult<User>> Edit([Bind("FirstName", "LastName", "Username", "Email", "City", "About")] User user)   //string firstname, string username
+        public async Task<ActionResult<User>> Edit([Bind("FirstName", "LastName", "Username", "Email", "City", "About", "Avatar")] User user)   //string firstname, string username
         {
             var tempUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             try
@@ -123,6 +123,7 @@ namespace SocialNetworkAPI.Controllers
                 tempUser.Email = user.Email;
                 tempUser.City = user.City;
                 tempUser.About = user.About;
+                tempUser.Avatar = user.Avatar;
 
                 _context.Update(tempUser);
                 await _context.SaveChangesAsync();

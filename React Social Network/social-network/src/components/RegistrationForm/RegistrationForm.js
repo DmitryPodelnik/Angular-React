@@ -75,14 +75,14 @@ class RegistrationForm extends Component {
                 fData.append("avatar", this.file.files[0]); // добавляем файл в объект FormData() 
 
                 // Отправка на сервер 
-                this.postData("/send_pultipart.php", fData)
-                    .then(fetchResponse => {
-                        alert("Image is loaded successful!");
-                    })
-                    .catch(() => alert("Image isn't loaded!"));
+                // this.postData("/send_pultipart.php", fData)
+                //     .then(fetchResponse => {
+                //         alert("Image is loaded successful!");
+                //     })
+                //     .catch(() => alert("Image isn't loaded!"));
 
 
-            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}&Avatar`, {
+            fetch(`https://localhost:44318/api/users/register?FirstName=${$("#firstName").val()}&LastName=${$("#lastName").val()}&Username=${$("#userName").val()}&Password=${$("#password").val()}&Email=${$("#email").val()}&City=${$("#city").val()}&Age=${$("#age").val()}&Avatar=${fData}`, {
                 method: "POST",
             })
             .then(res => res.json())

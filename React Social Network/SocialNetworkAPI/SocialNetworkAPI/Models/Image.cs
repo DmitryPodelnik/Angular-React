@@ -7,6 +7,7 @@ namespace SocialNetworkAPI.Models
 {
     public class Image
     {
+        public Image() { }
         public Image(int id, string filename, string title, byte[] data)
         {
             Id = id;
