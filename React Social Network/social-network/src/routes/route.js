@@ -12,6 +12,7 @@ import LoginControl from '../components/LoginControl/LoginControl'
 import Nav from '../components/Nav/Nav'
 import ArticleList from '../components/ArticleList/ArticleList';
 import Article from '../components/Article/Article'
+import FriendList from '../components/FriendList/FriendList';
 
 export default class Routing extends React.Component { 
  
@@ -31,6 +32,7 @@ export default class Routing extends React.Component {
                         {/* <Route exact path="/friends" children={()=><h2>Friends</h2>}/> */}
 
                         <Route path="/users" component={Users}/>
+                        <Route path="profile/friends" component={FriendList}
                         <Route path="/profile/:id(\d+)" component={ContactCard}/>
                         <Route path="/auth" component ={AuthorizationForm}/>
                         <Route path="/reg" component={RegistrationForm}/>

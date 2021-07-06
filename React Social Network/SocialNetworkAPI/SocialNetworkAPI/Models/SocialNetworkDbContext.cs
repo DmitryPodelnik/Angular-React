@@ -23,6 +23,7 @@ namespace SocialNetworkAPI.Model
         public DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Friend> Friends { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

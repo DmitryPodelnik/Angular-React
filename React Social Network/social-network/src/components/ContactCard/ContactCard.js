@@ -47,7 +47,7 @@ class ContactCard extends React.Component {
                 .then(res => res.json())
                 .then(
                     data => {
-                        alert(data.Followers);   
+                        alert(data.followers);   
                     },
                     error => {
                         alert("error");
@@ -55,6 +55,17 @@ class ContactCard extends React.Component {
                 )
          });
 
+         fetch(`https://localhost:44318/api/users/followfriend?userId=${this.context.currentUserId}&friendId=${window.location.href.substring(window.location.href.indexOf("/users/") + 7)}`, {
+            method: "POST",})
+            .then(res => res.json())
+            .then(
+                data => {
+                    alert("Success");   
+                },
+                error => {
+                    alert("error");
+                }
+            )
          
     }
 

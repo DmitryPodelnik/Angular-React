@@ -31,6 +31,16 @@ namespace SocialNetworkAPI.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        [Route("getfriends")]
+        [HttpGet]
+        // GET: Friends
+        public async Task<ActionResult<IEnumerable<User>>> GetFriends(int userId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            return user.Friends.ToList();
+        }
+
         [Route("getuserid")]
         [HttpGet]
         public async Task<ActionResult<User>> GetUserId(string username)
@@ -53,6 +63,20 @@ namespace SocialNetworkAPI.Controllers
             {
                 return NotFound();
             }
+
+            return user;
+        }
+
+        [Route("followfriend")]
+        [HttpPost]
+        public async Task<ActionResult<User>> FollowFriend(int userId, int friendId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var friend = await _context.Users.FirstOrDefaultAsync(f => f.Id == friendId);
+            user.Friends.Add(friend);
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
 
             return user;
         }

@@ -37,7 +37,7 @@ class Nav extends React.Component{
                       }
                       {this.context.isLogged
                         ? <li className="nav-item"> 
-                           <NavLink to={`/profile/${this.context.currentUserId}/friends`} className="nav-link" activeClassName="active">Friends</NavLink>
+                           <NavLink to={`/profile/friends`} className="nav-link" activeClassName="active">Friends</NavLink>
                          </li>
                         : null 
                       }
