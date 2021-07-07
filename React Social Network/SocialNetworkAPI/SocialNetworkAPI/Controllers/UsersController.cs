@@ -101,6 +101,13 @@ namespace SocialNetworkAPI.Controllers
                 return NotFound();
             }
 
+            var isAlreadyExists = await _context.Friends.FirstOrDefaultAsync((u) => u.UserId == user.Id && u.FriendId == friendId);
+
+            if (isAlreadyExists != null)
+            {
+                return NotFound();
+            }
+
             Friend newFriend = new();
             newFriend.UserId = user.Id;
             newFriend.FriendId = friend.Id;
