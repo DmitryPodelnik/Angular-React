@@ -66,6 +66,6 @@ namespace SocialNetworkAPI.Model
         public string Role { get; set; }
 
         public List<Article> Articles { get; set; } = new();
-        public List<User> Friends { get; set; } = new();
+        //public List<User> Friends { get; set; } = new();
     }
 }

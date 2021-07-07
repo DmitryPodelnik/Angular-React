@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialNetworkAPI.Model;
+using SocialNetworkAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,9 +37,30 @@ namespace SocialNetworkAPI.Controllers
         // GET: Friends
         public async Task<ActionResult<IEnumerable<User>>> GetFriends(int userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-
-            return user.Friends.ToList();
+            var friends = await _context.Friends
+                                    .Join(_context.Users,
+                                          f => f.UserId,
+                                          u => u.Id,
+                                          (f, u) => new User
+                                          {
+                                              Id = u.Id,
+                                              FirstName = u.FirstName,
+                                              LastName = u.LastName,
+                                              Username = u.Username,
+                                              Email = u.Email,
+                                              Password = u.Password,
+                                              Gender = u.Gender,
+                                              Age = u.Age,
+                                              City = u.City,
+                                              About = u.About,
+                                              Followers = u.Followers,
+                                              Avatar = u.Avatar,
+                                              Role = u.Role,
+                                              Articles = u.Articles
+                                          })
+                                          .Where(u => u.Id == userId)
+                                          .ToListAsync();
+            return friends;
         }
 
         [Route("getuserid")]
@@ -73,9 +95,13 @@ namespace SocialNetworkAPI.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             var friend = await _context.Users.FirstOrDefaultAsync(f => f.Id == friendId);
-            user.Friends.Add(friend);
 
-            _context.Update(user);
+            Friend newFriend = new();
+            newFriend.UserId = user.Id;
+            newFriend.FriendId = friend.Id;
+
+            //_context.Update(user);
+            _context.Friends.Add(newFriend);
             await _context.SaveChangesAsync();
 
             return user;
