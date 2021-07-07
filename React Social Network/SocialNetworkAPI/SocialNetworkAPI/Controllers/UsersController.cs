@@ -38,8 +38,9 @@ namespace SocialNetworkAPI.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetFriends(int userId)
         {
             var friends = await _context.Friends
+                                    .Where(f => f.UserId == userId)
                                     .Join(_context.Users,
-                                          f => f.UserId,
+                                          f => f.FriendId,
                                           u => u.Id,
                                           (f, u) => new User
                                           {
@@ -58,8 +59,6 @@ namespace SocialNetworkAPI.Controllers
                                               Role = u.Role,
                                               Articles = u.Articles
                                           })
-                                          .Where(u => u.Id == userId)
-                                          .Distinct()
                                           .ToListAsync();
             return friends;
         }
@@ -96,6 +95,11 @@ namespace SocialNetworkAPI.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
             var friend = await _context.Users.FirstOrDefaultAsync(f => f.Id == friendId);
+
+            if (user.Id == friend.Id)
+            {
+                return NotFound();
+            }
 
             Friend newFriend = new();
             newFriend.UserId = user.Id;
