@@ -26,6 +26,8 @@ class ContactCard extends React.Component {
             userInfo: "123",
             isLoaded: false,
             error: null, 
+            
+            image: avatar,
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
@@ -122,7 +124,7 @@ class ContactCard extends React.Component {
             FirstName: $("#firstName").val(),
             LastName: $("#lastName").val(),
             Username: $("#userName").val(),
-            Email: $("#inputEmail").val(),
+            Email: $("#email").val(),
             City: $("#city").val(),
             About: $("#textAbout").val(),
             file: $("#avatar").val(),
@@ -142,6 +144,7 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
+                this.setState({image: data.avatar})   
                 alert("User has been successfully edited!");   
             },
             error => {
@@ -166,7 +169,7 @@ class ContactCard extends React.Component {
                 <div id="user">
                     <form encType="multipart/form-data">
                     <div id="firstLine">
-                        <img id="avatar" src={ avatar } className="rounded float-start" alt="avatar" width="150px"></img>
+                        <img id="avatar" src={ this.state.image } className="rounded float-start" alt="avatar" width="150px"></img>
                         {!this.state.isReading
                             ? <div id="uploadFile" >
                                 <label className="form-label" htmlFor="avatar"></label>
