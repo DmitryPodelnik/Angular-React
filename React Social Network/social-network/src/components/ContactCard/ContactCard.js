@@ -60,7 +60,7 @@ class ContactCard extends React.Component {
                                }
                            )
                     });
-                    
+
                     alert("You have successfully followed to this person!");   
                 },
                 error => {
@@ -93,7 +93,7 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
-             this.setState({userInfo: data, isLoaded: true})   
+             this.setState({userInfo: data, isLoaded: true, countFollowers: data.followers})   
             },
             error => {
                 this.setState({isLoaded: true, error})
