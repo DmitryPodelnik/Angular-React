@@ -39,31 +39,32 @@ class ContactCard extends React.Component {
             Username: $("#userName").val(),
         };
 
-         this.setState(state => ({
-             countFollowers: ++state.countFollowers,
-         }), () => {
-            fetch(`https://localhost:44318/api/users/edituserfollowers?Username=${user.Username}&Followers=${this.state.countFollowers}`, {
-                method: "POST",})
-                .then(res => res.json())
-                .then(
-                    data => {
-                        alert(data.followers);   
-                    },
-                    error => {
-                        alert("error");
-                    }
-                )
-         });
-
-         fetch(`https://localhost:44318/api/users/followfriend?userId=${this.context.currentUserId}&friendId=${window.location.href.substring(window.location.href.indexOf("/users/") + 7)}`, {
+        fetch(`https://localhost:44318/api/users/followfriend?userId=${this.context.currentUserId}&friendId=${window.location.href.substring(window.location.href.indexOf("/users/") + 7)}`, {
             method: "POST",})
             .then(res => res.json())
             .then(
                 data => {
-                    alert("Success");   
+
+                    this.setState(state => ({
+                        countFollowers: ++state.countFollowers,
+                    }), () => {
+                       fetch(`https://localhost:44318/api/users/edituserfollowers?Username=${user.Username}&Followers=${this.state.countFollowers}`, {
+                           method: "POST",})
+                           .then(res => res.json())
+                           .then(
+                               data => {
+           
+                               },
+                               error => {
+                                   alert(error);
+                               }
+                           )
+                    });
+                    
+                    alert("You have successfully followed to this person!");   
                 },
                 error => {
-                    alert("error");
+                    alert("You cannot follow to this person!");
                 }
             )
          
@@ -144,7 +145,7 @@ class ContactCard extends React.Component {
                 alert("User has been successfully edited!");   
             },
             error => {
-                alert("error");
+                alert(error);
             }
         )
         }

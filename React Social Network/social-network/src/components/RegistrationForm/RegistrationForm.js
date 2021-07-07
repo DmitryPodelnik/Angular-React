@@ -56,7 +56,7 @@ class RegistrationForm extends Component {
                     alert("You have been successfully registered!");   
                 },
                 error => {
-                    alert("error");
+                    alert(error);
                 }
             )
         }
