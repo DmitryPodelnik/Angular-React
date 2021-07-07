@@ -59,6 +59,7 @@ namespace SocialNetworkAPI.Controllers
                                               Articles = u.Articles
                                           })
                                           .Where(u => u.Id == userId)
+                                          .Distinct()
                                           .ToListAsync();
             return friends;
         }
@@ -100,7 +101,6 @@ namespace SocialNetworkAPI.Controllers
             newFriend.UserId = user.Id;
             newFriend.FriendId = friend.Id;
 
-            //_context.Update(user);
             _context.Friends.Add(newFriend);
             await _context.SaveChangesAsync();
 

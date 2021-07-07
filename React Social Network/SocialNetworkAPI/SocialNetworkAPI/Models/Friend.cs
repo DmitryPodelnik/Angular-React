@@ -1,4 +1,5 @@
-﻿using SocialNetworkAPI.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using SocialNetworkAPI.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace SocialNetworkAPI.Models
 {
     [Table("Friends")]
+    //[Index(IsUnique = true)]
     public class Friend
     {
         [Column("Id")]  // Можно было не указывать потому, что так было бы по умолчанию, благодаря соглашению о наименованиях EF

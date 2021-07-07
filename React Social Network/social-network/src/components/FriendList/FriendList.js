@@ -33,8 +33,6 @@ class FriendList extends React.Component{
 
         const { friends, isLoaded, error } = this.state;
 
-        //let {id} = this.state.users;
-
         let userComponents = null;
 
         if (!this.context.isLogged)
