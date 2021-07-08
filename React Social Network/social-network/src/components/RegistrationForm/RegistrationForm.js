@@ -4,7 +4,6 @@ import $ from 'jquery';
 import { Redirect } from "react-router";
 import { LoginContext } from "../../LoginContext/LoginContext"
 import { uploadFile } from "../UploadingFile/UploadingFile"
-import avatar from  "../assets/avatar.jpg"
 
 class RegistrationForm extends Component {
 
