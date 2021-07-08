@@ -14,11 +14,6 @@ class RegistrationForm extends Component {
 
         this.checkForm = this.checkForm.bind(this);
         this.setUserId = this.setUserId.bind(this);
-
-        this.state = {
-
-            
-        }
     }
 
     setUserId (id) { 
@@ -27,12 +22,12 @@ class RegistrationForm extends Component {
     }
 
     checkOnCorrectEmail = (str) => {
+
         const r = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (r.test(str)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

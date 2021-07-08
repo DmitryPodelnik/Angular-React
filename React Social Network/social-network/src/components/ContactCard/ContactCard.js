@@ -95,26 +95,12 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
-             this.setState({userInfo: data, isLoaded: true, countFollowers: data.followers})   
+             this.setState({userInfo: data, isLoaded: true, countFollowers: data.followers, image: data.avatar})   
             },
             error => {
                 this.setState({isLoaded: true, error})
             }
-        )
-
-        
-
-        fetch(`https://localhost:44318/api/users/getavatar/${this.state.userId}`)
-        .then(res => res.json())
-        .then(
-            data => {
-             this.setState({image: data}) 
-            },
-            error => {
-                this.setState({isLoaded: true, error})
-            }
-        )
-
+        )   
     }
 
     saveChanges (event) {
@@ -132,6 +118,10 @@ class ContactCard extends React.Component {
         else if ($("#lastName").val().length < 1 && $("#lastName").val().length > 32) {
             alert("Enter a correct length of last name!");
             return;
+        } 
+        else if ($("#textAbout").val().length > 1000) {
+            alert("Enter a correct length of abotu text!");
+            return;
         } else {
 
         let user = {
@@ -147,7 +137,7 @@ class ContactCard extends React.Component {
         let temp = document.getElementById("avatar");
 
         let fData = new FormData();
-        if (temp.files !== undefined) {
+        if (temp != null) {    
             fData.append("avatar", temp.files[0]); // добавляем файл в объект FormData()
         }
 
@@ -158,15 +148,16 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
-                //this.setState({image: data.avatar})   
+                this.setState({image: data.avatar})   
                 alert("User has been successfully edited!");   
             },
             error => {
                 alert(error);
-            }
-        )
+            })
         }
 
+        this.switchEditMode();
+        $("#editMode").prop("checked", false);
     }
 
     render() {
@@ -184,8 +175,8 @@ class ContactCard extends React.Component {
                     <form encType="multipart/form-data">
                     <div id="firstLine">
                         {this.state.image 
-                        ? <img id="avatar" src={`data:image/jpg;base64,${this.state.image}`} className="rounded float-start" alt="avatar" width="150px"></img>
-                        : <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
+                        ? <img id="avatarImage" src={`data:image/jpg;base64,${this.state.image}`} className="rounded float-start" alt="avatar" width="150px"></img>
+                        : <img id="avatarImage" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
                         }
                         {!this.state.isReading
                             ? <div id="uploadFile" >

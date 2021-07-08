@@ -36,6 +36,7 @@
     display: flex;
     align-items: flex-end;
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 #switchMode {
