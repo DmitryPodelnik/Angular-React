@@ -27,7 +27,7 @@ class ContactCard extends React.Component {
             isLoaded: false,
             error: null, 
             
-            image: avatar,
+            image: null,
         };
 
         this.increaseFolowers = this.increaseFolowers.bind(this);
@@ -84,7 +84,7 @@ class ContactCard extends React.Component {
 
         let temp = document.getElementById("avatar");
 
-        if (temp.files !== undefined) {
+        if (temp !== null && temp !== undefined) {
 
             document.getElementById("avatar").addEventListener("change", () => {
                 uploadFile(document.getElementById("avatar").files[0]);
@@ -101,6 +101,20 @@ class ContactCard extends React.Component {
                 this.setState({isLoaded: true, error})
             }
         )
+
+        
+
+        fetch(`https://localhost:44318/api/users/getavatar/${this.state.userId}`)
+        .then(res => res.json())
+        .then(
+            data => {
+             this.setState({image: data}) 
+            },
+            error => {
+                this.setState({isLoaded: true, error})
+            }
+        )
+
     }
 
     saveChanges (event) {
@@ -144,7 +158,7 @@ class ContactCard extends React.Component {
         .then(res => res.json())
         .then(
             data => {
-                this.setState({image: data.avatar})   
+                //this.setState({image: data.avatar})   
                 alert("User has been successfully edited!");   
             },
             error => {
@@ -169,7 +183,10 @@ class ContactCard extends React.Component {
                 <div id="user">
                     <form encType="multipart/form-data">
                     <div id="firstLine">
-                        <img id="avatar" src={ this.state.image } className="rounded float-start" alt="avatar" width="150px"></img>
+                        {this.state.image 
+                        ? <img id="avatar" src={`data:image/jpg;base64,${this.state.image}`} className="rounded float-start" alt="avatar" width="150px"></img>
+                        : <img id="avatar" src={avatar} className="rounded float-start" alt="avatar" width="150px"></img>
+                        }
                         {!this.state.isReading
                             ? <div id="uploadFile" >
                                 <label className="form-label" htmlFor="avatar"></label>

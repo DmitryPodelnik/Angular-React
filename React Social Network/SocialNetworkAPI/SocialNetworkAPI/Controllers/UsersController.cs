@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 namespace SocialNetworkAPI.Controllers
 {
     [Route("api/[controller]")]
-
     public class UsersController : Controller
     {
         private readonly SocialNetworkDbContext _context;
@@ -87,6 +86,27 @@ namespace SocialNetworkAPI.Controllers
             }
 
             return user;
+        }
+
+        [HttpGet("getavatar/{id}")]
+        public async Task<ActionResult<byte[]>> GetAvatar(int? id)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user.Avatar == null)
+            {
+                return NotFound();
+            }
+
+            byte[] data = user.Avatar;
+
+            // сохраним первый файл из списка
+            using (FileStream fs = new FileStream($"wwwroot/Avatar_{user.Username}", FileMode.OpenOrCreate))
+            {
+                fs.Write(data, 0, data.Length);
+            }
+
+            return data;
         }
 
         [Route("followfriend")]
