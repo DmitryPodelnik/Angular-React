@@ -100,11 +100,11 @@ namespace SocialNetworkAPI.Controllers
 
             byte[] data = user.Avatar;
 
-            // сохраним первый файл из списка
-            using (FileStream fs = new FileStream($"wwwroot/Avatar_{user.Username}", FileMode.OpenOrCreate))
-            {
-                fs.Write(data, 0, data.Length);
-            }
+            //// сохраним первый файл из списка
+            //using (FileStream fs = new FileStream($"wwwroot/Avatar_{user.Username}", FileMode.OpenOrCreate))
+            //{
+            //    fs.Write(data, 0, data.Length);
+            //}
 
             return data;
         }
