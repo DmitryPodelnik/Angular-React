@@ -52,7 +52,10 @@ class FriendList extends React.Component{
                             <div className="card mb-3" id="card">
                                 <div className="row g-0">
                                     <div className="col-md-4">
-                                        <img src={ item.avatar } className="img-fluid rounded-start" alt="..." />
+                                    {item.avatar 
+                                        ? <img id="avatar" src={`data:image/jpg;base64,${item.avatar}`} className="img-fluid rounded-start" alt="avatar" width="150px"></img>
+                                        : <img id="avatar" src={avatar} className="img-fluid rounded-start" alt="avatar" width="150px"></img>
+                                    }
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body">

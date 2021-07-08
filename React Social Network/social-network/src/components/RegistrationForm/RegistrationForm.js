@@ -26,24 +26,56 @@ class RegistrationForm extends Component {
         this.context.setCurrentUserId(id); 
     }
 
+    checkOnCorrectEmail = (str) => {
+        const r = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (r.test(str)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     checkForm (e) {
 
         e.preventDefault();
 
-        if ($("#password").val() !== $("#confirmPassword").val()) {
-            alert("Passwords are not equal!");
+        if ($("#password").val().length < 6) {
+            alert("Password must have more than 5 symbols!");
             return;
         }
-        else if ($("#age").val() < 1 && $("#age").val() > 99) {
-            alert("Enter a correct age!");
-            return;
-        }
-        else if ($("#firstName").val().length < 1 && $("#firstName").val().length > 32) {
+        else if ($("#firstName").val().length < 1 || $("#firstName").val().length > 32) {
             alert("Enter a correct length of first name!");
             return;
         }
-        else if ($("#lastName").val().length < 1 && $("#lastName").val().length > 32) {
+        else if ($("#lastName").val().length < 1 || $("#lastName").val().length > 32) {
             alert("Enter a correct length of last name!");
+            return;
+        }
+        else if ($("#userName").val().length < 4) {
+            alert("Enter a correct length of username!");
+            return;
+        }
+        else if (!this.checkOnCorrectEmail($("#email").val())) {
+            alert("Email is incorrect");
+            return;
+        } 
+        else if ($("#city").val().length < 1 || $("#city").val().length > 32) {
+            alert("Enter a correct length of city!");
+            return;
+        }
+        else if ($("#age").val() < 1 || $("#age").val() > 99) {
+            alert("Enter a correct age!");
+            return;
+        }
+        else if ($("#password").val() !== $("#confirmPassword").val()) {
+            alert("Passwords are not equal!");
+            return;
+        }
+        if (!$('#invalidCheck').is(":checked"))
+        {
+            alert("You have to agree with the rules!");
             return;
         } else {
 
@@ -83,7 +115,7 @@ class RegistrationForm extends Component {
         } else {
         return (            
             <div id="main">
-                <form className="row g-3 needs-validation" noValidate encType="multipart/form-data">
+                <form className="row g-3 needs-validation" noValidate>
                     <div className="col-md-4">
                         <label htmlFor="firstName" className="form-label">First name</label>
                         <input type="text" className="form-control" id="firstName" required/>
