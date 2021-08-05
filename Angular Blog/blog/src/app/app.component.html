@@ -1,68 +1,7 @@
 <div id="mainDiv">
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" routerLink="/articles" routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:true}" >Activity Feed</a>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:true}" >Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/profile" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:true}" >Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/about" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:true}" >About</a>
-            </li>
-          </ul>
-
-          <ul class="navbar-nav flex-grow-1 justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:true}" >Sign In</a>
-            </li>
-          </ul>
-
-          <app-search></app-search>
-        </div>
-      </div>
-    </nav>
-
-<!-- Background image -->
-<div
-id="intro-example"
-class="p-5 text-center bg-image"
-style="background-image: url('../assets/header1.jpg'); height: 400px;"
->
-<div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="text-white">
-      <h1 class="mb-3">Hi there!</h1>
-      <h5 class="mb-4">I'm Dmytro Podelnik and this is my programmer blog!</h5>
-      <a
-        class="btn btn-outline-light btn-lg m-2"
-        routerLink="/about"
-        >About me</a
-      >
-      <a
-        class="btn btn-outline-light btn-lg m-2"
-        routerLink="/articles"
-        >Article List</a
-      >
-    </div>
-  </div>
-</div>
-</div>
-<!-- Background image -->
+    <app-nav></app-nav>
   </header>
 
   <main>
@@ -73,7 +12,7 @@ style="background-image: url('../assets/header1.jpg'); height: 400px;"
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2020 Copyright:
-      <a class="text-white">Dmytro Podelnik</a>
+      <a class="text-white" routerLink="/about">Dmytro Podelnik</a>
     </div>
     <!-- Copyright -->
   </footer>

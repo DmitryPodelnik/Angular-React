@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchComponent } from './search/search.component';
     ProfileComponent,
     NavComponent,
     AboutComponent,
-    SearchComponent
+    SearchComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

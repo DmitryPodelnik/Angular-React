@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'articles', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
   { path: 'article/new', component: NewArticleComponent, pathMatch:'full'},
+  { path: 'article', component: ArticleComponent},
   { path: 'article/:id', component: ArticleComponent, pathMatch:'full'},
   { path: '**', component: NotFoundComponent }
 ];
