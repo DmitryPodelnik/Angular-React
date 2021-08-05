@@ -9,11 +9,11 @@ namespace Blog_WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class HomeController : ControllerBase
+    public class ArticlesController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ArticlesController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ArticlesController(ILogger<ArticlesController> logger)
         {
             _logger = logger;
         }
