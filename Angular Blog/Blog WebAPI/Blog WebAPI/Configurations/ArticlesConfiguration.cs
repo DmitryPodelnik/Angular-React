@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog_WebAPI.Configurations
 {
-    public class ArticleConfiguration : IEntityTypeConfiguration<Article>
+    public class ArticlesConfiguration : IEntityTypeConfiguration<Article>
     {
         public void Configure(EntityTypeBuilder<Article> builder)
         {
@@ -73,7 +73,6 @@ namespace Blog_WebAPI.Configurations
                         Date = DateTime.Now.ToShortDateString(),
                         UserId = 1
                     },
-
                 });
         }
     }
