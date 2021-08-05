@@ -8,9 +8,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { ArticleComponent } from './article/article.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: ArticleListComponent},
+  { path: 'welcome', component: WelcomeComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'about', component: AboutComponent},
   { path: 'articles', component: ArticleListComponent},
