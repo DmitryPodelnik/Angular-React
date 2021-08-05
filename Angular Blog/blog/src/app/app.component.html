@@ -8,22 +8,27 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" routerLink="/articles">Activity Feed</a>
+          <a class="navbar-brand" routerLink="/articles" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}" >Activity Feed</a>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" routerLink="">Home</a>
+              <a class="nav-link" routerLink="" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" >Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/profile">Link</a>
+              <a class="nav-link" routerLink="/profile" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" >Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/about">About</a>
+              <a class="nav-link" routerLink="/about" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" >About</a>
             </li>
           </ul>
 
           <ul class="navbar-nav flex-grow-1 justify-content-end">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Sign In</a>
+              <a class="nav-link" routerLink="/login" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" >Sign In</a>
             </li>
           </ul>
 
@@ -52,16 +57,11 @@ style="background-image: url('../assets/header1.jpg'); height: 400px;"
       <h5 class="mb-4">I'm Dmytro Podelnik and this is my programmer blog!</h5>
       <a
         class="btn btn-outline-light btn-lg m-2"
-        role="button"
-        rel="nofollow"
-        target="_blank"
         routerLink="/about"
         >About me</a
       >
       <a
         class="btn btn-outline-light btn-lg m-2"
-        target="_blank"
-        role="button"
         routerLink="/articles"
         >Article List</a
       >
