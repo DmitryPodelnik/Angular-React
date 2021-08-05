@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Blog_WebAPI.Models
 {
-    public class BlobContextDb : DbContext
+    public class BlogDbContext : DbContext
     {
-        public BlobContextDb(DbContextOptions<BlobContextDb> options)
+        public BlogDbContext(DbContextOptions<BlogDbContext> options)
          : base(options)
         {
             if (Database.CanConnect())
