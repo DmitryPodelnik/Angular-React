@@ -13,7 +13,16 @@ export class ArticleListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    fetch("https://localhost:44341/api/articles")
+        .then(res => res.json())
+        .then(
+            data => {
+             this.articles = data;
+            },
+            error => {
+                console.log(error);
+            }
+        )
   }
 
 }
