@@ -18,7 +18,7 @@ var not_found_component_1 = require("./not-found/not-found.component");
 var new_article_component_1 = require("./new-article/new-article.component");
 var profile_component_1 = require("./profile/profile.component");
 var nav_component_1 = require("./nav/nav.component");
-var routes_component_1 = require("./routes/routes.component");
+var about_component_1 = require("./about/about.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -33,7 +33,7 @@ var AppModule = /** @class */ (function () {
                 new_article_component_1.NewArticleComponent,
                 profile_component_1.ProfileComponent,
                 nav_component_1.NavComponent,
-                routes_component_1.RoutesComponent
+                about_component_1.AboutComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

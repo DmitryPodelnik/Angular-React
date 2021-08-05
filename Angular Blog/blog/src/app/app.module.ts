@@ -10,7 +10,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
-import { RoutesComponent } from './routes/routes.component';
 import { AboutComponent } from './about/about.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { AboutComponent } from './about/about.component';
     NewArticleComponent,
     ProfileComponent,
     NavComponent,
-    RoutesComponent,
     AboutComponent
   ],
   imports: [
