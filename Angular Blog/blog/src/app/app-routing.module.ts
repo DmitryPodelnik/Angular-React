@@ -6,6 +6,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewArticleComponent } from './new-article/new-article.component';
+import { ArticleComponent } from './article/article.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'articles', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
   { path: 'article/new', component: NewArticleComponent, pathMatch:'full'},
+  { path: 'article/:id', component: ArticleComponent, pathMatch:'full'},
   { path: '**', component: NotFoundComponent }
 ];
 
