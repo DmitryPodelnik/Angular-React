@@ -1,0 +1,9 @@
+#mainDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  min-height: 600px;
+}
