@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { ArticleItem } from '../models/article.item';
 
 @Component({
   selector: 'app-article-list',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleListComponent implements OnInit {
 
-  constructor() { }
+  articles: ArticleItem[] | undefined;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.paramMap.pipe(
+        switchMap(params => params.getAll('id'))
+    )
+    .subscribe(data=> this.id = +data);
   }
 
 }

@@ -11,5 +11,9 @@ main {
 #welcome {
   display: flex;
   flex-direction: column;
-  
+
+}
+
+body {
+  background-color: black;
 }
