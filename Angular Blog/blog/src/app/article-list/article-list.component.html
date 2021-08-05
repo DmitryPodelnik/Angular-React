@@ -1,4 +1,34 @@
 
- <div>
-    <p *ngFor="let item of articles; let i = index">{{i+1}}.{{item}}</p>
+ <div *ngIf="articles !== undefined">
+    <div class="card cardItem" *ngFor="let article of articles; let i = index">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a [routerLink]="[article.id]">{{article.title}}</a>
+          </h5>
+          <p class="card-text">
+            {{article.content.substring(0, article.content.indexOf(".", 30) + 1)}}
+          </p>
+          <div class="d-flex justify-content-between">
+            <p class="card-text">
+              <span><img src="../../assets/author.png" width="16" height="16" alt="author"></span><small class="text-muted"> Author: </small>
+            </p>
+            <p class="card-text">
+              <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted"> Posted: </small>
+            </p>
+            <p class="card-text">
+              <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted"> Tags: </small>
+            </p>
+            <p class="card-text">
+              <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small class="text-muted"> Comments</small>
+            </p>
+          </div>
+        </div>
+        <img
+          src="https://mdbootstrap.com/img/new/slides/042.jpg"
+          class="card-img-bottom"
+          alt="nature"
+          width="500px"
+          height="500px"
+        />
+      </div>
 </div>

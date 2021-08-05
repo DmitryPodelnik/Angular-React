@@ -1,6 +1,11 @@
 export class ArticleItem {
   id: number | undefined;
-  title: string | undefined;
-  content: boolean | undefined;
+  title: string;
+  content: string;
   file: any | undefined;
+
+  constructor () {
+    this.content = "";
+    this.title = "";
+  }
 }

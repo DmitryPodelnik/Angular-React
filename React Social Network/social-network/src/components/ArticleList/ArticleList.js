@@ -36,8 +36,6 @@ class ArticleList extends React.Component{
 
         const {articles, isLoaded, error} = this.state;
 
-        //let {id} = this.state.articles;
-
         let articleComponents = null;
 
         if (!this.context.isLogged)
@@ -52,7 +50,7 @@ class ArticleList extends React.Component{
             articleComponents = <p>Loading...</p>
         }
         else if (articles.length) {
-            articleComponents = articles.map(function(item) {
+            articleComponents = articles.map(function(item) { 
                 return  <li key={item}>
                                 <div className="card w-75">
                                     <div className="card-body">
