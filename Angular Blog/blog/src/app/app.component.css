@@ -7,3 +7,9 @@
 main {
   min-height: 600px;
 }
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  
+}
