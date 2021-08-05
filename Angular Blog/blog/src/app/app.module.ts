@@ -11,6 +11,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { RoutesComponent } from './routes/routes.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RoutesComponent } from './routes/routes.component';
     NewArticleComponent,
     ProfileComponent,
     NavComponent,
-    RoutesComponent
+    RoutesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
