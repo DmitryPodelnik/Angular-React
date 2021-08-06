@@ -24,7 +24,7 @@ export class AuthorizationComponent implements OnInit {
     let user = {
       username: this.username,
       password: this.password
-  };
+    };
 
     fetch('https://localhost:44341/token', {
                 method: 'POST',
@@ -37,6 +37,8 @@ export class AuthorizationComponent implements OnInit {
                     return response.json();
                 } else {
                   console.log(this.authService.getLogCondition());
+                  console.log(this.username);
+                  console.log(this.password);
                     alert("Error authorization");
                     return;
                 }

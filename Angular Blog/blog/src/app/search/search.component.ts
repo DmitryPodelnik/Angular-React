@@ -13,6 +13,8 @@ export class SearchComponent implements OnInit {
 
   @Input() searchedArticles: any;
 
+  searchString: string = "";
+
   constructor(private dataService: DataService){}
 
   addItem(name: string){
@@ -25,7 +27,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchArticles($event : any) {
-    fetch(`https://localhost:44341/api/articles/search?articleName=AS`)
+    fetch(`https://localhost:44341/api/articles/search?articleName=${this.searchString}`)
         .then(res => res.json())
         .then(
             data => {
