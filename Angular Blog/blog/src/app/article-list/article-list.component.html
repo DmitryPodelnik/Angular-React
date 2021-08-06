@@ -1,4 +1,4 @@
-<div *ngIf="articles !== undefined && isLoaded == true; then thenBlock else elseBlock"></div>
+<div *ngIf="articles !== undefined && this.dataService.getIsLoaded() == true; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <div class="card cardItem" *ngFor="let article of articles; let i = index">
       <div class="card-body">
@@ -31,7 +31,7 @@
         height="500px" />
 
         <a
-        class="btn btn-outline-primary btn-lg m-2"
+        class="btn btn-outline-dark btn-lg m-2"
         [routerLink]="[article.id]"
         >Read more</a
       >

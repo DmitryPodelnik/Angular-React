@@ -10,8 +10,6 @@ import { DataService } from '../services/data.service';
 })
 export class SearchComponent implements OnInit {
 
-  @Input() searchedArticles: any;
-
   searchString: string = "";
 
   constructor(private dataService: DataService){}
@@ -26,17 +24,33 @@ export class SearchComponent implements OnInit {
   }
 
   searchArticles($event : any) {
-    fetch(`https://localhost:44341/api/articles/search?articleName=${this.searchString}`)
+    this.dataService.setIsLoaded(false);
+
+    if (this.searchString === "") {
+      fetch(`https://localhost:44341/api/articles`)
         .then(res => res.json())
         .then(
             data => {
-              //this.searchArticles = data;
               this.dataService.setData(data);
+              console.log("success search articles");
             },
             error => {
                 console.log(error);
             }
         )
+    } else {
+      fetch(`https://localhost:44341/api/articles/search?articleName=${this.searchString}`)
+        .then(res => res.json())
+        .then(
+            data => {
+              this.dataService.setData(data);
+              console.log("success search articles");
+            },
+            error => {
+                console.log(error);
+            }
+        )
+    }
   }
 
 }

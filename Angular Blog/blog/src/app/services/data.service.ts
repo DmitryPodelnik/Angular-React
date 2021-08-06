@@ -1,6 +1,9 @@
+import { ArticleItem } from '../models/article.item';
+
 export class DataService {
 
-  private data: any[]= [];
+  private articles: ArticleItem[]= [];
+  private isLoaded: boolean = false;
 
   constructor() {
 
@@ -8,16 +11,40 @@ export class DataService {
 
   getData(): any[] {
 
-      return this.data;
+      return this.articles;
+  }
+
+  getIsLoaded(): boolean {
+
+    return this.isLoaded;
+  }
+
+  setIsLoaded(value: boolean): void {
+    this.isLoaded = value;
   }
 
   setData(items: any): void {
 
-    this.data = items;
+    this.articles = items;
+    console.dir(`${this.articles}`);
+  }
+
+  getAllArticles(): void {
+    fetch("https://localhost:44341/api/articles")
+        .then(res => res.json())
+        .then(
+            data => {
+              this.articles = data;
+              console.log("success");
+            },
+            error => {
+                console.log(error);
+            }
+        )
   }
 
   addData(item: any){
 
-      this.data.push(item);
+      this.articles.push(item);
   }
 }
