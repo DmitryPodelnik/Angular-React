@@ -44,5 +44,6 @@ namespace Blog_WebAPI.Models
         public string Role { get; set; }
 
         public List<Article> Articles { get; set; } = new();
+        public List<Comment> Comment { get; set; } = new();
     }
 }
