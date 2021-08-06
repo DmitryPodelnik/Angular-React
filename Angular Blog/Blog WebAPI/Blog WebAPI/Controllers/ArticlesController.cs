@@ -133,5 +133,14 @@ namespace Blog_WebAPI.Controllers
         {
             return _context.Articles.Any(e => e.Id == id);
         }
+
+        [Route("search")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Article>>> SearchArticlesByName(string articleName)
+        {
+            return await _context.Articles
+                                    .Where(p => p.Title.ToLower().Contains(articleName.ToLower()))
+                                    .ToListAsync();
+        }
     }
 }

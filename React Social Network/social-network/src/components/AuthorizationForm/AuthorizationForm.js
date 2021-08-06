@@ -79,7 +79,7 @@ class AuthorizationForm extends Component {
         } else {
                 alert('Необходимо ввести имя пользователя и пароль');
         }
-    }
+    } 
 
     userCheck () {
 
