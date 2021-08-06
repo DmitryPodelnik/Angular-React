@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Input} from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
 
   searchString: string = "";
 
-  constructor(private dataService: DataService){}
+  constructor(private dataService: DataService, private router: Router){}
 
   addItem(name: string){
 
@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchArticles($event : any) {
+    this.router.navigate(['/articles']);
     this.dataService.setIsLoaded(false);
 
     if (this.searchString === "") {

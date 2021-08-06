@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'about', component: AboutComponent},
   { path: 'articles', component: ArticleListComponent},
+  { path: 'activityfeed', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
   { path: 'article/new', component: NewArticleComponent, pathMatch:'full'},
   { path: 'article', component: ArticleComponent},
