@@ -9,6 +9,7 @@ import { ArticleItem } from '../models/article.item';
 export class ArticleListComponent implements OnInit {
 
   articles: ArticleItem[] | undefined;
+  isLoaded: boolean = false;
 
   constructor() { }
 
@@ -18,6 +19,7 @@ export class ArticleListComponent implements OnInit {
         .then(
             data => {
              this.articles = data;
+             this.isLoaded = true;
             },
             error => {
                 console.log(error);
