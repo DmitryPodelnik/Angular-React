@@ -52,7 +52,7 @@ class AuthorizationForm extends Component {
             
             let user = {
                 username: this.state.userName,
-                password: this.state.password
+                password: this.state.password 
             };            
     
             fetch('https://localhost:44318/token', {

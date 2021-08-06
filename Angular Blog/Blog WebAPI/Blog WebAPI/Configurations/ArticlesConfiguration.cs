@@ -12,6 +12,8 @@ namespace Blog_WebAPI.Configurations
     {
         public void Configure(EntityTypeBuilder<Article> builder)
         {
+
+
             builder.HasData(
                 new Article[]
                 {

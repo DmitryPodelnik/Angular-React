@@ -28,6 +28,8 @@ namespace Blog_WebAPI.Models
         {
             modelBuilder.ApplyConfiguration(new UsersConfiguration());
             modelBuilder.ApplyConfiguration(new ArticlesConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentsConfiguration());
+            modelBuilder.ApplyConfiguration(new TagsConfiguration());
         }
     }
 }
