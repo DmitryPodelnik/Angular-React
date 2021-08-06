@@ -14,6 +14,8 @@ import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { DataService } from './services/data.service';
+import { AuthorizationService } from './services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule
   ],
-  providers: [],
+  providers: [DataService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav flex-grow-1 justify-content-end">
+      <ul class="navbar-nav flex-grow-1 justify-content-end" *ngIf="this.authService.getLogCondition() == false">
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}">Sign In</a>

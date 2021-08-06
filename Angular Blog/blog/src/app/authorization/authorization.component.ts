@@ -7,7 +7,6 @@ import { AuthorizationService } from '../services/authorization.service';
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.css'],
-  providers: [AuthorizationService]
 })
 export class AuthorizationComponent implements OnInit {
 
