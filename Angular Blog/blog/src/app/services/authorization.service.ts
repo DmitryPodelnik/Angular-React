@@ -12,8 +12,8 @@ export class AuthorizationService {
   }
 
   toggleLogCondition(): void {
-
     this.isLogged = !this.isLogged;
+    console.log(this.isLogged);
   }
 
 }
