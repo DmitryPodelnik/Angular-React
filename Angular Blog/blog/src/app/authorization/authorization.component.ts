@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import AuthHelper from "../utils/authHelper"
+
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -15,7 +17,7 @@ export class AuthorizationComponent implements OnInit {
     this.password = "";
   }
 
-  userCheck() {
+  userCheck($event : any) {
 
     let user = {
       username: this.username,
@@ -37,8 +39,7 @@ export class AuthorizationComponent implements OnInit {
                 }
             }).then((data) => {
                 AuthHelper.saveAuth(user.username, data.access_token);
-                this.context.toggleLogging();
-                this.setUserId();
+
                 alert("You have successfully authenticated!");
             }).catch((ex) => {
                 alert(ex);

@@ -9,7 +9,7 @@ export default {
     },
 
     getLogin: () => {
-        let item = sessionStorage.getItem('tokenKey');
+        let item = sessionStorage.getItem('tokenKey'); 
         let login = '';
         if (item) {
             login = JSON.parse(item).userName;

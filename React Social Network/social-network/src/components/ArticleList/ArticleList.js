@@ -36,7 +36,7 @@ class ArticleList extends React.Component{
 
         const {articles, isLoaded, error} = this.state;
 
-        let articleComponents = null;
+        let articleComponents = null; 
 
         if (!this.context.isLogged)
         {
