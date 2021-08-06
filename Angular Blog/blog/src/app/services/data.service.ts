@@ -6,10 +6,16 @@ export class DataService {
 
   }
 
-  getData(): string[] {
+  getData(): any[] {
 
       return this.data;
   }
+
+  setData(items: any): void {
+
+    this.data = items;
+  }
+
   addData(item: any){
 
       this.data.push(item);

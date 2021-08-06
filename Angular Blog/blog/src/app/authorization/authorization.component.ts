@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 import AuthHelper from "../utils/authHelper"
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.css']
+  styleUrls: ['./authorization.component.css'],
+  providers: [AuthorizationService]
 })
 export class AuthorizationComponent implements OnInit {
 
   username: string;
   password: string;
 
-  constructor() {
+  constructor(private authService: AuthorizationService) {
     this.username = "";
     this.password = "";
   }
@@ -39,7 +41,7 @@ export class AuthorizationComponent implements OnInit {
                 }
             }).then((data) => {
                 AuthHelper.saveAuth(user.username, data.access_token);
-
+                this.authService.toggleLogCondition();
                 alert("You have successfully authenticated!");
             }).catch((ex) => {
                 alert(ex);

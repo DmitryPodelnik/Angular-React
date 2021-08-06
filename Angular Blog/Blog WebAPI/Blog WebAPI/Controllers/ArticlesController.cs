@@ -47,7 +47,7 @@ namespace Blog_WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle([Bind("Id,Title,Content,Date,Username")] Article article)
+        public async Task<ActionResult<Article>> PostArticle(Article article) // [Bind("Id,Title,Content,Date,Username")]
         {
             _context.Articles.Add(article);
             await _context.SaveChangesAsync();

@@ -13,16 +13,15 @@ export class SearchComponent implements OnInit {
 
   @Input() searchedArticles: any;
 
-  items: string[] = [];
-  
   constructor(private dataService: DataService){}
 
   addItem(name: string){
 
     this.dataService.addData(name);
   }
+
   ngOnInit(){
-    this.items = this.dataService.getData();
+
   }
 
   searchArticles($event : any) {
@@ -30,7 +29,8 @@ export class SearchComponent implements OnInit {
         .then(res => res.json())
         .then(
             data => {
-              this.searchArticles = data;
+              //this.searchArticles = data;
+              this.dataService.setData(data);
             },
             error => {
                 console.log(error);
