@@ -36,9 +36,9 @@ export class AuthorizationComponent implements OnInit {
                 if (response.ok) {
                     return response.json();
                 } else {
-                  console.log(this.authService.getLogCondition());
-                  console.log(this.username);
-                  console.log(this.password);
+                    console.log(this.authService.getLogCondition());
+                    console.log(this.username);
+                    console.log(this.password);
                     alert("Error authorization");
                     return;
                 }
