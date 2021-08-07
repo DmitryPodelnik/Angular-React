@@ -1,4 +1,5 @@
 ﻿using Blog_WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -46,13 +47,37 @@ namespace Blog_WebAPI.Controllers
             return article;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article) // [Bind("Id,Title,Content,Date,Username")]
+        //[Authorize(Roles = "admin")]
+        [Route("add")]
+        [HttpGet]
+        public async Task<ActionResult<Article>> AddArticle(string title, string content, string tags) // [Bind("Id,Title,Content,Date,Username")]
         {
-            _context.Articles.Add(article);
-            await _context.SaveChangesAsync();
+            Article newArticle = new();
 
-            return CreatedAtAction("GetArticle", new { id = article.Id }, article);
+            if (title != null && content != null)
+            {
+                newArticle.Title = title;
+                newArticle.Content = content;
+                newArticle.Date = DateTime.Now.ToShortDateString();
+                newArticle.UserId = 1;
+                newArticle.Username = (await _context.Users.FirstOrDefaultAsync(u => u.Id == newArticle.UserId)).Username;
+
+                var tempTags = tags.Split(" ");
+
+                foreach (var item in tempTags)
+                {
+                    Tag newTag = new();
+                    newTag.Content = item;
+                    newArticle.Tags.Add(newTag);
+                }
+
+                _context.Articles.Add(newArticle);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetArticle", new { id = newArticle.Id }, newArticle);
+            }
+
+            return NotFound();
         }
 
         // GET: Articles/Edit/5

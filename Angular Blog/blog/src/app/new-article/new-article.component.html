@@ -1,19 +1,19 @@
 <form method="post" id="additionArticle">
   <div class="mb-3">
-      <label class="form-label">Name</label>
-      <input class="form-control" name="name">
+      <label class="form-label">Title</label>
+      <input class="form-control" name="title" [(ngModel)]="title">
   </div>
   <div class="mb-3">
       <label class="form-label">Content</label>
-      <textarea class="form-control" name="content"></textarea>
+      <textarea class="form-control" name="content" [(ngModel)]="content"></textarea>
   </div>
   <div class="mb-3">
     <label class="form-label">Tags</label>
-    <input class="form-control" name="content">
+    <input class="form-control" name="tags" [(ngModel)]="tags">
   </div>
   <div id="uploadFile" style="margin-bottom: 15px;">
-    <label className="form-label" htmlFor="avatar"></label>
-    <input type="file" className="form-control-sm" id="avatar" name="avatar" />
+    <label class="form-label" for="avatar"></label>
+    <input type="file" class="form-control-sm" id="avatar" name="avatar" />
   </div>
-  <button type="submit" class="btn btn-dark">Create</button>
+  <button type="submit" class="btn btn-dark" (click)="postArticle($event)">Create</button>
 </form>
