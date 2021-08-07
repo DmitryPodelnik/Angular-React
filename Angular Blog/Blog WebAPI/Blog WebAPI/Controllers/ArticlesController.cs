@@ -47,7 +47,7 @@ namespace Blog_WebAPI.Controllers
             return article;
         }
 
-        //[Authorize(Roles = "admin")]
+        [Authorize]
         [Route("add")]
         [HttpGet]
         public async Task<ActionResult<Article>> AddArticle(string title, string content, string tags) // [Bind("Id,Title,Content,Date,Username")]

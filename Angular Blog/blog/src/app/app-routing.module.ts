@@ -9,6 +9,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { ArticleComponent } from './article/article.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { NewArticleGuard } from './new-article/newArticle.guard';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'articles', component: ArticleListComponent},
   { path: 'activityfeed', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
-  { path: 'article/new', component: NewArticleComponent, pathMatch:'full'},
+  { path: 'article/new', component: NewArticleComponent, pathMatch:'full', canActivate: [NewArticleGuard]},
   { path: 'article', component: ArticleComponent},
   { path: 'article/:id', component: ArticleComponent, pathMatch:'full'},
   { path: '**', component: NotFoundComponent }
@@ -26,6 +27,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

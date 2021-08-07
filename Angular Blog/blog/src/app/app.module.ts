@@ -16,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DataService } from './services/data.service';
 import { AuthorizationService } from './services/authorization.service';
+import { NewArticleGuard }   from './new-article/newArticle.guard';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AuthorizationService } from './services/authorization.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DataService, AuthorizationService],
+  providers: [DataService, AuthorizationService, NewArticleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
