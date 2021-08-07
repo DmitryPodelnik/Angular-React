@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../services/authorization.service';
+import { Router } from '@angular/router';
 
 import AuthHelper from "../utils/authHelper"
 
@@ -10,16 +11,22 @@ import AuthHelper from "../utils/authHelper"
 })
 export class NavComponent implements OnInit {
 
-  constructor(public authService: AuthorizationService) { }
+  constructor(public authService: AuthorizationService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   logOut($event: any) {
-    AuthHelper.clearAuth();
-    this.authService.toggleLogCondition();
-    console.log(this.authService.getLogCondition());
-    alert("You have successfully logged out!");
+    if (confirm("Are you sure to log out?")) {
+      AuthHelper.clearAuth();
+      this.authService.toggleLogCondition();
+
+      console.log(this.authService.getLogCondition());
+
+      alert("You have successfully logged out!");
+
+      this.router.navigate(['/welcome']);
+    }
   }
 
 }
