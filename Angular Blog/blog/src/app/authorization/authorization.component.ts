@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import AuthHelper from "../utils/authHelper"
 import { AuthorizationService } from '../services/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authorization',
@@ -13,7 +14,7 @@ export class AuthorizationComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private authService: AuthorizationService) {
+  constructor(private authService: AuthorizationService, private router: Router) {
     this.username = "";
     this.password = "";
   }
@@ -46,12 +47,14 @@ export class AuthorizationComponent implements OnInit {
                 this.authService.toggleLogCondition();
                 console.log(this.authService.getLogCondition());
                 alert("You have successfully authenticated!");
+                this.router.navigate(['/welcome']);
             }).catch((ex) => {
                 alert(ex);
             });
   }
 
   ngOnInit(): void {
+
   }
 
 }

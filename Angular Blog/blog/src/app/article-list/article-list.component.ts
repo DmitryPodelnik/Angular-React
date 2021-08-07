@@ -8,7 +8,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements DoCheck, OnInit {
-
+ 
   articles: ArticleItem[] | undefined;
 
   constructor(public dataService: DataService) { }
