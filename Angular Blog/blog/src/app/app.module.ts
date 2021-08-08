@@ -17,6 +17,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { DataService } from './services/data.service';
 import { AuthorizationService } from './services/authorization.service';
 import { NewArticleGuard }   from './new-article/newArticle.guard';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewArticleGuard }   from './new-article/newArticle.guard';
     NavComponent,
     AboutComponent,
     SearchComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

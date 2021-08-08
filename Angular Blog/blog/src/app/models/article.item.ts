@@ -1,5 +1,3 @@
-import { TagItem } from '../models/tag.item';
-
 export class ArticleItem {
   id: number | undefined;
   title: string;
