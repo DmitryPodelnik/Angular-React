@@ -14,10 +14,6 @@
         <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted"> Posted: {{article.date}}</small>
       </p>
       <p class="card-text">
-        <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted"> Tags: {{article.tags}}</small>
-        <!-- <span *ngFor="let tag of article.tags">{{tag.content}} </span> -->
-      </p>
-      <p class="card-text">
         <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small class="text-muted"> {{article.comments.length}}</small>
       </p>
     </div>
@@ -29,6 +25,11 @@
     width="500px"
     height="500px"
   />
+
+  <p class="card-text" style="margin: 15px;">
+    <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted"> Tags:<strong> {{article.tags}}</strong></small>
+  </p>
+
 </div>
 
 <a class="btn btn-primary" style="margin: 10px;" routerLink="/articles">Back to all articles</a>

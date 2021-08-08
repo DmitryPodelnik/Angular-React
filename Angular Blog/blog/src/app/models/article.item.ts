@@ -7,7 +7,7 @@ export class ArticleItem {
   username: string;
   date: string;
   comments: any;
-  tags: TagItem[] | undefined;
+  tags: string;
   file: any | undefined;
 
   constructor () {
@@ -15,5 +15,6 @@ export class ArticleItem {
     this.title = "";
     this.username = "";
     this.date = "";
+    this.tags = "";
   }
-} 
+}
