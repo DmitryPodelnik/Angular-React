@@ -8,28 +8,35 @@
     </p>
     <div class="d-flex justify-content-between">
       <p class="card-text">
-        <span><img src="../../assets/author.png" width="16" height="16" alt="author"></span><small class="text-muted"> Author: {{article.username}}</small>
+        <span><img src="../../assets/author.png" width="16" height="16" alt="author"></span><small class="text-muted">
+          Author: {{article.username}}</small>
       </p>
       <p class="card-text">
-        <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted"> Posted: {{article.date}}</small>
+        <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted">
+          Posted: {{article.date}}</small>
       </p>
       <p class="card-text">
-        <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small class="text-muted"> {{article.comments.length}} Comments</small>
+        <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small
+          class="text-muted"> {{article.comments.length}} Comments</small>
       </p>
     </div>
   </div>
-  <img
-    src="https://mdbootstrap.com/img/new/slides/042.jpg"
-    class="card-img-bottom"
-    alt="nature"
-    width="500px"
-    height="500px"
-  />
+  <img src="https://mdbootstrap.com/img/new/slides/042.jpg" class="card-img-bottom" alt="nature" width="500px"
+    height="500px" />
 
   <p class="card-text" style="margin: 15px;">
-    <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted"> Tags:<strong> {{article.tags}}</strong></small>
+    <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted">
+      Tags:<strong> {{article.tags}}</strong></small>
   </p>
 
-</div>
+  <div class="d-flex">
+    <a class="btn btn-primary" style="margin: 10px; width: fit-content;" routerLink="/articles">Back to all articles</a>
 
-<a class="btn btn-primary" style="margin: 10px;" routerLink="/articles">Back to all articles</a>
+    <a class="btn btn-warning" style="margin: 10px; width: fit-content;" routerLink="/article/{{article.id}}"
+      *ngIf="authService.getLogCondition() == true">Edit</a>
+    <a class="btn btn-danger" style="margin: 10px; width: fit-content;" routerLink="/articles"
+      *ngIf="authService.getLogCondition() == true && article.id !== undefined"
+      (click)="deleteArticle(article.id)">Delete</a>
+  </div>
+
+</div>
