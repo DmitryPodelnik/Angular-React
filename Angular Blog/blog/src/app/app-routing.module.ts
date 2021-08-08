@@ -20,8 +20,7 @@ const routes: Routes = [
   { path: 'activityfeed', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
   { path: 'article/new', component: NewArticleComponent, pathMatch:'full', canActivate: [NewArticleGuard]},
-  { path: 'article', component: ArticleComponent},
-  { path: 'article/:id', component: ArticleComponent, pathMatch:'full'},
+  { path: 'articles/:id', component: ArticleComponent, pathMatch:'full'},
   { path: '**', component: NotFoundComponent }
 ];
 
