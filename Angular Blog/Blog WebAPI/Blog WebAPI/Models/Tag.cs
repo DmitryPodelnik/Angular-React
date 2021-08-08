@@ -18,6 +18,6 @@ namespace Blog_WebAPI.Models
         [DataType(DataType.Text)]
         public string Content { get; set; }
 
-        public List<Article> Articles { get; set; } = new();
+        //public List<Article> Articles { get; set; } = new();
     }
 }

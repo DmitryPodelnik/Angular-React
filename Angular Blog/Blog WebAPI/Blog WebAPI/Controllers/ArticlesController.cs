@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Blog_WebAPI.Controllers
@@ -63,12 +64,20 @@ namespace Blog_WebAPI.Controllers
 
                 var tempTags = tags.Split(" ");
 
-                foreach (var item in tempTags)
+                StringBuilder stringTags = new("");
+
+                foreach (var tag in tempTags)
                 {
-                    Tag newTag = new();
-                    newTag.Content = item;
-                    newArticle.Tags.Add(newTag);
+                    stringTags.Append(tag + ", ");
                 }
+                newArticle.Tags = stringTags.ToString();
+
+                //foreach (var item in tempTags)
+                //{
+                //    Tag newTag = new();
+                //    newTag.Content = item;
+                //    newArticle.Tags.Add(newTag);
+                //}
 
                 _context.Articles.Add(newArticle);
                 await _context.SaveChangesAsync();

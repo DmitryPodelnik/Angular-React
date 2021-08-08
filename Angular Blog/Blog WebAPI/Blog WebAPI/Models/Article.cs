@@ -29,7 +29,7 @@ namespace Blog_WebAPI.Models
         [Required]
         public string Username { get; set; }
 
-        public List<Tag> Tags { get; set; } = new();
+        public string Tags { get; set; }
 
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
