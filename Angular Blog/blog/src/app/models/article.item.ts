@@ -1,3 +1,5 @@
+import { TagItem } from '../models/tag.item';
+
 export class ArticleItem {
   id: number | undefined;
   title: string;
@@ -5,7 +7,7 @@ export class ArticleItem {
   username: string;
   date: string;
   comments: any;
-  tags: any;
+  tags: TagItem[] | undefined;
   file: any | undefined;
 
   constructor () {
