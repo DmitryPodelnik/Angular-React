@@ -1,45 +1,41 @@
 <div *ngIf="articles !== undefined && this.dataService.getIsLoaded() == true; then thenBlock else elseBlock"></div>
-  <ng-template #thenBlock>
-    <div class="card cardItem" *ngFor="let article of articles; let i = index">
-      <div class="card-body">
-        <h5 class="card-title">
-          <a routerLinkActive="active" routerLink="/articles/{{article.id}}">{{article.title}}</a>
-        </h5>
+<ng-template #thenBlock>
+  <div class="card cardItem" *ngFor="let article of articles; let i = index">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a routerLinkActive="active" routerLink="/articles/{{article.id}}">{{article.title}}</a>
+      </h5>
+      <p class="card-text">
+        {{article.content.substring(0, article.content.indexOf(".", 30) + 1)}}
+      </p>
+      <div class="d-flex justify-content-between">
         <p class="card-text">
-          {{article.content.substring(0, article.content.indexOf(".", 30) + 1)}}
+          <span><img src="../../assets/author.png" width="16" height="16" alt="author"></span><small class="text-muted">
+            Author: {{article.username}}</small>
         </p>
-        <div class="d-flex justify-content-between">
-          <p class="card-text">
-            <span><img src="../../assets/author.png" width="16" height="16" alt="author"></span><small
-              class="text-muted"> Author: {{article.username}}</small>
-          </p>
-          <p class="card-text">
-            <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted">
-              Posted: {{article.date}}</small>
-          </p>
-          <p class="card-text">
-            <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted">
-              Tags: <span *ngFor="let tag of article.tags">{{tag}} </span></small>
-          </p>
-          <p class="card-text">
-            <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small
-              class="text-muted"> {{article.comments.length}} Comments</small>
-          </p>
-        </div>
+        <p class="card-text">
+          <span><img src="../../assets/date.png" width="16" height="16" alt="date"></span><small class="text-muted">
+            Posted: {{article.date}}</small>
+        </p>
+        <p class="card-text">
+          <span><img src="../../assets/comments.png" width="16" height="16" alt="comments"></span><small
+            class="text-muted"> {{article.comments.length}} Comments</small>
+        </p>
       </div>
-      <img src="https://mdbootstrap.com/img/new/slides/042.jpg" class="card-img-bottom" alt="nature" width="500px"
-        height="500px" />
-
-        <a
-        class="btn btn-outline-dark btn-lg m-2"
-        routerLink="/articles/{{article.id}}"
-        >Read more</a
-      >
     </div>
-  </ng-template>
-  <ng-template #elseBlock>
-    <div class="text-center">
-      <p>Loading...</p>
-    </div>
-  </ng-template>
+    <img src="https://mdbootstrap.com/img/new/slides/042.jpg" class="card-img-bottom" alt="nature" width="500px"
+      height="500px" />
 
+    <p class="card-text" style="margin: 15px;">
+      <span><img src="../../assets/tags.png" width="16" height="16" alt="tags"></span><small class="text-muted">
+        Tags: <strong>{{article.tags}}</strong></small>
+    </p>
+
+    <a class="btn btn-outline-dark btn-lg m-2" routerLink="/articles/{{article.id}}">Read more</a>
+  </div>
+</ng-template>
+<ng-template #elseBlock>
+  <div class="text-center">
+    <p>Loading...</p>
+  </div>
+</ng-template>

@@ -16,4 +16,4 @@ export class ArticleItem {
     this.username = "";
     this.date = "";
   }
-}
+} 
