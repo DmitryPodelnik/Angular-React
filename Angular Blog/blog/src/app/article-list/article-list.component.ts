@@ -1,6 +1,9 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ArticleItem } from '../models/article.item';
 import { DataService } from '../services/data.service';
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-article-list',
@@ -8,10 +11,11 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements DoCheck, OnInit {
- 
+
+  id: number | undefined;
   articles: ArticleItem[] | undefined;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService, public authService: AuthorizationService, private router: Router) { }
 
   ngDoCheck() {
     this.articles = this.dataService.getData();
@@ -22,6 +26,19 @@ export class ArticleListComponent implements DoCheck, OnInit {
 
   ngOnInit() {
     this.dataService.getAllArticles();
+  }
+
+  deleteArticle(id: number): void {
+    fetch(`https://localhost:44341/api/articles/delete/${id}`)
+        .then(
+            data => {
+              console.log('article was deleted');
+              this.router.navigate(['/activityfeed']);
+            },
+            error => {
+              console.log(error);
+            }
+        )
   }
 
 }

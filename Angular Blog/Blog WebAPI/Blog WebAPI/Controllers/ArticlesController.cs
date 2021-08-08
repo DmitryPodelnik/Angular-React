@@ -62,7 +62,9 @@ namespace Blog_WebAPI.Controllers
                 newArticle.UserId = 1;
                 newArticle.Username = (await _context.Users.FirstOrDefaultAsync(u => u.Id == newArticle.UserId)).Username;
 
+                tags = tags.Replace(",", "");
                 var tempTags = tags.Split(" ");
+
 
                 StringBuilder stringTags = new("");
 
@@ -134,8 +136,9 @@ namespace Blog_WebAPI.Controllers
             return RedirectToAction(nameof(GetArticles));
         }
 
+        [Route("delete/{id:int}")]
         // GET: Articles/Delete/5
-        public async Task<ActionResult<Article>> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -149,14 +152,6 @@ namespace Blog_WebAPI.Controllers
                 return NotFound();
             }
 
-            return article;
-        }
-
-        // POST: Articles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var article = await _context.Articles.FindAsync(id);
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(GetArticles));
