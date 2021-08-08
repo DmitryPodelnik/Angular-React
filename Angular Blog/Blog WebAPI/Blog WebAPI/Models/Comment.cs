@@ -32,7 +32,7 @@ namespace Blog_WebAPI.Models
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
-        public int? ArticleId { get; set; }
+        public int ArticleId { get; set; }
         // Навигационное свойство
         //
         // По умолчанию для навигационного свойства использовалось бы название ****

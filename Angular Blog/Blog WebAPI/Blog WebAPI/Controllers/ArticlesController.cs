@@ -74,13 +74,6 @@ namespace Blog_WebAPI.Controllers
                 }
                 newArticle.Tags = stringTags.ToString();
 
-                //foreach (var item in tempTags)
-                //{
-                //    Tag newTag = new();
-                //    newTag.Content = item;
-                //    newArticle.Tags.Add(newTag);
-                //}
-
                 _context.Articles.Add(newArticle);
                 await _context.SaveChangesAsync();
 
@@ -137,7 +130,6 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("delete/{id:int}")]
-        // GET: Articles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -154,6 +146,7 @@ namespace Blog_WebAPI.Controllers
 
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(GetArticles));
         }
 
