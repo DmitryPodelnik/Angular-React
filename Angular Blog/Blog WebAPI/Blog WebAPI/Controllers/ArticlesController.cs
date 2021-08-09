@@ -83,28 +83,28 @@ namespace Blog_WebAPI.Controllers
             return NotFound();
         }
 
-        [Route("edit/{id:int}")]
-        public async Task<ActionResult<Article>> Edit(int? id)
+        [Route("edit")]
+        public async Task<ActionResult<Article>> Edit(Article article)
         {
-            if (id == null)
+            if (article.Id == null)
             {
                 return NotFound();
             }
 
-            var article = await _context.Articles.FindAsync(id);
-            if (article == null)
+            var editArticle = await _context.Articles.FindAsync(article.Id);
+            if (editArticle == null)
             {
                 return NotFound();
             }
 
             try
             {
-                _context.Update(article);
+                _context.Update(editArticle);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArticleExists(article.Id))
+                if (!ArticleExists(editArticle.Id))
                 {
                     return NotFound();
                 }

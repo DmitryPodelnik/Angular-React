@@ -37,19 +37,17 @@ export class EditArticleComponent implements OnInit {
           console.log(error);
         }
       );
-
-    // fetch(`https://localhost:44341/api/articles/edit/${this.id}`).then(
-    //   (data) => {
-    //     console.log('article was edited');
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
   }
 
   saveArticle($event: any): void {
-
+    fetch(`https://localhost:44341/api/articles/edit/${this.article}`).then(
+      (data) => {
+        console.log('article was edited');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }
