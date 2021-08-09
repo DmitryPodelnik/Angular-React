@@ -18,6 +18,7 @@ import { DataService } from './services/data.service';
 import { AuthorizationService } from './services/authorization.service';
 import { NewArticleGuard }   from './new-article/newArticle.guard';
 import { CommentComponent } from './comment/comment.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CommentComponent } from './comment/comment.component';
     AboutComponent,
     SearchComponent,
     WelcomeComponent,
-    CommentComponent
+    CommentComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,

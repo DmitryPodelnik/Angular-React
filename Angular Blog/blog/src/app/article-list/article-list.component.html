@@ -32,7 +32,7 @@
     </p>
 
 
-    <a class="btn btn-outline-warning btn-lg m-2" routerLink="/articles/{{article.id}}"
+    <a class="btn btn-outline-warning btn-lg m-2" routerLink="/article/edit/{{article.id}}"
     *ngIf="authService.getLogCondition() == true && article.id !== undefined" (click)="editArticle(article.id)">
     Edit</a>
 
@@ -47,4 +47,4 @@
   <div class="text-center">
     <p>Loading...</p>
   </div>
-</ng-template>
+</ng-templ

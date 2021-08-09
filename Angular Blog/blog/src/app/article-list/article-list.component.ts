@@ -46,7 +46,6 @@ export class ArticleListComponent implements DoCheck, OnInit {
   }
 
   editArticle(id: number): void {
-    if (confirm('Are you sure to delete this article?')) {
       fetch(`https://localhost:44341/api/articles/edit/${id}`).then(
         (data) => {
           console.log('article was deleted');
@@ -57,5 +56,5 @@ export class ArticleListComponent implements DoCheck, OnInit {
         }
       );
     }
-  }
+
 }

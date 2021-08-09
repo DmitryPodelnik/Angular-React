@@ -10,6 +10,7 @@ import { ArticleComponent } from './article/article.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NewArticleGuard } from './new-article/newArticle.guard';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'activityfeed', component: ArticleListComponent},
   { path: 'login', component: AuthorizationComponent},
   { path: 'article/new', component: NewArticleComponent, pathMatch:'full', canActivate: [NewArticleGuard]},
+  { path: 'article/edit/:id', component: EditArticleComponent, pathMatch:'full', canActivate: [NewArticleGuard]},
   { path: 'article/:id', component: ArticleComponent, pathMatch:'full'},
   { path: '**', component: NotFoundComponent }
 ];

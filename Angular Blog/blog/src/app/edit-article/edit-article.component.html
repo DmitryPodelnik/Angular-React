@@ -1,0 +1,27 @@
+<form method="post" id="editingArticle" *ngIf="article !== undefined">
+  <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input class="form-control" name="title" [(ngModel)]="article.title">
+  </div>
+  <div class="mb-3">
+      <label class="form-label">Content</label>
+      <textarea class="form-control" name="content" [(ngModel)]="article.content"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-control" name="date" [(ngModel)]="article.date">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Author</label>
+    <input class="form-control" name="author" [(ngModel)]="article.username">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Tags</label>
+    <input class="form-control" name="tags" [(ngModel)]="article.tags">
+  </div>
+  <div id="uploadFile" style="margin-bottom: 15px;">
+    <label class="form-label" for="avatar"></label>
+    <input type="file" class="form-control-sm" id="avatar" name="avatar" />
+  </div>
+  <button type="submit" class="btn btn-dark" (click)="saveArticle($event)">Create</button>
+</form>
