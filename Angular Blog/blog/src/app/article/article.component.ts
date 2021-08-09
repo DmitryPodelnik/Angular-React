@@ -58,8 +58,7 @@ export class ArticleComponent implements OnInit {
   editArticle(id: number): void {
     fetch(`https://localhost:44341/api/articles/edit/${id}`).then(
       (data) => {
-        console.log('article was deleted');
-        this.router.navigate(['/activityfeed']);
+        console.log('article was edited');
       },
       (error) => {
         console.log(error);
