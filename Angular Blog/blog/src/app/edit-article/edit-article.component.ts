@@ -40,7 +40,13 @@ export class EditArticleComponent implements OnInit {
   }
 
   saveArticle($event: any): void {
-    fetch(`https://localhost:44341/api/articles/edit/title=${this.article?.title}&content=${this.article?.content}&date=${this.article?.date}&tags=${this.article?.tags}&username=${this.article?.username}`).then(
+    if (this.article !== undefined) {
+    fetch(`https://localhost:44341/api/articles/edit?article.Title=${this.article.title}`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      }})
+      .then(
       (data) => {
         console.log('article was edited');
       },
@@ -48,6 +54,7 @@ export class EditArticleComponent implements OnInit {
         console.log(error);
       }
     );
+    }
   }
 
 }

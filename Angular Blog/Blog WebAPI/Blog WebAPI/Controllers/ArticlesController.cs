@@ -84,14 +84,17 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("edit")]
-        public async Task<ActionResult<Article>> Edit(Article article)
+        [HttpGet]
+        public async Task<ActionResult<Article>> Edit (Article article)
         {
-            if (article.Id == null)
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            if (article == null)
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
             {
                 return NotFound();
             }
 
-            var editArticle = await _context.Articles.FindAsync(article.Id);
+            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Title == article.Title);
             if (editArticle == null)
             {
                 return NotFound();
@@ -99,6 +102,12 @@ namespace Blog_WebAPI.Controllers
 
             try
             {
+                editArticle.Title = article.Title;
+                //editArticle.Content = article.Content;
+                //editArticle.Date = article.Date;
+                //editArticle.Tags = article.Tags;
+                //editArticle.Username = article.Username;
+
                 _context.Update(editArticle);
                 await _context.SaveChangesAsync();
             }
