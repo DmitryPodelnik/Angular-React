@@ -83,7 +83,7 @@ namespace Blog_WebAPI.Controllers
             return NotFound();
         }
 
-        // GET: Articles/Edit/5
+        [Route("edit/{id:int}")]
         public async Task<ActionResult<Article>> Edit(int? id)
         {
             if (id == null)
@@ -93,19 +93,6 @@ namespace Blog_WebAPI.Controllers
 
             var article = await _context.Articles.FindAsync(id);
             if (article == null)
-            {
-                return NotFound();
-            }
-            return article;
-        }
-
-        // POST: Articles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        public async Task<ActionResult<Article>> Edit(int id, [Bind("Id,Title,Content,Date,Username")] Article article)
-        {
-            if (id != article.Id)
             {
                 return NotFound();
             }

@@ -32,7 +32,10 @@
     </p>
 
 
-    <a class="btn btn-outline-warning btn-lg m-2" routerLink="/articles/{{article.id}}" *ngIf="authService.getLogCondition() == true">Edit</a>
+    <a class="btn btn-outline-warning btn-lg m-2" routerLink="/articles/{{article.id}}"
+    *ngIf="authService.getLogCondition() == true && article.id !== undefined" (click)="editArticle(article.id)">
+    Edit</a>
+
     <a  class="btn btn-outline-danger btn-lg m-2" routerLink="/articles"
     *ngIf="authService.getLogCondition() == true && article.id !== undefined" (click)="deleteArticle(article.id)"
     >Delete</a>
