@@ -26,14 +26,26 @@ export class EditArticleComponent implements OnInit {
       .pipe(switchMap((params) => params.getAll('id')))
       .subscribe((data) => (this.id = +data));
 
-    fetch(`https://localhost:44341/api/articles/edit/${this.id}`).then(
-      (data) => {
-        console.log('article was edited');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      fetch(`https://localhost:44341/api/articles/${this.id}`)
+      .then((res) => res.json())
+      .then(
+        (data) => {
+          console.log('success fetch id article');
+          this.article = data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+
+    // fetch(`https://localhost:44341/api/articles/edit/${this.id}`).then(
+    //   (data) => {
+    //     console.log('article was edited');
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   saveArticle($event: any): void {
