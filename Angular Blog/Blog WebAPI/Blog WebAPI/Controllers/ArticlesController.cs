@@ -62,7 +62,7 @@ namespace Blog_WebAPI.Controllers
                 newArticle.UserId = 1;
                 newArticle.Username = (await _context.Users.FirstOrDefaultAsync(u => u.Id == newArticle.UserId)).Username;
 
-                tags = tags.Replace(",", "");
+                tags = tags.Replace(",", " ");
                 var tempTags = tags.Split(" ");
 
 
