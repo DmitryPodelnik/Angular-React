@@ -33,7 +33,7 @@
 
 
     <a class="btn btn-outline-warning btn-lg m-2" routerLink="/article/edit/{{article.id}}"
-    *ngIf="authService.getLogCondition() == true && article.id !== undefined" (click)="editArticle(article.id)">
+    *ngIf="authService.getLogCondition() == true && article.id !== undefined">
     Edit</a>
 
     <a  class="btn btn-outline-danger btn-lg m-2" routerLink="/articles"
