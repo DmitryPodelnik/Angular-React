@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Blog_WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class ArticlesController : Controller
     {
         private readonly BlogDbContext _context;
@@ -84,8 +84,8 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("edit")]
-        [HttpGet]
-        public async Task<ActionResult<Article>> Edit (string title, string content, string date, string username, string tags)
+        //[HttpGet]
+        public async Task<ActionResult<Article>> Edit (string title)
         {
 //#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
 //            if (title == null || content == null || date == null || username == null || tags == null)
@@ -94,7 +94,7 @@ namespace Blog_WebAPI.Controllers
 //                return NotFound();
 //            }
 
-            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Content == content);
+            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Title == title);
             if (editArticle == null)
             {
                 return NotFound();
@@ -103,10 +103,10 @@ namespace Blog_WebAPI.Controllers
             try
             {
                 editArticle.Title = title;
-                editArticle.Content = content;
-                editArticle.Date = date;
-                editArticle.Username = username;
-                editArticle.Tags = tags;
+                //editArticle.Content = content;
+                //editArticle.Date = date;
+                //editArticle.Username = username;
+                //editArticle.Tags = tags;
 
                 _context.Update(editArticle);
                 await _context.SaveChangesAsync();
