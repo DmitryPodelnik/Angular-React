@@ -19,6 +19,7 @@ import { AuthorizationService } from './services/authorization.service';
 import { NewArticleGuard }   from './new-article/newArticle.guard';
 import { CommentComponent } from './comment/comment.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
+import { EditArticleGuard } from './edit-article/edit-article.guard';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { EditArticleComponent } from './edit-article/edit-article.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DataService, AuthorizationService, NewArticleGuard],
+  providers: [DataService, AuthorizationService, NewArticleGuard, EditArticleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
