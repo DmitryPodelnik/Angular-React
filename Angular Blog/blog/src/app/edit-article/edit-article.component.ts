@@ -51,6 +51,11 @@ export class EditArticleComponent implements OnInit {
       (error) => {
         console.log(error);
       }
+    )
+    .then(
+      () => {
+        this.router.navigate([`/articles`]);
+      }
     );
     }
   }
