@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Blog_WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class ArticlesController : Controller
     {
         private readonly BlogDbContext _context;
@@ -85,16 +85,16 @@ namespace Blog_WebAPI.Controllers
 
         [Route("edit")]
         [HttpGet]
-        public async Task<ActionResult<Article>> Edit (int id, string title)
+        public async Task<ActionResult<Article>> Edit (Article article)
         {
-//#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-//            if (title == null || content == null || date == null || username == null || tags == null)
-//#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-//            {
-//                return NotFound();
-//            }
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            if (article == null)
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            {
+                return NotFound();
+            }
 
-            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Id == id);
+            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Id == article.Id);
             if (editArticle == null)
             {
                 return NotFound();
@@ -102,11 +102,11 @@ namespace Blog_WebAPI.Controllers
 
             try
             {
-                editArticle.Title = title;
-                //editArticle.Content = content;
-                //editArticle.Date = date;
-                //editArticle.Username = username;
-                //editArticle.Tags = tags;
+                editArticle.Title = article.Title;
+                editArticle.Content = article.Content;
+                editArticle.Date = article.Date;
+                editArticle.Username = article.Username;
+                editArticle.Tags = article.Tags;
 
                 _context.Update(editArticle);
                 await _context.SaveChangesAsync();
