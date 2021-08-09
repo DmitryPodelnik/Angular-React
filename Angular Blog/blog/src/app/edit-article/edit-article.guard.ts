@@ -12,7 +12,7 @@ export class EditArticleGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
         if (this.authService.getLogCondition() == false) {
-          this.router.navigate(['/articles']);
+          this.router.navigate(['/welcome']);
           return false;
         }
 
