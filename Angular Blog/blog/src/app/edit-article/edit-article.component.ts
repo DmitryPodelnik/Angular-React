@@ -40,7 +40,7 @@ export class EditArticleComponent implements OnInit {
   }
 
   saveArticle($event: any): void {
-    fetch(`https://localhost:44341/api/articles/edit/${this.article}`).then(
+    fetch(`https://localhost:44341/api/articles/edit/title=${this.article?.title}&content=${this.article?.content}&date=${this.article?.date}&tags=${this.article?.tags}&username=${this.article?.username}`).then(
       (data) => {
         console.log('article was edited');
       },
