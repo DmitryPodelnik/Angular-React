@@ -33,7 +33,7 @@
     <a class="btn btn-primary" style="margin: 10px; width: fit-content;" routerLink="/articles">Back to all articles</a>
 
     <a class="btn btn-warning" style="margin: 10px; width: fit-content;" routerLink="/article/edit/{{article.id}}"
-      *ngIf="authService.getLogCondition() == true && article.id !== undefined" (click)="editArticle(article.id)">Edit</a>
+      *ngIf="authService.getLogCondition() == true && article.id !== undefined">Edit</a>
 
     <a class="btn btn-danger" style="margin: 10px; width: fit-content;" routerLink="/articles"
       *ngIf="authService.getLogCondition() == true && article.id !== undefined"
