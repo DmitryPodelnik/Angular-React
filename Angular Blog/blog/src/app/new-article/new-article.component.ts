@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { uploadFile } from '../functions/upload-file'
-
 @Component({
   selector: 'app-new-article',
   templateUrl: './new-article.component.html',
@@ -46,7 +44,7 @@ export class NewArticleComponent implements OnInit {
 
         let fData = new FormData();
         if (this.fileToUpload != null) {
-            fData.append("image", this.fileToUpload); // добавляем файл в объект FormData()
+            fData.append("image", this.fileToUpload);
         }
 
         fetch(`https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`, {
@@ -63,18 +61,6 @@ export class NewArticleComponent implements OnInit {
                 console.log(error);
             })
         }
-
-    // fetch(`https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`)
-    //     .then(
-    //         data => {
-    //           console.log('success');
-    //           this.router.navigate(['/articles']);
-    //         },
-    //         error => {
-    //           console.log(error);
-    //         }
-    //     )
-
   }
 
   handleFileInput(files: FileList): void {
