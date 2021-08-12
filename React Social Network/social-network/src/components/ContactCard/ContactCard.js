@@ -169,7 +169,7 @@ class ContactCard extends React.Component {
         {
             return <Redirect to="/auth" />
         }
-        else {
+        else { 
             return (
                 <div id="user">
                     <form encType="multipart/form-data">

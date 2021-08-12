@@ -6,7 +6,7 @@ export class ArticleItem {
   date: string;
   comments: any;
   tags: string;
-  file: any | undefined;
+  image: File = null;
 
   constructor () {
     this.content = "";

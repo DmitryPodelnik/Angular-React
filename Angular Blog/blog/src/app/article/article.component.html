@@ -21,7 +21,10 @@
       </p>
     </div>
   </div>
-  <img src="https://mdbootstrap.com/img/new/slides/042.jpg" class="card-img-bottom" alt="nature" width="500px"
+
+  <img *ngIf="article.image !== null;" src="data:image/png;base64,{{article.image}}" class="card-img-bottom" alt="nature" width="500px"
+    height="500px" />
+  <img *ngIf="article.image === null;" src="https://mdbootstrap.com/img/new/slides/042.jpg" class="card-img-bottom" alt="nature" width="500px"
     height="500px" />
 
   <p class="card-text" style="margin: 15px;">
