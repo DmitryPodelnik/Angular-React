@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { uploadFile } from '../functions/upload-file'
+
 @Component({
   selector: 'app-new-article',
   templateUrl: './new-article.component.html',
@@ -16,7 +18,9 @@ export class NewArticleComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
+    this.image.addEventListener("change", () => {
+      uploadFile(this.image.files[0]);
+  });
   }
 
   postArticle($event: any): void {
