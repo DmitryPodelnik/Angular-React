@@ -99,8 +99,8 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("edit")]
-        [HttpGet]
-        public async Task<ActionResult<Article>> Edit (Article article)
+        [HttpPost]
+        public async Task<ActionResult<Article>> Edit (Article article, IFormFile image)
         {
 #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
             if (article == null)
@@ -122,6 +122,18 @@ namespace Blog_WebAPI.Controllers
                 editArticle.Date = article.Date;
                 editArticle.Username = article.Username;
                 editArticle.Tags = article.Tags;
+
+                if (image != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)image.Length);
+                    }
+                    // установка массива байтов
+                    editArticle.Image = imageData;
+                }
 
                 _context.Update(editArticle);
                 await _context.SaveChangesAsync();
