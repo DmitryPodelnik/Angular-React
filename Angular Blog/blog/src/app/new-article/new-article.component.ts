@@ -55,10 +55,9 @@ export class NewArticleComponent implements OnInit {
         }
 
         fetch(`https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`, {
-            method: "GET",
+            method: "POST",
             body: fData
         })
-        .then(res => res.json())
         .then(
             data => {
                 alert("Article has been successfully added!");

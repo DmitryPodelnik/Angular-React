@@ -1,10 +1,12 @@
 ﻿using Blog_WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,8 +51,8 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("add")]
-        [HttpGet]
-        public async Task<ActionResult<Article>> AddArticle(string title, string content, string tags) // [Bind("Id,Title,Content,Date,Username")]
+        [HttpPost]
+        public async Task<ActionResult<Article>> AddArticle(string title, string content, string tags, IFormFile image) // [Bind("Id,Title,Content,Date,Username")]
         {
             Article newArticle = new();
 
@@ -73,6 +75,18 @@ namespace Blog_WebAPI.Controllers
                     stringTags.Append(tag + ", ");
                 }
                 newArticle.Tags = stringTags.ToString();
+
+                if (image != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)image.Length);
+                    }
+                    // установка массива байтов
+                    newArticle.Image = imageData;
+                }
 
                 _context.Articles.Add(newArticle);
                 await _context.SaveChangesAsync();

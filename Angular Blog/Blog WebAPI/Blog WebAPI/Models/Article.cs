@@ -31,6 +31,8 @@ namespace Blog_WebAPI.Models
 
         public string Tags { get; set; }
 
+        public byte[] Image { get; set; }
+
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
 
