@@ -42,13 +42,13 @@ export class EditArticleComponent implements OnInit {
 
   saveArticle($event: any): void {
     if (this.article.title.length < 1 && this.article.title.length > 32) {
-      alert('Enter a correct length of title!');
+      alert('Length of content must be between 1 and 32 symbols!');
       return;
     } else if (this.article.title.length > 150) {
-      alert('Enter a correct length of tags!');
+      alert('Length of tags must be less than 150 symbols!');
       return;
     } else if (this.article.content.length > 200) {
-      alert('Enter a correct length of content!');
+      alert('Length of content must be less than 200 symbols!');
       return;
     } else {
       let fData = new FormData();
