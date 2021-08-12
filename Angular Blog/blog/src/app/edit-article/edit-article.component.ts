@@ -55,7 +55,7 @@ export class EditArticleComponent implements OnInit {
         })
         .then(
           (data) => {
-            alert("Article has been successfully added!");
+            alert("Article has been successfully edited!");
             console.log('article was edited');
           },
           (error) => {
