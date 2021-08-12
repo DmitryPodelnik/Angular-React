@@ -19,7 +19,7 @@ export class AuthorizationComponent implements OnInit {
     this.password = "";
   }
 
-  userCheck($event : any) {
+  userCheck($event : any): void {
 
     let user = {
       username: this.username,
@@ -40,7 +40,7 @@ export class AuthorizationComponent implements OnInit {
                     console.log(this.username);
                     console.log(this.password);
                     alert("Error authorization");
-                    return;
+                    return "Error";
                 }
             }).then((data) => {
                 AuthHelper.saveAuth(user.username, data.access_token);
