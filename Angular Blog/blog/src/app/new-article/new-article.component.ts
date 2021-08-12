@@ -31,7 +31,7 @@ export class NewArticleComponent implements OnInit {
     } else if (article.title.length > 150) {
       alert('Enter a correct length of tags!');
       return;
-    } else if (article.content.length > 1000) {
+    } else if (article.content.length > 200) {
       alert('Enter a correct length of content!');
       return;
     } else {

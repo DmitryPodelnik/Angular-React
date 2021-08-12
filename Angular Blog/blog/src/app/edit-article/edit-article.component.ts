@@ -47,7 +47,7 @@ export class EditArticleComponent implements OnInit {
     } else if (this.article.title.length > 150) {
       alert('Enter a correct length of tags!');
       return;
-    } else if (this.article.content.length > 1000) {
+    } else if (this.article.content.length > 200) {
       alert('Enter a correct length of content!');
       return;
     } else {
