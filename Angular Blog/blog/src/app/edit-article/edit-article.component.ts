@@ -41,31 +41,45 @@ export class EditArticleComponent implements OnInit {
   }
 
   saveArticle($event: any): void {
-    let fData = new FormData();
-    if (this.fileToUpload != null) {
-        fData.append("image", this.fileToUpload);
-    }
+    if (this.article.title.length < 1 && this.article.title.length > 32) {
+      alert('Enter a correct length of title!');
+      return;
+    } else if (this.article.title.length > 150) {
+      alert('Enter a correct length of tags!');
+      return;
+    } else if (this.article.content.length > 1000) {
+      alert('Enter a correct length of content!');
+      return;
+    } else {
+      let fData = new FormData();
+      if (this.fileToUpload != null) {
+        fData.append('image', this.fileToUpload);
+      }
 
-    if (this.article !== undefined) {
-      fetch(`https://localhost:44341/api/articles/edit?Id=${this.article.id}&Title=${this.article.title}
+      if (this.article !== undefined) {
+        fetch(
+          `https://localhost:44341/api/articles/edit?Id=${this.article.id}&Title=${this.article.title}
            &Content=${this.article.content}&Date=${this.article.date}&Username=${this.article.username}
-           &Tags=${this.article.tags}`, {
-            method: "POST",
-            body: fData
-        })
-        .then(
-          (data) => {
-            alert("Article has been successfully edited!");
-            console.log('article was edited');
-          },
-          (error) => {
-            alert(error);
-            console.log(error);
+           &Tags=${this.article.tags}`,
+          {
+            method: 'POST',
+            body: fData,
           }
         )
-        .then(() => {
-          this.router.navigate([`/articles`]);
-        });
+          .then(
+            (data) => {
+              alert('Article has been successfully edited!');
+              console.log('article was edited');
+            },
+            (error) => {
+              alert(error);
+              console.log(error);
+            }
+          )
+          .then(() => {
+            this.router.navigate([`/articles`]);
+          });
+      }
     }
   }
 
