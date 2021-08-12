@@ -13,7 +13,7 @@
   </div>
   <div id="uploadFile" style="margin-bottom: 15px;">
     <label class="form-label" for="avatar"></label>
-    <input type="file" class="form-control-sm" id="avatar" name="avatar" />
+    <input type="file" class="form-control-sm" id="avatar" name="avatar" [(ngModel)]="image"/>
   </div>
   <button type="submit" class="btn btn-dark" (click)="postArticle($event)">Create</button>
-</form> 
+</form>

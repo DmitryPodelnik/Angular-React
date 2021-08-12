@@ -11,6 +11,7 @@ export class NewArticleComponent implements OnInit {
   title: string = "";
   content: string = "";
   tags: string = "";
+  image: any;
 
   constructor(private router: Router) { }
 
@@ -24,6 +25,7 @@ export class NewArticleComponent implements OnInit {
       title: this.title,
       content: this.content,
       tags: this.tags,
+      image: this.image,
     };
 
     $event.preventDefault();
@@ -41,11 +43,11 @@ export class NewArticleComponent implements OnInit {
             return;
         } else {
 
-        let temp = (<HTMLInputElement>document.getElementById("avatar"));
+        //let temp = (<HTMLInputElement>document.getElementById("image"));
 
         let fData = new FormData();
-        if (temp != null && temp.files != null) {
-            fData.append("avatar", temp.files[0]); // добавляем файл в объект FormData()
+        if (this.image.files != null) {
+            fData.append("image", this.image.files[0]); // добавляем файл в объект FormData()
         }
 
         fetch(`https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`, {
