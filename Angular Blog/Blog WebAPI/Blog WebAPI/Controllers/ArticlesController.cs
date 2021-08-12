@@ -99,8 +99,8 @@ namespace Blog_WebAPI.Controllers
         }
 
         [Route("edit")]
-        [HttpPost]
-        public async Task<ActionResult<Article>> Edit (Article article, IFormFile image)
+        [HttpGet]
+        public async Task<ActionResult<Article>> Edit(Article article, IFormFile image)
         {
 #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
             if (article == null)
@@ -134,6 +134,48 @@ namespace Blog_WebAPI.Controllers
                     // установка массива байтов
                     editArticle.Image = imageData;
                 }
+
+                _context.Update(editArticle);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ArticleExists(editArticle.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(GetArticles));
+        }
+
+        [Route("edit")]
+        [HttpPost]
+        public async Task<ActionResult<Article>> Edit (Article article)
+        {
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            if (article == null)
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            {
+                return NotFound();
+            }
+
+            var editArticle = await _context.Articles.FirstOrDefaultAsync(a => a.Id == article.Id);
+            if (editArticle == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                editArticle.Title = article.Title;
+                editArticle.Content = article.Content;
+                editArticle.Date = article.Date;
+                editArticle.Username = article.Username;
+                editArticle.Tags = article.Tags;
 
                 _context.Update(editArticle);
                 await _context.SaveChangesAsync();
