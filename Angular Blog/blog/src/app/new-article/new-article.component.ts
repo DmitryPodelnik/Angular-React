@@ -4,23 +4,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-article',
   templateUrl: './new-article.component.html',
-  styleUrls: ['./new-article.component.css']
+  styleUrls: ['./new-article.component.css'],
 })
 export class NewArticleComponent implements OnInit {
-
-  title: string = "";
-  content: string = "";
-  tags: string = "";
+  title: string = '';
+  content: string = '';
+  tags: string = '';
   fileToUpload: File = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   postArticle($event: any): void {
-
     let article = {
       title: this.title,
       content: this.content,
@@ -29,38 +25,38 @@ export class NewArticleComponent implements OnInit {
 
     $event.preventDefault();
 
-        if (article.title.length < 1 && article.title.length > 32) {
-            alert("Enter a correct length of title!");
-            return;
-        }
-        else if (article.title.length > 150) {
-            alert("Enter a correct length of tags!");
-            return;
-        }
-        else if (article.content.length > 1000) {
-            alert("Enter a correct length of content!");
-            return;
-        } else {
+    if (article.title.length < 1 && article.title.length > 32) {
+      alert('Enter a correct length of title!');
+      return;
+    } else if (article.title.length > 150) {
+      alert('Enter a correct length of tags!');
+      return;
+    } else if (article.content.length > 1000) {
+      alert('Enter a correct length of content!');
+      return;
+    } else {
+      let fData = new FormData();
+      if (this.fileToUpload != null) {
+        fData.append('image', this.fileToUpload);
+      }
 
-        let fData = new FormData();
-        if (this.fileToUpload != null) {
-            fData.append("image", this.fileToUpload);
+      fetch(
+        `https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`,
+        {
+          method: 'POST',
+          body: fData,
         }
-
-        fetch(`https://localhost:44341/api/articles/add?title=${this.title}&content=${this.content}&tags=${this.tags}`, {
-            method: "POST",
-            body: fData
-        })
-        .then(
-            data => {
-                alert("Article has been successfully added!");
-                this.router.navigate(['/articles']);
-            },
-            error => {
-                alert(error);
-                console.log(error);
-            })
+      ).then(
+        (data) => {
+          alert('Article has been successfully added!');
+          this.router.navigate(['/articles']);
+        },
+        (error) => {
+          alert(error);
+          console.log(error);
         }
+      );
+    }
   }
 
   handleFileInput(files: FileList): void {
