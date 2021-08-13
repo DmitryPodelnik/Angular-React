@@ -25,7 +25,20 @@ export class NewArticleComponent implements OnInit {
 
     $event.preventDefault();
 
-    if (article.title.length < 1 && article.title.length > 32) {
+    if (
+      !['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'].includes(
+        this.fileToUpload.type
+      )
+    ) {
+      alert('Only images are allowed.');
+      return;
+    } else if (
+      (this.fileToUpload.size < 40000 || this.fileToUpload.size > 625000) &&
+      this.fileToUpload.size !== null
+    ) {
+      alert('File size must be between 40kb and 5mb');
+      return;
+    } else if (article.title.length < 1 && article.title.length > 32) {
       alert('Enter a correct length of title!');
       return;
     } else if (article.title.length > 150) {
