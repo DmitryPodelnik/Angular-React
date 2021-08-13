@@ -25,14 +25,12 @@ namespace Blog_WebAPI.Controllers
         }
 
         [HttpGet]
-        // GET: Articles
         public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
         {
             return await _context.Articles.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        // GET: Articles/Details/5
         public async Task<ActionResult<Article>> GetArticle(int? id)
         {
             if (id == null)
